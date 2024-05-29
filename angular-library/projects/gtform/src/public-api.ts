@@ -1,10 +1,38 @@
-/*
- * Public API Surface of gtform
- */
+//Components
+export * from './lib/components/gtform-accordion';
+export * from './lib/components/gtform-autocomplete';
+export * from './lib/components/gtform-bookmark';
+export * from './lib/components/gtform-button';
+export * from './lib/components/gtform-button-icon';
+export * from './lib/components/gtform-checkbox';
+export * from './lib/components/gtform-chips';
+export * from './lib/components/gtform-editor';
+export * from './lib/components/gtform-file-folder-tree';
+export * from './lib/components/gtform-file-uploader';
+export * from './lib/components/gtform-grid';
+export * from './lib/components/gtform-icon';
+export * from './lib/components/gtform-input-date';
+export * from './lib/components/gtform-input-text';
+export * from './lib/components/gtform-progress-stepper';
+export * from './lib/components/gtform-select';
+export * from './lib/components/gtform-spinner';
+export * from './lib/components/gtform-tabs';
 
-export * from './lib/components/form-accordion/gtform-accordion.component';
+//Directives
+export * from './lib/directives';
 
+//Models
+export * from './lib/models';
 
+//Pipes
+export * from './lib/pipes';
 
-// main module
+//Templates
+export * from './lib/templates/endereco-wrapper';
+export * from './lib/templates/gtform-hbf-template';
+
+//Utils
+export * from './lib/utils';
+
+// Main Module
 export * from './lib/gtform.module';
