@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GtformHbfTemplateComponent } from 'projects/gtform/src/lib/templates/form-hbf-template/gtform-hbf-template.component';
+import { GtformHbfTemplateComponent } from 'projects/gtform/src/lib/templates/gtform-hbf-template/gtform-hbf-template.component';
 
 describe('FormHbfTemplateComponent', () => {
   let component: GtformHbfTemplateComponent;
