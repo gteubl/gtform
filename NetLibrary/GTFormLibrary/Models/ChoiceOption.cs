@@ -2,7 +2,7 @@
 
 namespace GTFormLibrary.Models;
 
-[ExportTsClass]
+[ExportTsInterface]
 public class ChoiceOption
 {
     public ChoiceOption(int value, string description)
