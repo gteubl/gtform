@@ -1,0 +1,6 @@
+<!-- breadcrumbs.component.html -->
+<ul id="breadcrumbs-one" class="breadcrumbs">
+  <li *ngFor="let crumb of breadcrumbs; let i = index" [class.current]="i === currentStep" [class.completed]="i < currentStep">
+    <a href="">{{ crumb.label }}</a>
+  </li>
+</ul>

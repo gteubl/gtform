@@ -1,0 +1,9 @@
+dist/
+.angular/
+src/app/api/
+deleteApiFolder.js
+transformEnums.js
+
+**/*.spec.ts
+**/*.md
+

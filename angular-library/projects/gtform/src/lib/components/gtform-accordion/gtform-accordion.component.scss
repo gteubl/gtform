@@ -1,0 +1,48 @@
+@import "../../../styles/variables";
+
+.accordion-panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--form-border-color);
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard syntax */
+  overflow: visible;
+
+  .panel-header {
+    padding: 0.6em;
+    //background-color: var(--form-border-color);
+    background-image: var(--form-header-control-background-img);
+    color: var(--form-header-control-color);
+    border-bottom: 1px solid var(--form-border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .active {
+      color: var(--form-control-active-color);
+    }
+  }
+
+  .arrow {
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 0.2em;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-right: 0.6em;
+    vertical-align: middle;
+  }
+
+  .rotated {
+    transform: rotate(-135deg);
+  }
+
+  .panel-body {
+    padding: 0.6em;
+    overflow: visible;
+  }
+
+}

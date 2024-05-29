@@ -1,0 +1,16 @@
+<form-hbf-template>
+  <form [formGroup]="uploadForm" body class="drag-container">
+    <div (dragleave)="onDragLeave($event)"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event)"
+         [class.dragging]="dragging"
+         (click)="openFileDialog()"
+         class="drag-drop-box">
+      Arraste e solte arquivos aqui
+      <input #fileInput (change)="onFileSelect($event)" formControlName="files" hidden multiple type="file">
+    </div>
+  </form>
+  <div footer>
+    <form-button (click)="openFileDialog()" color="primary">Carregar Arquivos</form-button>
+  </div>
+</form-hbf-template>

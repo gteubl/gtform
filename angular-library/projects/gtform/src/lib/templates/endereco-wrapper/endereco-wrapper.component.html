@@ -1,0 +1,61 @@
+<ng-container *ngIf="isReadOnly">
+  <div class="label" *ngIf="showBorder">Endereço:</div>
+  <div class="address-container" [ngClass]="{'border': showBorder}">
+    <div class="address-text">{{ logradouroBuilder }}</div>
+    <div class="address-text" *ngIf="endereco?.bairro">{{ endereco.bairro }}</div>
+    <div class="address-text">{{ cepCidadeUfBuilder }}</div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!isReadOnly">
+  <form [formGroup]="formGroup">
+    <div class="form-row ">
+      <div class="form-group {{autoComplete ? 'form-col-12' : 'form-col-9'}}"    >
+        <form-input-text
+          formControlName="cep"
+          label="CEP"
+          formatType="cep"
+        ></form-input-text>
+      </div>
+
+      <div *ngIf="!autoComplete" class="form-group form-col-3">
+        <form-button (click)="dispatchPopulateAddress()">AutoCompletar Endereço</form-button>
+      </div>
+    </div>
+    <ng-container *ngIf="showUfAndCidade">
+      <div class="form-group">
+        <form-autocomplete formControlName="uf"
+                           [showDefaultGrid]="true"
+                           [allOptions]="(ufOptions$ | async)!"
+                           label="Estado"></form-autocomplete>
+      </div>
+      <div class="form-group">
+        <form-autocomplete formControlName="cidade"
+                           [showDefaultGrid]="true"
+                           [allOptions]="(cidadeOptions$ | async)!"
+                           label="Cidade"></form-autocomplete>
+      </div>
+    </ng-container>
+    <div class="form-group">
+      <form-input-text formControlName="bairro"
+                       label="Bairro"
+      ></form-input-text>
+    </div>
+    <div class="form-group">
+      <form-input-text formControlName="logradouro"
+                       label="Logradouro"
+      ></form-input-text>
+    </div>
+    <div class="form-group">
+      <form-input-text formControlName="numero"
+                       label="Número"
+      ></form-input-text>
+    </div>
+    <div class="form-group">
+      <form-input-text formControlName="complemento"
+                       label="Complemento"
+      ></form-input-text>
+    </div>
+
+  </form>
+</ng-container>

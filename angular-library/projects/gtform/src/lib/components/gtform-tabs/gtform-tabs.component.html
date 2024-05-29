@@ -1,0 +1,13 @@
+<div class="outer-container" [ngClass]="{'sub-tab' : tabLevel !== 1}">
+  <div class="tab-labels-container">
+    <ng-container *ngFor="let tab of tabs">
+      <div class="tab-label"  (click)="selectActiveTab(tab)" [ngClass]="{'active': isTabActive(tab) }">
+        {{ tab.label }}
+      </div>
+
+    </ng-container>
+  </div>
+  <div class="tab-container">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+@import "../../../styles/variables";
+
+.breadcrumbs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #eee;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #f5f5f5 #e5e5e5 #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+
+  li {
+    position: relative;
+    display: flex;
+
+    // Default arrow settings
+    &:not(:last-child)::after, &:last-child::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 1.5em solid transparent;
+      border-bottom: 1.5em solid transparent;
+      border-left: 1em solid #ddd;
+      right: -1em;
+      z-index: 1;
+    }
+
+    &:not(:last-child)::before, &:last-child::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 1.5em solid transparent;
+      border-bottom: 1.5em solid transparent;
+      border-left: 1em solid #ccc;
+      right: -1.1em;
+      z-index: 0;
+    }
+  }
+
+  a {
+    padding: .7em 1em .7em 2em;
+    text-decoration: none;
+    color: #444;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    background-color: #ddd;
+    background-image: linear-gradient(to right, #f5f5f5, #ddd);
+    cursor: default;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  li:first-child a {
+    padding-left: 1em;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .completed a, .current a {
+    background-color: var(--form-border-color);
+    background-image: none;
+    color: var(--form-header-control-color);
+    font-weight: 500;
+  }
+
+  .completed:not(:last-child)::after, .current:not(:last-child)::after {
+    border-left-color: var(--form-border-color);
+  }
+}
+
+// Adjustments for smaller screens
+@media (max-width: 768px) {
+  .breadcrumbs a {
+    padding: .5em .8em;
+    font-size: 14px; // Adjust font size for better readability on small devices
+  }
+}
+
+@media (max-width: 480px) {
+  // Simplify or remove arrows on very small screens for clarity
+  .breadcrumbs li::after, .breadcrumbs li::before {
+    content: none; // Removes arrows on small screens
+  }
+
+  .breadcrumbs li {
+    flex-basis: 100%; // Allow each breadcrumb to take the full width
+  }
+}

@@ -1,0 +1,16 @@
+<div #allcontent>
+<form-hbf-template >
+    <div class="form-container" body>
+      <div class="form-row">
+        <div class="form-group form-col-12" >
+          <form-grid [dataSource]="(gridDataSource$ | async)!"
+                     [gridColumns]="gridColumns"
+                     [headerConfig]="headerConfig"
+                     (rowClicked)="rowClicked($event)"
+                     [gridHeight]="ModalDialogSizes.small.bodySize + 'px' "
+          ></form-grid>
+        </div>
+      </div>
+    </div>
+</form-hbf-template>
+</div>

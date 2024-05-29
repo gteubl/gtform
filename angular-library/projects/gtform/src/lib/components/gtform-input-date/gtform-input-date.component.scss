@@ -1,0 +1,31 @@
+@import "../../../styles/variables.scss";
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+
+  label {
+    font-size: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  input[type="date"] {
+    font-size: 1em;
+    padding: 0.5em;
+    border: 1px solid var(--form-border-color);
+    border-radius: 4px;
+    font-family: var(--font-family);
+
+    &:focus {
+      border-color: var(--form-control-active-color);
+      outline: none;
+    }
+  }
+}
+
+.ng-invalid.ng-touched {
+  //border-color: var(--form-control-error-color);
+  border-color: red;
+}

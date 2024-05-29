@@ -1,0 +1,14 @@
+<ng-container *ngIf="!disabled">
+  <div class="input-container">
+    <label>{{ label }}:</label>
+
+    <select [value]="selectedOptionValue" [disabled]="disabled" (change)="onSelectChange($event)">
+      <option *ngFor="let option of options" [value]="option.value">{{ option.description }}</option>
+    </select>
+  </div>
+</ng-container>
+<ng-container *ngIf="disabled">
+  <form-input-text [label]="label"
+                   [inputValue]="value?.description ?? ''"
+                   [disabled]="true"></form-input-text>
+</ng-container>

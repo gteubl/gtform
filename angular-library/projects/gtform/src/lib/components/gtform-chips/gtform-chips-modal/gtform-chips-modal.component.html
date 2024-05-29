@@ -1,0 +1,26 @@
+<div #allcontent>
+  <form-hbf-template >
+    <div class="form-container" body>
+      <form-grid [dataSource]="(gridDataSource$ | async)!"
+                 [gridColumns]="gridColumns"
+                 [headerConfig]="headerConfig"
+                 [gridHeight]="400 + 'px' "
+                 [isSelectable]="true"
+                 [showFooter]="true"
+                 (rowSelected)="onRowSelected($event)"
+      ></form-grid>
+    </div>
+    <div footer>
+      <div class="form-row">
+        <div class=" form-col-6">
+          <form-button (click)="closeDialog()">Cancelar</form-button>
+        </div>
+        <div class="form-col-6">
+          <form-button (click)="confirm()" color="primary">Confirmar</form-button>
+        </div>
+
+      </div>
+
+    </div>
+  </form-hbf-template>
+</div>

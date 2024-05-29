@@ -1,0 +1,23 @@
+:host {
+  display: inline-flex;
+  --icon-font-size: 2em;
+  --icon-color: var(--main-content-text-color);
+}
+
+.material-icons {
+  font-size: var(--icon-font-size);
+  color: var(--icon-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  max-width: var(--icon-font-size);
+  max-height: var(--icon-font-size);
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: var(--form-control-disabled-background-color);
+  color: var(--form-control-disabled-color);
+}
