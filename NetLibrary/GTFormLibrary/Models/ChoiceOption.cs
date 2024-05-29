@@ -1,5 +1,8 @@
-﻿namespace GTFormLibrary.Models;
+﻿using TypeGen.Core.TypeAnnotations;
 
+namespace GTFormLibrary.Models;
+
+[ExportTsClass]
 public class ChoiceOption
 {
     public ChoiceOption(int value, string description)
