@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { GtformDrawerService } from '../../services/index';
 
@@ -7,10 +7,16 @@ import { GtformDrawerService } from '../../services/index';
   templateUrl: './gtform-drawer.component.html',
   styleUrl: './gtform-drawer.component.scss'
 })
-export class GtformDrawerComponent implements OnInit {
-
+export class GtformDrawerComponent implements OnInit, AfterViewInit {
+  @Input() public alwaysShowDrawer = false;
   public isLeftDrawerOpen = false;
   public isRightDrawerOpen = false;
+
+  @ViewChild('leftDrawer') public leftDrawerElement: ElementRef | undefined;
+  @ViewChild('rightDrawer') public rightDrawerElement: ElementRef | undefined;
+
+  public hasRightDrawerContent = false;
+  public hasLeftDrawerContent = false;
 
   public constructor(private drawerService: GtformDrawerService) {
   }
@@ -23,6 +29,16 @@ export class GtformDrawerComponent implements OnInit {
     this.drawerService.rightDrawerState$.subscribe(state => {
       this.isRightDrawerOpen = state;
     });
+
+    // this.checkDrawers();
+  }
+
+  public ngAfterViewInit(): void {
+    this.hasRightDrawerContent = this.rightDrawerElement?.nativeElement.children.length > 0;
+    this.hasLeftDrawerContent = this.leftDrawerElement?.nativeElement.children.length > 0;
+
+    console.log('hasRightDrawerContent', this.hasRightDrawerContent);
+    console.log('hasLeftDrawerContent', this.hasLeftDrawerContent);
   }
 
 }
