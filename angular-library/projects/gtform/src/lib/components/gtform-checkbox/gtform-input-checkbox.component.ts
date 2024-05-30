@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
 @Component({
@@ -19,7 +20,7 @@ export class GtformInputCheckboxComponent extends BaseControlValueAccessor<boole
   @Input() public checked: boolean = false;
   @Input() public disabled: boolean = false;
 
-// Actions
+  // Actions
   public onInput(value: Event): void {
 
     const input = value.target as HTMLInputElement;

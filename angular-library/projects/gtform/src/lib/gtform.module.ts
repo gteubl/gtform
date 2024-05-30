@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { GtformAccordionComponent } from './components/gtform-accordion/index';
 import { GtformAutocompleteComponent, GtformAutocompleteModalComponent } from './components/gtform-autocomplete/index';
 import { GtformBookmarkComponent } from './components/gtform-bookmark/index';
-import { GtformButtonIconComponent } from './components/gtform-button-icon/index';
 import { GtformButtonComponent } from './components/gtform-button/index';
+import { GtformButtonIconComponent } from './components/gtform-button-icon/index';
 import { GtformInputCheckboxComponent } from './components/gtform-checkbox/index';
 import { GtformChipsComponent, GtformChipsModalComponent } from './components/gtform-chips/index';
 import { GtformFileFolderTreeComponent, GtformFileFolderUploaderModalComponent } from './components/gtform-file-folder-tree/index';
@@ -20,6 +21,7 @@ import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
 import { GtResizableDirective } from './directives/index';
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
+import { GtformDrawerComponent } from './templates/gtform-drawer/gtform-drawer.component';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
 
 const components = [
@@ -43,7 +45,8 @@ const components = [
   GtformSelectComponent,
   GtformSpinnerComponent,
   GtformTabsComponent,
-  GtformGridComponent
+  GtformGridComponent,
+  GtformDrawerComponent
 ];
 
 const directives = [
@@ -68,7 +71,8 @@ const templates = [
     ...components,
     ...directives,
     ...pipes,
-    ...templates
+    ...templates,
+
   ],
   exports: [
     ...components,

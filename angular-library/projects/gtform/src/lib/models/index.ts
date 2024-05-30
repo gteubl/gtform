@@ -6,8 +6,8 @@ export * from './auto-generated/choice-option';
 export * from './modal-dialog-sizes';
 export * from './form-option';
 export * from './menu-item';
-export * from './grid-columns'
-export * from './grid-data'
+export * from './grid-columns';
+export * from './grid-data';
 export * from './grid-data.request';
 export * from './grid-data';
 export * from './grid-data-source';

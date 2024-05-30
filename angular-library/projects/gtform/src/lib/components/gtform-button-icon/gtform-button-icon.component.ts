@@ -11,7 +11,7 @@ export class GtformButtonIconComponent {
   @Input() public icon!: string;
   @Output() public btnClick = new EventEmitter<void>();
 
-// Actions
+  // Actions
   public onClick(): void {
 
     if (this.disabled) {

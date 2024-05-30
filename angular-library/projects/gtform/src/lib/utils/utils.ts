@@ -53,6 +53,7 @@ export function endsWithAccentInsensitive(mainStr: string, searchStr: string): b
   return normalizeString(mainStr).endsWith(normalizeString(searchStr));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mergeWithNonEmptyStringOverrides(source: any, updates: any): any {
   const result = { ...source };
 

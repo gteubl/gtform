@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
-import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
+
 import { GridColumns } from '../../models/grid-columns';
 import { GridCellData } from '../../models/grid-data';
 import { GridDataSource } from '../../models/grid-data-source';
@@ -14,6 +14,7 @@ import { GridFooterInfo } from '../../models/grid-footer-info';
 import { GridHeaderActionsButtons, GridHeaderConfig } from '../../models/grid-header-config';
 import { GridRow } from '../../models/grid-row';
 import { GridRowActions } from '../../models/grid-row.actions';
+import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
 
 
 
@@ -201,6 +202,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   }*/
   public onDrop(event: any): void {
     //not implemented
+    console.log(event);
   }
 
   public onFirstPage(): void {
@@ -391,8 +393,8 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     event.preventDefault(); // Prevent the browser context menu
     this.currentRow = row;
 
-//TODO: OVERLAY PANEL
-   /* if (this.contextMenu) {
+    //TODO: OVERLAY PANEL
+    /* if (this.contextMenu) {
       this.contextMenu.toggle(event);
     }*/
   }
@@ -506,7 +508,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-/*  private reorderDataArray(event: CdkDragDrop<string[]>): void {
+  /*  private reorderDataArray(event: CdkDragDrop<string[]>): void {
 
     const currentDataArray = this.dataArray.getValue();
 

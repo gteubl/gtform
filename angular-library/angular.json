@@ -5,6 +5,18 @@
   "projects": {
     "gtform": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "projects/gtform",
       "sourceRoot": "projects/gtform/src",
       "prefix": "gtform",

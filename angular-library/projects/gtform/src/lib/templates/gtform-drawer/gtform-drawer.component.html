@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="drawer left" [class.open]="isLeftOpen">
+    <ng-content select="[left-drawer]"></ng-content>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="main">
+      <ng-content select="[main-content]"></ng-content>
+    </div>
+    <div class="footer">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+
+  <div class="drawer right" [class.open]="isRightOpen">
+    <ng-content select="[right-drawer]"></ng-content>
+  </div>
+</div>

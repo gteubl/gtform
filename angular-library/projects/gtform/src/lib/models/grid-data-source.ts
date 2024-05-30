@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export class GridDataSource<T> {
   public skip: number;
   public take: number;

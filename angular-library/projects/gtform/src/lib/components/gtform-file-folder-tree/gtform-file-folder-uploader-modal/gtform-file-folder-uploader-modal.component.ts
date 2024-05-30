@@ -8,12 +8,13 @@ import { Component } from '@angular/core';
 })
 export class GtformFileFolderUploaderModalComponent {
 
- /* public constructor(public dialogRef: DynamicDialogRef) {
+  /* public constructor(public dialogRef: DynamicDialogRef) {
   }*/
 
   // Actions
   public onFileSelect(fileList: FileList): void {
     // this.dialogRef.close(fileList);
+    console.log('file selected', fileList);
   //
   }
 

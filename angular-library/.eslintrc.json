@@ -16,8 +16,8 @@
     "sourceType": "module",
     "project": [
       "./tsconfig.json",
-      "./gtform-demo/tsconfig.app.json",
-      "./gtform/tsconfig.lib.json"
+      "./projects/gtform-demo/tsconfig.app.json",
+      "./projects/gtform/tsconfig.lib.json"
     ],
     "extraFileExtensions": [
       ".html"

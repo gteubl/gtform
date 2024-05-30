@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
+
 import { FormOption } from '../../models/index';
 import { GtformDialogService } from '../../services/index';
 import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils/index';
@@ -66,7 +67,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
 
   public dispatchShowDefaultGrid(): void {
 
-  /*  const ref = this.dialog.open(FormAutocompleteModalComponent, {
+    /*  const ref = this.dialog.open(FormAutocompleteModalComponent, {
       ...ModalDialogSizes.small,
       data: {
         options: this.allOptions,

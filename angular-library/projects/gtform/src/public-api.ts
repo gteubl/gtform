@@ -29,6 +29,7 @@ export * from './lib/pipes';
 
 //Templates
 export * from './lib/templates/gtform-hbf-template';
+export * from './lib/templates/gtform-drawer';
 
 //Services
 export * from './lib/services';

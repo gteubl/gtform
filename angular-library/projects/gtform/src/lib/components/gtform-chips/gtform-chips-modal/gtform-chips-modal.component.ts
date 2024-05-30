@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+
 import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalDialogSizes } from '../../../models/index';
 
 export interface FormChipsModalData {
@@ -41,6 +42,7 @@ export class GtformChipsModalComponent implements OnInit {
     // this.selectedRows = this.config.data.selectedOptions;
     // gridDataSource.populateSelected(this.config.data.selectedOptions);
     // this.gridDataSource.next(gridDataSource);
+    console.log('empty');
 
   }
 

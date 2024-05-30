@@ -11,7 +11,7 @@ export class GtResizableDirective {
   private removeMouseUpListener: (() => void) | null = null;
 
   // Input to enable/disable the resizable feature
-  @Input('formResizable') public isEnabled: boolean = true;
+  @Input() public isEnabled: boolean = true;
 
   public constructor(private el: ElementRef, private renderer: Renderer2) {
     // Optionally, apply a mousemove listener to the column header for cursor style

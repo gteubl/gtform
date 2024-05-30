@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
+
 import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalDialogSizes } from '../../../models/index';
 
 
@@ -37,6 +38,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
 
   public ngOnInit(): void {
   //  this.gridDataSource.next(new GridDataSource<ChoiceOption>(this.config.data.options, this.config.data.options.length));
+    console.log('empty');
   }
 
   public closeDialog(): void {
@@ -45,6 +47,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
 
   public rowClicked($event: ChoiceOption): void {
     //this.dialogRef.close($event);
+    console.log('row clicked', $event);
 
   }
 }

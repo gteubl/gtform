@@ -1,6 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
+
 import { MenuItem } from '../../models/index';
 
 
@@ -229,7 +231,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
 
   public moveNode(draggedNode: FileNode, dropTargetNode: FileNode): void {
 
-    const allNodes = this.dataSubject.value;
+    //const allNodes = this.dataSubject.value;
 
     if (draggedNode.type === 'file' && dropTargetNode.type !== 'folder') {
       return;
@@ -240,7 +242,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
       return;
     }
 
-   /* //Confirmation to move the node
+    /* //Confirmation to move the node
     const fileModal = this.dialog.open(
       ModalConfirmationComponent,
       {
@@ -321,7 +323,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
   }
 
   private upLoadFiles(): void {
-   /* const fileModal = this.dialog.open(
+    /* const fileModal = this.dialog.open(
       FormFileFolderUploaderModalComponent,
       {
         header: 'Carregar arquivos',
