@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { GtformDrawerService } from '../../services/gtform-drawer.service';
+import { GtformDrawerService } from '../../services/index';
 
 @Component({
   selector: 'gtform-drawer',
   templateUrl: './gtform-drawer.component.html',
   styleUrl: './gtform-drawer.component.scss'
 })
-export class GtformDrawerComponent {
-  public constructor(public drawerService: GtformDrawerService) {}
+export class GtformDrawerComponent implements OnInit {
 
-  public toggleLeftDrawer(): void {
-    this.drawerService.toggleLeftDrawer();
+  public isLeftDrawerOpen = false;
+  public isRightDrawerOpen = false;
+
+  public constructor(private drawerService: GtformDrawerService) {
   }
 
-  public toggleRightDrawer(): void {
-    this.drawerService.toggleRightDrawer();
+  public ngOnInit(): void {
+    this.drawerService.leftDrawerState$.subscribe(state => {
+      this.isLeftDrawerOpen = state;
+    });
+
+    this.drawerService.rightDrawerState$.subscribe(state => {
+      this.isRightDrawerOpen = state;
+    });
   }
-  
+
 }
