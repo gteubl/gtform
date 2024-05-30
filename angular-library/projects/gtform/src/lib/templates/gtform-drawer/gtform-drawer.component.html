@@ -1,13 +1,19 @@
-<div class="container" [class.left-drawer-open]="isLeftDrawerOpen" [class.right-drawer-open]="isRightDrawerOpen">
-  <div class="drawer left" [class.open]="isLeftDrawerOpen" #leftDrawer>
-    <ng-content select="[left-drawer]" ></ng-content>
+<div [class.left-drawer-open]="isLeftDrawerOpen" [class.right-drawer-open]="isRightDrawerOpen" class="container">
+  <div #leftDrawer [class.open]="isLeftDrawerOpen" class="drawer left">
+    <ng-content select="[left-drawer]"></ng-content>
   </div>
   <div class="content">
-    <header><ng-content select="[header]"></ng-content></header>
-    <main class="main"><ng-content select="[main-content]"></ng-content></main>
-    <footer><ng-content select="[footer]"></ng-content></footer>
+    <header>
+      <ng-content select="[header]"></ng-content>
+    </header>
+    <main class="main">
+      <ng-content select="[main-content]"></ng-content>
+    </main>
+    <footer>
+      <ng-content select="[footer]"></ng-content>
+    </footer>
   </div>
-  <div class="drawer right" [class.open]="isRightDrawerOpen" #rightDrawer>
-    <ng-content select="[right-drawer]" ></ng-content>
+  <div #rightDrawer [class.open]="isRightDrawerOpen" class="drawer right">
+    <ng-content select="[right-drawer]"></ng-content>
   </div>
 </div>

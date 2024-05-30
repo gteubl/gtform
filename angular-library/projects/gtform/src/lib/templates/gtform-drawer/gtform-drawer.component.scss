@@ -18,12 +18,13 @@
     transition: all 0.3s ease;
 
     &.left-drawer-open .content {
-      margin-left: 250px; // Push content to the right when the left drawer is open
+      margin-left: 250px;
     }
 
     &.right-drawer-open .content {
-      margin-right: 250px; // Push content to the left when the right drawer is open
+      margin-right: 250px;
     }
+
   }
 
   .drawer {
@@ -35,20 +36,20 @@
 
     &.left {
       left: 0;
-      transform: translateX(-100%); // Initially hidden off-screen to the left
+      transform: translateX(-100%);
     }
 
     &.left.open {
-      transform: translateX(0); // Slide in from the left
+      transform: translateX(0);
     }
 
     &.right {
       right: 0;
-      transform: translateX(100%); // Initially hidden off-screen to the right
+      transform: translateX(100%);
     }
 
     &.right.open {
-      transform: translateX(0); // Slide in from the right
+      transform: translateX(0);
     }
   }
 
@@ -56,7 +57,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    transition: margin 0.3s ease; // Smooth transition for margin adjustments
+    transition: margin 0.3s ease;
 
     header, footer {
       background-color: #f1f1f1;
@@ -66,12 +67,12 @@
     .main {
       flex-grow: 1;
       overflow-y: auto;
-      min-height: 0; // Important for flex children
+      min-height: 0;
     }
 
     .main-content {
       width: 100%;
-      word-wrap: break-word; // Handle long unbreakable strings
+      word-wrap: break-word;
     }
   }
 }
