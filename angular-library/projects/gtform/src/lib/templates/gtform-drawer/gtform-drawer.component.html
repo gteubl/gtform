@@ -1,4 +1,9 @@
-<div [class.left-drawer-open]="isLeftDrawerOpen" [class.right-drawer-open]="isRightDrawerOpen" class="container">
+<div [class.left-drawer-open]="isLeftDrawerOpen"
+     [class.left-show-min]="!isLeftDrawerOpen && alwaysShowDrawer "
+     [class.right-show-min]="!isRightDrawerOpen && alwaysShowDrawer "
+     [class.right-drawer-open]="isRightDrawerOpen"
+     class="container"
+>
   <div #leftDrawer [class.open]="isLeftDrawerOpen" class="drawer left">
     <ng-content select="[left-drawer]"></ng-content>
   </div>

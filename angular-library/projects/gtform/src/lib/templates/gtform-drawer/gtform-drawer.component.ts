@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { GtformDrawerService } from '../../services/index';
 
@@ -15,8 +16,12 @@ export class GtformDrawerComponent implements OnInit, AfterViewInit {
   @ViewChild('leftDrawer') public leftDrawerElement: ElementRef | undefined;
   @ViewChild('rightDrawer') public rightDrawerElement: ElementRef | undefined;
 
-  public hasRightDrawerContent = false;
-  public hasLeftDrawerContent = false;
+  private hasRightDrawerContent = new BehaviorSubject(false);
+  public hasRightDrawerContent$ = this.hasRightDrawerContent.asObservable();
+
+
+  private hasLeftDrawerContent = new BehaviorSubject(false);
+  public hasLeftDrawerContent$ = this.hasLeftDrawerContent.asObservable();
 
   public constructor(private drawerService: GtformDrawerService) {
   }
@@ -32,8 +37,8 @@ export class GtformDrawerComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.hasRightDrawerContent = this.rightDrawerElement?.nativeElement.children.length > 0;
-    this.hasLeftDrawerContent = this.leftDrawerElement?.nativeElement.children.length > 0;
+    this.hasRightDrawerContent.next(this.rightDrawerElement?.nativeElement.children.length > 0);
+    this.hasLeftDrawerContent.next( this.leftDrawerElement?.nativeElement.children.length > 0);
   }
 
 }

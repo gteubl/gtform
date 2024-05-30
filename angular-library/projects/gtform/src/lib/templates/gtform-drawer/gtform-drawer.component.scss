@@ -25,6 +25,14 @@
       margin-right: 250px;
     }
 
+    &.left-show-min .content {
+      margin-left: 50px;
+    }
+
+    &.right-show-min .content {
+      margin-right: 50px;
+    }
+
   }
 
   .drawer {
@@ -33,6 +41,7 @@
     top: 0;
     bottom: 0;
     transition: transform 0.3s ease;
+    background-color: red;
 
     &.left {
       left: 0;
@@ -67,12 +76,13 @@
     .main {
       flex-grow: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       min-height: 0;
     }
 
-    .main-content {
+   /* .main-content {
       width: 100%;
       word-wrap: break-word;
-    }
+    }*/
   }
 }
