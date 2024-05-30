@@ -5,20 +5,20 @@ import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
 import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
-import { GridColumns } from './models/grid-columns';
-import { GridCellData } from './models/grid-data';
-import { GridDataSource } from './models/grid-data-source';
-import { GridDataType } from './models/grid-data-type';
-import { GridDataRequest } from './models/grid-data.request';
-import { GridFooterInfo } from './models/grid-footer-info';
-import { GridHeaderActionsButtons, GridHeaderConfig } from './models/grid-header-config';
-import { GridRow } from './models/grid-row';
-import { GridRowActions } from './models/grid-row.actions';
+import { GridColumns } from '../../models/grid-columns';
+import { GridCellData } from '../../models/grid-data';
+import { GridDataSource } from '../../models/grid-data-source';
+import { GridDataType } from '../../models/grid-data-type';
+import { GridDataRequest } from '../../models/grid-data.request';
+import { GridFooterInfo } from '../../models/grid-footer-info';
+import { GridHeaderActionsButtons, GridHeaderConfig } from '../../models/grid-header-config';
+import { GridRow } from '../../models/grid-row';
+import { GridRowActions } from '../../models/grid-row.actions';
 
 
 
 @Component({
-  selector: 'form-grid',
+  selector: 'gtform-grid',
   templateUrl: './gtform-grid.component.html',
   styleUrls: ['./gtform-grid.component.scss']
 })

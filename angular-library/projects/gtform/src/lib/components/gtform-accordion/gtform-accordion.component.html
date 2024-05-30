@@ -1,8 +1,8 @@
 <div class="accordion-panel">
-          <div class="panel-header" (click)="toggle()">
-              <span class="arrow" [ngClass]="{'rotated': opened}"></span> {{ header }}
-          </div>
-          <div class="panel-body" *ngIf="opened" [@slideFade]>
-              <ng-content></ng-content>
-          </div>
-      </div>
+  <div (click)="toggle()" class="panel-header">
+    <span [ngClass]="{'rotated': opened}" class="arrow"></span> {{ header }}
+  </div>
+  <div *ngIf="opened" [@slideFade] class="panel-body">
+    <ng-content></ng-content>
+  </div>
+</div>

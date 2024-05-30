@@ -1,10 +1,9 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
-
 @Component({
-  selector: 'form-input-checkbox',
+  selector: 'gtform-input-checkbox',
   templateUrl: './gtform-input-checkbox.component.html',
   styleUrl: './gtform-input-checkbox.component.scss',
   providers: [
@@ -14,12 +13,13 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor/base-co
       multi: true
     }]
 })
-export class GtformInputCheckboxComponent extends BaseControlValueAccessor<boolean>  {
+export class GtformInputCheckboxComponent extends BaseControlValueAccessor<boolean> {
   @Input() public label: string = '';
   @Input() public labelAbove: boolean = true;
   @Input() public checked: boolean = false;
   @Input() public disabled: boolean = false;
 
+// Actions
   public onInput(value: Event): void {
 
     const input = value.target as HTMLInputElement;
@@ -31,6 +31,5 @@ export class GtformInputCheckboxComponent extends BaseControlValueAccessor<boole
     this.value = value;
     this.checked = value;
   }
-
 
 }

@@ -1,4 +1,4 @@
-import {GridRow} from 'src/library/form-grid/models/grid-row';
+import { GridRow } from './grid-row';
 
 export interface GridRowActions {
   icon: string;

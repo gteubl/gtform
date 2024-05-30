@@ -3,9 +3,7 @@ import {Component, Input}                    from '@angular/core';
 
 @Component({
   selector: 'gtform-accordion',
-  template: `
-     
-  `,
+  templateUrl: './gtform-accordion.component.html',
   styleUrl: './gtform-accordion.component.scss',
   animations: [
     trigger('slideFade', [

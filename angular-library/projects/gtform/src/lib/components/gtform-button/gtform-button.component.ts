@@ -6,12 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrl: './gtform-button.component.scss'
 })
 export class GtformButtonComponent {
-  @Input() public color : 'primary' | 'secondary' | 'default' = 'default';
+  @Input() public color: 'primary' | 'secondary' | 'default' = 'default';
   @Input() public disabled = false;
 
   public text = '';
   public hasIcon = false;
-
 
 }
 

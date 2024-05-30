@@ -6,13 +6,13 @@
            placeholder="Pesquisar nesta lista"
            type="text"
     >
-    <form-button-icon (btnClick)="applyFilter()"
+<!--    <gtform-button-icon (btnClick)="applyFilter()"
                       (click)="opmColumnsToFilter.toggle($event)"
                       *ngIf="headerConfig.showFilter"
                       icon="filter_alt"
                       pTooltip="Filtrar colunas"
-    ></form-button-icon>
-    <p-overlayPanel #opmColumnsToFilter>
+    ></gtform-button-icon>-->
+<!--    <p-overlayPanel #opmColumnsToFilter>
       <div *ngFor="let column of gridColumns" class="action-item">
         <ng-container *ngIf="!column.filterNotAllowed">
           <form-input-checkbox (change)="onColumnFilterChange(column)"
@@ -22,18 +22,18 @@
           <span>{{ column.headerText }}</span>
         </ng-container>
       </div>
-    </p-overlayPanel>
+    </p-overlayPanel>-->
     <ng-container *ngFor="let actionButton of headerConfig.actionsButtons">
-      <form-button-icon (btnClick)="actionBtnClicked(actionButton)"
+<!--      <gtform-button-icon (btnClick)="actionBtnClicked(actionButton)"
                         [disabled]="actionButton.disabled ?? false"
                         [icon]="actionButton.icon"
                         [pTooltip]="actionButton.tooltip ?? ''"
-      ></form-button-icon>
+      ></gtform-button-icon>-->
     </ng-container>
     <ng-container *ngIf="headerConfig.moreActionsButtons">
       <ng-container *ngFor="let moreActionButton of  headerConfig.moreActionsButtons">
-        <form-button-icon (click)="opMoreAction.toggle($event)" icon="more_vert"></form-button-icon>
-        <p-overlayPanel #opMoreAction>
+<!--        <gtform-button-icon (click)="opMoreAction.toggle($event)" icon="more_vert"></gtform-button-icon>-->
+<!--        <p-overlayPanel #opMoreAction>
           <div (click)="onMoreHeaderActionClick(action)"
                *ngFor="let action of moreActionButton.moreActions"
                class="action-item {{ action.disabled ? 'disabled' : '' }}"
@@ -41,42 +41,47 @@
             <form-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></form-icon>
             <span>{{ action.tooltip }}</span>
           </div>
-        </p-overlayPanel>
+        </p-overlayPanel>-->
       </ng-container>
     </ng-container>
   </div>
   <div class="table-scroll">
     <div *ngIf="isLoading$ | async" class="grid-spinner">
-      <form-spinner></form-spinner>
+      <gtform-spinner></gtform-spinner>
     </div>
     <table>
       <thead class="top-border">
-      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">
+<!--      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">-->
+      <tr>
         <ng-container *ngIf="showNumber">
           <th class="fixed-index"></th>
         </ng-container>
         <ng-container *ngIf="isSelectable">
           <th style="width: 3em">
-            <form-input-checkbox (change)="onClickRowSelectable()" [(ngModel)]="shouldSelectAll"></form-input-checkbox>
+            <gtform-input-checkbox (change)="onClickRowSelectable()" [(ngModel)]="shouldSelectAll"></gtform-input-checkbox>
           </th>
         </ng-container>
+<!--        <th (click)="onSort(column)"-->
+<!--            *ngFor="let column of gridColumns$ | async"-->
+<!--            [cdkDragDisabled]="!allowDrag"-->
+<!--            [formResizable]="column.resizable ?? false"-->
+<!--            [style.width]="column.width ? column.width : 'auto'"-->
+<!--            cdkDrag-->
+<!--        >-->
         <th (click)="onSort(column)"
             *ngFor="let column of gridColumns$ | async"
-            [cdkDragDisabled]="!allowDrag"
-            [formResizable]="column.resizable ?? false"
             [style.width]="column.width ? column.width : 'auto'"
-            cdkDrag
         >
           <div class="default-header">
             <span class="header-text"> {{ column.headerText }}</span>
             <span [ngClass]="(sortColumn === column.propertyName) ? 'visible' : 'hidden'" class="header-direction">
-          <form-icon [icon]="sortDirection === 'asc' ? 'expand_less' : 'expand_more'"></form-icon>
+          <gtform-icon [icon]="sortDirection === 'asc' ? 'expand_less' : 'expand_more'"></gtform-icon>
 </span> <span class="resize-handle"></span>
           </div>
         </th>
         <ng-container *ngIf="showRowsActions">
           <th class="action-column">
-            <form-button-icon *ngIf="isSelectable" icon="more_vert"></form-button-icon>
+            <gtform-button-icon *ngIf="isSelectable" icon="more_vert"></gtform-button-icon>
           </th>
         </ng-container>
       </tr>
@@ -93,7 +98,7 @@
         </ng-container>
         <ng-container *ngIf="isSelectable">
           <td>
-            <form-input-checkbox (change)="onChangeRowSelected(row)" [(ngModel)]="row.selected"></form-input-checkbox>
+            <gtform-input-checkbox (change)="onChangeRowSelected(row)" [(ngModel)]="row.selected"></gtform-input-checkbox>
           </td>
         </ng-container>
         <td (click)="onClickRow(row, cell)" *ngFor="let cell of row.cells" [ngClass]="{'wrap-text': cell.wrapText == true}" class="cell">
@@ -120,7 +125,7 @@
               <ng-template [ngTemplateOutletContext]="{$implicit: row.rawData}" [ngTemplateOutlet]="cell.template!"></ng-template>
             </ng-container>
             <ng-container *ngSwitchCase="GridDataType.BOOLEAN">
-              <form-input-checkbox [checked]="cell.value | castData:cell.dataType" [disabled]="true"></form-input-checkbox>
+              <gtform-input-checkbox [checked]="cell.value | castData:cell.dataType" [disabled]="true"></gtform-input-checkbox>
             </ng-container>
             <ng-container *ngSwitchCase="GridDataType.ARRAY">
               <span>[</span>
@@ -136,7 +141,7 @@
         </td>
         <ng-container *ngIf="showRowsActions">
           <td class="action-column">
-            <form-button-icon (click)="opRowAction.toggle($event); setCurrentRow(row)" icon="more_vert"></form-button-icon>
+           <!-- <gtform-button-icon (click)="opRowAction.toggle($event); setCurrentRow(row)" icon="more_vert"></gtform-button-icon>
             <p-overlayPanel #opRowAction>
               <div (click)="onActionClick(action)"
                    *ngFor="let action of gridRowActions"
@@ -145,7 +150,7 @@
                 <form-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></form-icon>
                 <span>{{ action.text }}</span>
               </div>
-            </p-overlayPanel>
+            </p-overlayPanel>-->
           </td>
         </ng-container>
       </tr>
@@ -157,19 +162,19 @@
       Pagina: {{ (gridFooterInfo | async)?.page }} de {{ (gridFooterInfo | async)?.totalPages }}
     </div>
     <div class="footer-pagination">
-      <form-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"></form-button-icon>
-      <form-button-icon (btnClick)="onPreviousPage()"
+      <gtform-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"></gtform-button-icon>
+      <gtform-button-icon (btnClick)="onPreviousPage()"
                         [disabled]="(gridFooterInfo | async)?.page === 1"
                         icon="chevron_left"
-      ></form-button-icon>
-      <form-button-icon (btnClick)="onNextPage()"
+      ></gtform-button-icon>
+      <gtform-button-icon (btnClick)="onNextPage()"
                         [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
                         icon="chevron_right"
-      ></form-button-icon>
-      <form-button-icon (btnClick)="onLastPage()"
+      ></gtform-button-icon>
+      <gtform-button-icon (btnClick)="onLastPage()"
                         [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
                         icon="last_page"
-      ></form-button-icon>
+      ></gtform-button-icon>
     </div>
     <div class="page-size-options">
       <ng-container *ngFor="let page of (gridFooterInfo | async)?.pageSizeOptions ">

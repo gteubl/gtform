@@ -1,26 +1,22 @@
-<div #allcontent>
-  <form-hbf-template >
-    <div class="form-container" body>
-      <form-grid [dataSource]="(gridDataSource$ | async)!"
+<gtform-hbf-template>
+  <div body class="form-container">
+    <gtform-grid (rowSelected)="onRowSelected($event)"
+                 [dataSource]="(gridDataSource$ | async)!"
                  [gridColumns]="gridColumns"
-                 [headerConfig]="headerConfig"
                  [gridHeight]="400 + 'px' "
+                 [headerConfig]="headerConfig"
                  [isSelectable]="true"
                  [showFooter]="true"
-                 (rowSelected)="onRowSelected($event)"
-      ></form-grid>
-    </div>
-    <div footer>
-      <div class="form-row">
-        <div class=" form-col-6">
-          <form-button (click)="closeDialog()">Cancelar</form-button>
-        </div>
-        <div class="form-col-6">
-          <form-button (click)="confirm()" color="primary">Confirmar</form-button>
-        </div>
-
+    ></gtform-grid>
+  </div>
+  <div footer>
+    <div class="form-row">
+      <div class=" form-col-6">
+        <gtform-button (click)="closeDialog()">Cancelar</gtform-button>
       </div>
-
+      <div class="form-col-6">
+        <gtform-button (click)="confirm()" color="primary">Confirmar</gtform-button>
+      </div>
     </div>
-  </form-hbf-template>
-</div>
+  </div>
+</gtform-hbf-template>

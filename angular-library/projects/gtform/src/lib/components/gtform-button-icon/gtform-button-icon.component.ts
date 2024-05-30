@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'gtform-button-icon',
@@ -7,20 +7,17 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class GtformButtonIconComponent {
 
-
   @Input() public disabled: boolean = false;
   @Input() public icon!: string;
   @Output() public btnClick = new EventEmitter<void>();
 
-
+// Actions
   public onClick(): void {
 
-    if (this.disabled)
-    {
+    if (this.disabled) {
       return;
     }
     this.btnClick.emit();
-
 
   }
 }

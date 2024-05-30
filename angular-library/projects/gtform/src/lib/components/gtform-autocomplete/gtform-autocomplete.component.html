@@ -1,17 +1,17 @@
 <div class="autocomplete">
-  <form-input-text (input)="search()"
-                   (keydown)="handleKeyDown($event)"
-                   [(ngModel)]="searchTerm"
-                   [disabled]="disabled"
-                   [invalid]="invalid"
-                   [label]="label"
-                   [placeholder]="placeholder"
-                   class="form-input"
-  ></form-input-text>
+  <gtform-input-text (input)="search()"
+                     (keydown)="handleKeyDown($event)"
+                     [(ngModel)]="searchTerm"
+                     [disabled]="disabled"
+                     [invalid]="invalid"
+                     [label]="label"
+                     [placeholder]="placeholder"
+                     class="form-input"
+  ></gtform-input-text>
   <div [class.hide]="!suggestion || suggestion === searchTerm" class="suggestion">{{ suggestion }}
   </div>
   <div (click)="onClickActionButton()" *ngIf="actionButtonIcon != null" class="action-button">
-    <form-icon [icon]="actionButtonIcon"></form-icon>
+    <gtform-icon [icon]="actionButtonIcon"></gtform-icon>
   </div>
   <ul *ngIf="searchResults.length > 0">
     <li (click)="selectItem(item)" *ngFor="let item of searchResults; let i = index" [class.selected]="i === selectedIndex">

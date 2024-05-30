@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {TemplateRef} from '@angular/core';
+import { GridDataType } from './grid-data-type';
 
-import {GridDataType} from 'src/library/form-grid/models/grid-data-type';
 
 
 export interface GridData {

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
-import { ChoiceOption, ModalDialogSizes } from '../../../models/index';
-import { GridColumns, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid/index';
-
+import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalDialogSizes } from '../../../models/index';
 
 export interface FormChipsModalData {
   options: ChoiceOption[];
@@ -36,7 +34,6 @@ export class GtformChipsModalComponent implements OnInit {
   protected readonly ModalDialogSizes = ModalDialogSizes;
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
-
 
   public ngOnInit(): void {
 

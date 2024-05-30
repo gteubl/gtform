@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
-import { ChoiceOption, ModalDialogSizes } from '../../../models/index';
-import { GridColumns, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid/index';
+import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalDialogSizes } from '../../../models/index';
 
 
 export interface FormAutocompleteModalData {

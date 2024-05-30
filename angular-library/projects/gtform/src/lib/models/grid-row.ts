@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {GridCellData} from 'app/library/form-grid/models/grid-data';
+
+import { GridCellData } from './grid-data';
 
 export interface GridRow {
   cells: GridCellData[];

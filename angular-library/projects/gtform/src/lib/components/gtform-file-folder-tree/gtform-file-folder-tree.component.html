@@ -1,4 +1,4 @@
-<p-menubar [model]="items"></p-menubar>
+<!--<p-menubar [model]="items"></p-menubar>-->
 
 <ul class="tree-container">
   <ng-template #recursiveList let-tree>
@@ -13,7 +13,7 @@
       <div [ngClass]="{ 'new': node.isNewElement ?? false, 'deleted' : node.isDeleted ?? false}" class="node">
 <!--        <div class="drop-line"></div>-->
         <span class="mr-1"><input type="checkbox"></span>
-        <ng-container *ngIf="node.moreActions.length > 0">
+      <!--  <ng-container *ngIf="node.moreActions.length > 0">
         <i (click)="opMoreAction.toggle($event)" class="pi pi-ellipsis-v mr-1"></i>
           <p-overlayPanel #opMoreAction>
            <div (click)="onClickAction(action, node)"
@@ -23,7 +23,7 @@
             <span>{{ action.tooltip }}</span>
           </div>
         </p-overlayPanel>
-          </ng-container>
+          </ng-container>-->
         <i (click)="toggleFolder(node)" [ngClass]="getIcon(node).class" [style.color]="getIcon(node).color" class="mr-2"></i>
         <span *ngIf="node.isDeleted">** ARQUIVO EXCLUÍDO: </span>
         {{ node.name }} <ng-container *ngIf="node.type === 'file'"> - <span class="description"> Data arquivo: {{node.fileDate | date: 'dd/MM/yyyy'}}</span></ng-container>
