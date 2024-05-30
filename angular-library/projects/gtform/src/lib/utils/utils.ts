@@ -1,8 +1,4 @@
-
-
-// utils.ts
-
-import {FormOption} from 'src/library/utils/form-option';
+import { FormOption } from '../models/index';
 
 export function nameof<T>(key: Extract<keyof T, string>): string {
   return key;

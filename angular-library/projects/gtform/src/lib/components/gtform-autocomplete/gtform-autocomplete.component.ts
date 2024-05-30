@@ -1,13 +1,11 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
+import { FormOption } from '../../models/index';
+import { GtformDialogService } from '../../services/index';
+import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils/index';
+import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
-import { DialogService } from 'primeng/dynamicdialog';
 
-import { BaseControlValueAccessor } from 'src/library/base-control-value-accessor/base-control-value-accessor';
-import { FormAutocompleteModalComponent } from 'src/library/gtform-autocomplete/gtform-autocomplete-modal/gtform-autocomplete-modal.component';
-import { ModalDialogSizes } from 'src/library/models/modal-dialog-sizes';
-import { FormOption } from 'src/library/utils/form-option';
-import { includesAccentInsensitive, startsWithAccentInsensitive } from 'src/library/utils/utils';
 
 @Component({
   selector: 'gtform-autocomplete',
@@ -19,7 +17,6 @@ import { includesAccentInsensitive, startsWithAccentInsensitive } from 'src/libr
       useExisting: forwardRef(() => GtformAutocompleteComponent),
       multi: true
     },
-    DialogService
   ]
 })
 export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOption | null> implements OnChanges {
@@ -40,7 +37,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   public searchResults: FormOption[] = [];
   public suggestion: string = '';
 
-  public constructor(private dialog: DialogService) {
+  public constructor(private dialog: GtformDialogService) {
     super();
   }
 
@@ -69,7 +66,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
 
   public dispatchShowDefaultGrid(): void {
 
-    const ref = this.dialog.open(FormAutocompleteModalComponent, {
+  /*  const ref = this.dialog.open(FormAutocompleteModalComponent, {
       ...ModalDialogSizes.small,
       data: {
         options: this.allOptions,
@@ -85,7 +82,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
 
         this.setAutoSearchValid();
       }
-    });
+    });*/
 
   }
 

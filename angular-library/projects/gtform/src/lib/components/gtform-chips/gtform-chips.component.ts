@@ -1,16 +1,19 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-
-import { DialogService } from 'primeng/dynamicdialog';
-
-import { BaseControlValueAccessor } from 'src/library/base-control-value-accessor/base-control-value-accessor';
-import { FormChipsModalComponent } from 'src/library/gtform-chips/gtform-chips-modal/gtform-chips-modal.component';
-import { ModalDialogSizes } from 'src/library/models/modal-dialog-sizes';
-import { FormOption } from 'src/library/utils/form-option';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormOption } from '../../models/index';
+import { GtformDialogService } from '../../services/index';
+import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
 @Component({
   selector: 'gtform-chips',
   templateUrl: './gtform-chips.component.html',
-  styleUrl: './gtform-chips.component.scss'
+  styleUrl: './gtform-chips.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => GtformChipsComponent),
+      multi: true
+    }]
 })
 export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]> implements OnChanges {
   @Input() public placeholder: string = '';
@@ -28,7 +31,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   public isModalOpen = false;
   public inputValue: string = '';
 
-  public constructor(private dialog: DialogService) {
+  public constructor(private dialog: GtformDialogService) {
     super();
   }
 
@@ -59,23 +62,23 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   }
 
   public dispatchShowDefaultGrid(): void {
-    this.isModalOpen = true;
-    const ref = this.dialog.open(FormChipsModalComponent, {
-      ...ModalDialogSizes.medium,
-      data: {
-        options: this.allOptions,
-        selectedOptions: this.chipsValues
-      },
-      header: this.label
-    });
+    /* this.isModalOpen = true;
+     const ref = this.dialog.open(FormChipsModalComponent, {
+       ...ModalDialogSizes.medium,
+       data: {
+         options: this.allOptions,
+         selectedOptions: this.chipsValues
+       },
+       header: this.label
+     });
 
-    ref.onClose.subscribe((result) => {
-      this.isModalOpen = false;
+     ref.onClose.subscribe((result) => {
+       this.isModalOpen = false;
 
-      if (result) {
-        this.writeValue(result);
-      }
-    });
+       if (result) {
+         this.writeValue(result);
+       }
+     });*/
 
   }
 

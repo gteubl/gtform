@@ -2,13 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'gtform-button',
-  template: `
-          <div class="button-container">
-              <button [disabled]="disabled" [ngClass]="{'icon-button': hasIcon, 'disabled' : disabled}" class="{{color}}">
-                  <ng-content></ng-content>
-              </button>
-          </div>
-  `,
+  templateUrl: './gtform-button.component.html',
   styleUrl: './gtform-button.component.scss'
 })
 export class GtformButtonComponent {

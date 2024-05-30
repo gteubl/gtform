@@ -1,23 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
-import { GridDataSource } from 'app/library/form-grid/models/grid-data-source';
-import { OverlayPanel } from 'primeng/overlaypanel';
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
+import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
+import { GridColumns } from './models/grid-columns';
+import { GridCellData } from './models/grid-data';
+import { GridDataSource } from './models/grid-data-source';
+import { GridDataType } from './models/grid-data-type';
+import { GridDataRequest } from './models/grid-data.request';
+import { GridFooterInfo } from './models/grid-footer-info';
+import { GridHeaderActionsButtons, GridHeaderConfig } from './models/grid-header-config';
+import { GridRow } from './models/grid-row';
+import { GridRowActions } from './models/grid-row.actions';
 
 
-import { GridColumns } from 'src/library/form-grid/models/grid-columns';
-import { GridCellData } from 'src/library/form-grid/models/grid-data';
-import { GridDataType } from 'src/library/form-grid/models/grid-data-type';
-import { GridDataRequest } from 'src/library/form-grid/models/grid-data.request';
-import { GridFooterInfo } from 'src/library/form-grid/models/grid-footer-info';
-import { GridHeaderActionsButtons, GridHeaderConfig } from 'src/library/form-grid/models/grid-header-config';
-import { GridRow } from 'src/library/form-grid/models/grid-row';
-import { GridRowActions } from 'src/library/form-grid/models/grid-row.actions';
-import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from 'src/library/utils/utils';
 
 @Component({
   selector: 'form-grid',
@@ -57,7 +55,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   @Output() public activeRowChanged = new EventEmitter<T | null>();
   @Output() public rowSelected = new EventEmitter<T[]>();
 
-  @ViewChild('opRowAction') public contextMenu: OverlayPanel | undefined;
+  // @ViewChild('opRowAction') public contextMenu: OverlayPanel | undefined;
   public currentRow: GridRow | null = null;
   public activeRow: GridRow | null = null; //TODO Juntar con currentRow ?
   public dataArray = new BehaviorSubject<GridRow[]>([]);
@@ -197,9 +195,12 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   }
 
-  public onDrop(event: CdkDragDrop<string[]>): void {
+  /*public onDrop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.gridColumns, event.previousIndex, event.currentIndex);
     this.reorderDataArray(event);
+  }*/
+  public onDrop(event: any): void {
+    //not implemented
   }
 
   public onFirstPage(): void {
@@ -390,9 +391,10 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     event.preventDefault(); // Prevent the browser context menu
     this.currentRow = row;
 
-    if (this.contextMenu) {
+//TODO: OVERLAY PANEL
+   /* if (this.contextMenu) {
       this.contextMenu.toggle(event);
-    }
+    }*/
   }
 
   public setCurrentRow(row: GridRow): void {
@@ -504,7 +506,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  private reorderDataArray(event: CdkDragDrop<string[]>): void {
+/*  private reorderDataArray(event: CdkDragDrop<string[]>): void {
 
     const currentDataArray = this.dataArray.getValue();
 
@@ -515,7 +517,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     this.dataArray.next(currentDataArray);
 
     // Persist the new column order to the backend or localStorage  ?
-  }
+  }*/
 
   private sortOfflineData(column: GridColumns): void {
     if (!this.sortColumn || this.sortDirection === '') {

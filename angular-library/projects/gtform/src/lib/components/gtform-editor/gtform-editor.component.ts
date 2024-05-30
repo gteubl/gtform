@@ -4,9 +4,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
 import { Subject, takeWhile } from 'rxjs';
+import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
 
-import { BaseControlValueAccessor } from 'src/library/base-control-value-accessor/base-control-value-accessor';
 
 @Component({
   selector: 'gtform-editor',

@@ -1,4 +1,4 @@
 {
   "clearOutputDirectory": true,
-  "outputPath": "../../angular-library/projects/gtform/src/auto-generate-models"
+  "outputPath": "../../angular-library/projects/gtform/src/lib/models/auto-generated"
 }

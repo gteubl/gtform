@@ -31,6 +31,9 @@ export * from './lib/pipes';
 export * from './lib/templates/endereco-wrapper';
 export * from './lib/templates/gtform-hbf-template';
 
+//Services
+export * from './lib/services';
+
 //Utils
 export * from './lib/utils';
 

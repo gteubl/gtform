@@ -1,16 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-
-import { MenuItem } from 'primeng/api';
-import { DialogService } from 'primeng/dynamicdialog';
 import { BehaviorSubject } from 'rxjs';
+import { MenuItem } from '../../models/index';
 
-import { ModalConfirmationComponent } from 'src/dashboard/shared/modals/modal-confirmation/modal-confirmation.component';
-import {
-  FormFileFolderUploaderModalComponent
-} from 'src/library/gtform-file-folder-tree/gtform-file-folder-uploader-modal/gtform-file-folder-uploader-modal.component';
-import { addNode, deleteNode } from 'src/library/gtform-file-folder-tree/form-file-utils';
-import { ModalDialogSizes } from 'src/library/models/modal-dialog-sizes';
 
 export interface FileNode {
   id: string;
@@ -49,7 +41,6 @@ export interface NodeToUpdate {
   selector: 'gtform-file-folder-tree',
   templateUrl: './gtform-file-folder-tree.component.html',
   styleUrl: './gtform-file-folder-tree.component.scss',
-  providers: [DialogService],
   animations: [
     trigger('expandCollapse', [
       state('collapsed', style({
@@ -80,7 +71,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
   @Input() public allowMoveFolders = false;
   @Output() public filesAdded = new EventEmitter<FileList>();
   @Output() public nodeUpdated = new EventEmitter<NodeToUpdate>();
-  public items: MenuItem[] | undefined;
+  public items: MenuItem[] | undefined; //??
   private dataSubject = new BehaviorSubject<FileNode[]>([]);
   public data$ = this.dataSubject.asObservable();
   private draggedNode: FileNode | null = null;
@@ -88,8 +79,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
 
   private allNodes: FileNode[] = [];
 
-  public constructor(private dialog: DialogService) {
-  }
+
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['treeData'] && changes['treeData'].currentValue !== changes['treeData'].previousValue) {
@@ -250,7 +240,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
       return;
     }
 
-    //Confirmation to move the node
+   /* //Confirmation to move the node
     const fileModal = this.dialog.open(
       ModalConfirmationComponent,
       {
@@ -272,7 +262,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
         this.updateTree();
         this.nodeUpdated.emit({ id: draggedNode.id, oldParentId: draggedNode.parentId, newParentId: dropTargetNode.id });
       }
-    });
+    });*/
   }
 
   public toggleFolder(node: FileNode): void {
@@ -331,7 +321,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
   }
 
   private upLoadFiles(): void {
-    const fileModal = this.dialog.open(
+   /* const fileModal = this.dialog.open(
       FormFileFolderUploaderModalComponent,
       {
         header: 'Carregar arquivos',
@@ -341,7 +331,7 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
 
     fileModal.onClose.subscribe((files: FileList) => {
       this.filesAdded.emit(files);
-    });
+    });*/
 
   }
 

@@ -1,7 +1,7 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
 
-import {BaseControlValueAccessor} from 'src/library/base-control-value-accessor/base-control-value-accessor';
 
 @Component({
   selector: 'form-input-checkbox',

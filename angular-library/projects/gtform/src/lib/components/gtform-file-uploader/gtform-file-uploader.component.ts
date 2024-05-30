@@ -1,7 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { FilesService } from 'src/api';
 
 @Component({
   selector: 'gtform-file-uploader',
@@ -16,7 +15,7 @@ export class GtformFileUploaderComponent {
   public uploadForm: FormGroup;
   public dragging: boolean = false;
 
-  public constructor(private fb: FormBuilder, private fileService: FilesService) {
+  public constructor(private fb: FormBuilder) {
     this.uploadForm = this.fb.group({
       files: [null]  // This control is now just a placeholder
     });
