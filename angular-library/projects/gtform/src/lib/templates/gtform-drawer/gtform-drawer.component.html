@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="drawer left" [class.open]="isLeftOpen">
+  <div class="drawer left" [class.open]="drawerService.leftDrawerState$ | async">
     <ng-content select="[left-drawer]"></ng-content>
   </div>
 
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="drawer right" [class.open]="isRightOpen">
+  <div class="drawer right" [class.open]="drawerService.rightDrawerState$ | async">
     <ng-content select="[right-drawer]"></ng-content>
   </div>
 </div>

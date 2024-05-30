@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 
+import { GtformDrawerService } from '../../services/gtform-drawer.service';
+
 @Component({
   selector: 'gtform-drawer',
   templateUrl: './gtform-drawer.component.html',
   styleUrl: './gtform-drawer.component.scss'
 })
 export class GtformDrawerComponent {
-  public isLeftOpen: boolean = false;
-  public isRightOpen: boolean = false;
+  public constructor(public drawerService: GtformDrawerService) {}
 
-  public toggleDrawer(side: 'left' | 'right'): void {
-    if (side === 'left') {
-      this.isLeftOpen = !this.isLeftOpen;
-    } else if (side === 'right') {
-      this.isRightOpen = !this.isRightOpen;
-    }
+  public toggleLeftDrawer(): void {
+    this.drawerService.toggleLeftDrawer();
   }
+
+  public toggleRightDrawer(): void {
+    this.drawerService.toggleRightDrawer();
+  }
+  
 }

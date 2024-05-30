@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.drawer {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+  overflow: auto;
+}
+
+.left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header, .footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
