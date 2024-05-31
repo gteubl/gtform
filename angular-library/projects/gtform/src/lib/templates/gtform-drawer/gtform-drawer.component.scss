@@ -41,7 +41,8 @@
     top: 0;
     bottom: 0;
     transition: transform 0.3s ease;
-    background-color: red;
+    background-color: var(--primary-color);
+    color: var(--text-color-secondary);
 
     &.left {
       left: 0;
@@ -77,7 +78,8 @@
     transition: margin 0.3s ease;
 
     header, footer {
-      background-color: #f1f1f1;
+      background-color: var(--primary-color);
+      color: var(--text-color-secondary);
       padding: 10px;
     }
 

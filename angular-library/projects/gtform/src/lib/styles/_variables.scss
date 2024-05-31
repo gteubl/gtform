@@ -1,6 +1,16 @@
 [data-theme="light"] {
+  --primary-color: #003e55;
+  --secondary-color: #ffc107;
+  --accent-color: #e91e63;
+  --background-color: #f4f4f4;
+  --text-color: #212121;
+  --text-color-secondary: #f4f4f4;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
+
+
   --header-background-color: #003e55;
-  //--header-background-img: linear-gradient(to bottom, #003e55 0, #003e55 100%);
   --header-background-img: linear-gradient(to bottom, #005f7f 0%, #003e55 100%);
   --header-border-color: #e5e8ea;
   --header-menu-item-color: #fff;
@@ -25,6 +35,8 @@
 }
 
 [data-theme="dark"] {
+  --primary-color: #3c3c3c;
+
   --header-background-color: #3c3c3c;
   --header-background-img: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
   --header-border-color: #e5e8ea;

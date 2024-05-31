@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { GtformDrawerService } from 'gtform';
 
+import { GtformThemeService } from '../../../gtform/src/lib/services/index';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +12,11 @@ import { GtformDrawerService } from 'gtform';
 export class AppComponent {
   public title = 'gtform-demo';
   
-  public constructor(private drawerService: GtformDrawerService) {
+  public constructor(private drawerService: GtformDrawerService,
+                     private themeService: GtformThemeService,
+  ) {
+    this.themeService.setTheme('light');
+    console.log('AppComponent.constructor()');
     
   }
 
