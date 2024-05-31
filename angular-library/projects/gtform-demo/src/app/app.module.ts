@@ -5,10 +5,12 @@ import { GtformModule } from 'gtform';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
+import { DemoTableComponent } from './components/demo-table/demo-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DemoTableComponent
 
   ],
   imports: [
