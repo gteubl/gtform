@@ -80,7 +80,7 @@
     header, footer {
       background-color: var(--primary-color);
       color: var(--text-color-secondary);
-      padding: 10px;
+      flex-shrink: 0;
     }
 
     .main {
