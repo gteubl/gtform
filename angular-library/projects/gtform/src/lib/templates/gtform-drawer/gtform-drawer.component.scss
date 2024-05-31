@@ -49,7 +49,7 @@
     }
 
     &.left.min {
-      left: 50px;
+      transform: translateX(calc(-100% + 50px));
     }
 
     &.left.open {
@@ -66,7 +66,7 @@
     }
 
     &.right.min {
-      right: 50px;
+      transform: translateX(calc(100% - 50px));
     }
   }
 
