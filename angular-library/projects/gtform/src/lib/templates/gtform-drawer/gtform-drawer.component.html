@@ -4,7 +4,7 @@
      [class.right-drawer-open]="isRightDrawerOpen"
      class="container"
 >
-  <div #leftDrawer [class.open]="isLeftDrawerOpen" class="drawer left">
+  <div #leftDrawer [class.open]="isLeftDrawerOpen" [class.min]="alwaysShowDrawer && !isLeftDrawerOpen" class="drawer left">
     <ng-content select="[left-drawer]"></ng-content>
   </div>
   <div class="content">
@@ -18,7 +18,7 @@
       <ng-content select="[footer]"></ng-content>
     </footer>
   </div>
-  <div #rightDrawer [class.open]="isRightDrawerOpen" class="drawer right">
+  <div #rightDrawer [class.open]="isRightDrawerOpen" [class.min]="alwaysShowDrawer && !isRightDrawerOpen" class="drawer right">
     <ng-content select="[right-drawer]"></ng-content>
   </div>
 </div>

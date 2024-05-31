@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 
 import { GtformDrawerService } from '../../services/index';
