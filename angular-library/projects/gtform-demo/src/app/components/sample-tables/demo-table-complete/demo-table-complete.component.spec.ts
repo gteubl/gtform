@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemoTableComponent } from './demo-table.component';
+import { DemoTableCompleteComponent } from './demo-table-complete.component';
 
 describe('DemoTableComponent', () => {
-  let component: DemoTableComponent;
-  let fixture: ComponentFixture<DemoTableComponent>;
+  let component: DemoTableCompleteComponent;
+  let fixture: ComponentFixture<DemoTableCompleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DemoTableComponent]
+      declarations: [DemoTableCompleteComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DemoTableComponent);
+    fixture = TestBed.createComponent(DemoTableCompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

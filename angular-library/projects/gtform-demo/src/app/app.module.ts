@@ -5,7 +5,7 @@ import { GtformModule } from 'gtform';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
-import { DemoTableComponent } from './components/demo-table/demo-table.component';
+import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
 import { DemoLoremIpsumComponent } from './components/demo-lorem-ipsum/demo-lorem-ipsum.component';
 import { DemoFullFormsComponent } from './components/demo-full-forms/demo-full-forms.component';
 import { DemoFullFormTab1Component } from './components/demo-full-forms/demo-full-form-tab1/demo-full-form-tab1.component';
@@ -16,7 +16,7 @@ import { DemoFullFormTab4Component } from './components/demo-full-forms/demo-ful
 @NgModule({
   declarations: [
     AppComponent,
-    DemoTableComponent,
+    DemoTableCompleteComponent,
     DemoLoremIpsumComponent,
     DemoFullFormsComponent,
     DemoFullFormTab1Component,
