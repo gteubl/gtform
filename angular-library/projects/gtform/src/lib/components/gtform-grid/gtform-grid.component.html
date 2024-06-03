@@ -58,7 +58,7 @@
         <th (click)="onSort(column)"
             *ngFor="let column of gridColumns$ | async"
             [cdkDragDisabled]="!allowDrag"
-            [gtformResizable]="column.resizable ?? false"
+            [gtformResizeTableColumn]="column.resizable ?? false"
             [style.width]="column.width ? column.width : 'auto'"
             cdkDrag
         >

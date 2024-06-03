@@ -10,7 +10,7 @@
     ]" [currentStep]="3"
     ></gtform-progress-stepper>
   </div>
-  <div body class="form-container">
+  <div body class="gtform-container">
     <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabs]="tabs">
       <app-demo-full-form-tab1 [hidden]="activeTab !== tabs[0]"></app-demo-full-form-tab1>
       <app-demo-full-form-tab2 [hidden]="activeTab !== tabs[1]"></app-demo-full-form-tab2>

@@ -1,9 +1,9 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[gtformResizable]'
+  selector: '[gtformResizeTableColumn]'
 })
-export class GtResizableDirective {
+export class GtformResizeTableColumnDirective {
   private startX: number = 0;
   private startWidth: number = 0;
   private resizing: boolean = false;
@@ -11,7 +11,7 @@ export class GtResizableDirective {
   private removeMouseUpListener: (() => void) | null = null;
 
   // Input to enable/disable the resizable feature
-  @Input('gtformResizable') public isEnabled: boolean = true;
+  @Input('gtformResizeTableColumn') public isEnabled: boolean = true;
 
   public constructor(private el: ElementRef, private renderer: Renderer2) {
     // Optionally, apply a mousemove listener to the column header for cursor style

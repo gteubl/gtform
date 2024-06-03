@@ -21,7 +21,7 @@ import { GtformSelectComponent } from './components/gtform-select/index';
 import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
 import {  OverlayPanelDirective } from './directives/index';
-import { GtformTooltipDirective, GtResizableDirective } from './directives/index';
+import { GtformTooltipDirective, GtformResizeTableColumnDirective } from './directives/index';
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
@@ -53,7 +53,7 @@ const components = [
 ];
 
 const directives = [
-  GtResizableDirective,
+  GtformResizeTableColumnDirective,
   GtformTooltipDirective,
   OverlayPanelDirective
 ];
