@@ -10,8 +10,8 @@
                       *ngIf="headerConfig.showFilter"
                       icon="filter_alt"
                       gtformTooltip="Filter Columns"
-                        [appOverlayPanel]="opmColumnsToFilter"
-                        [position]="'left'"
+                        [gtformOverlayPanel]="opmColumnsToFilter"
+                        [overlayPanelPosition]="'left'"
     ></gtform-button-icon>
     <ng-template #opmColumnsToFilter>
       <div *ngFor="let column of gridColumns" class="action-item">
