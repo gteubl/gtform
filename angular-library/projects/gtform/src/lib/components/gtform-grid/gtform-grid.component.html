@@ -6,12 +6,11 @@
            placeholder="Pesquisar nesta lista"
            type="text"
     >
-<!--    <gtform-button-icon (btnClick)="applyFilter()"
-                      (click)="opmColumnsToFilter.toggle($event)"
+    <gtform-button-icon (btnClick)="applyFilter()"
                       *ngIf="headerConfig.showFilter"
                       icon="filter_alt"
-                      pTooltip="Filtrar colunas"
-    ></gtform-button-icon>-->
+                      gtformTooltip="Filter Columns"
+    ></gtform-button-icon>
 <!--    <p-overlayPanel #opmColumnsToFilter>
       <div *ngFor="let column of gridColumns" class="action-item">
         <ng-container *ngIf="!column.filterNotAllowed">
