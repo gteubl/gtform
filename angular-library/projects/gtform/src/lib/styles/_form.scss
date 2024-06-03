@@ -20,7 +20,7 @@ $breakpoints: (
 
 // Generate column classes
 @for $i from 1 through 12 {
-  .form-col-#{$i} {
+  .gtform-col-#{$i} {
     flex: 0 0 calc((100% / 12) * #{$i});
     max-width: calc((100% / 12) * #{$i});
   }
@@ -30,7 +30,7 @@ $breakpoints: (
 @each $breakpoint, $breakpoint-width in $breakpoints {
   @include respond-to($breakpoint) {
     @for $i from 1 through 12 {
-      .form-col-#{$breakpoint}-#{$i} {
+      .gtform-col-#{$breakpoint}-#{$i} {
         flex: 0 0 calc((100% / 12) * #{$i});
         max-width: calc((100% / 12) * #{$i});
       }
@@ -38,30 +38,18 @@ $breakpoints: (
   }
 }
 
-// Example usage in HTML
-//<div class="form-container">
-//   <div class="form-row">
-//     <div class="form-group form-col-md-6">
-//       <!-- Form field -->
-//    </div>
-//    <div class="form-group form-col-md-6">
-//      <!-- Form field -->
-//    </div>
-//  </div>
-// </div>
 
-.form-container {
+.gtform-container {
   padding: 0.3em;
   margin: 0 auto;
 }
 
-// Basic form layout styles
-.form-row {
+.gtform-row {
   display: flex;
   flex-wrap: wrap;
 }
 
-.form-group {
+.gtform-group {
   align-self: flex-end;
 }
 
@@ -72,7 +60,7 @@ $breakpoints: (
   margin-left: 0.5em
 }
 
-.form-row-center {
+.gtform-row-center {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -80,11 +68,11 @@ $breakpoints: (
 }
 
 .horizontal-divider {
-  width: 100%;           // Sets the width to span the full container width
-  height: 1px;           // Sets the height to 1px for a thin line
-  background-color: var(--form-border-color); // Keeps the color same as the vertical divider
-  margin-top: 0.5em;     // Adds some vertical space above the divider
-  margin-bottom: 0.5em;  // Adds some vertical space below the divider
+  width: 100%;
+  height: 1px;
+  background-color: var(--form-border-color);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .alternate-color {
@@ -93,9 +81,4 @@ $breakpoints: (
 
 .alternate-color:nth-child(even) {
   background-color: whitesmoke;
-}
-
-.form-limited900 {
-  max-width: 900px;
-  margin: 0 auto;
 }
