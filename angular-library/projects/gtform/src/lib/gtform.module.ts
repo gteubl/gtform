@@ -19,10 +19,10 @@ import { GtformProgressStepperComponent } from './components/gtform-progress-ste
 import { GtformSelectComponent } from './components/gtform-select/index';
 import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
-import { GtformOverlayPanelDirective } from './directives/gtform-overlay-panel';
+import {  OverlayPanelDirective } from './directives/index';
 import { GtformTooltipDirective, GtResizableDirective } from './directives/index';
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
-import { GtformDrawerComponent } from './templates/gtform-drawer/gtform-drawer.component';
+import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
 
 const components = [
@@ -53,7 +53,7 @@ const components = [
 const directives = [
   GtResizableDirective,
   GtformTooltipDirective,
-  GtformOverlayPanelDirective
+  OverlayPanelDirective
 ];
 
 const pipes = [

@@ -10,18 +10,20 @@
                       *ngIf="headerConfig.showFilter"
                       icon="filter_alt"
                       gtformTooltip="Filter Columns"
+                        [appOverlayPanel]="opmColumnsToFilter"
+                        [position]="'left'"
     ></gtform-button-icon>
-<!--    <p-overlayPanel #opmColumnsToFilter>
+    <ng-template #opmColumnsToFilter>
       <div *ngFor="let column of gridColumns" class="action-item">
         <ng-container *ngIf="!column.filterNotAllowed">
-          <form-input-checkbox (change)="onColumnFilterChange(column)"
+          <gtform-input-checkbox (change)="onColumnFilterChange(column)"
                                (click)="$event.stopPropagation()"
                                [checked]="shouldFilter(column)"
-          ></form-input-checkbox>
+          ></gtform-input-checkbox>
           <span>{{ column.headerText }}</span>
         </ng-container>
       </div>
-    </p-overlayPanel>-->
+    </ng-template>
     <ng-container *ngFor="let actionButton of headerConfig.actionsButtons">
 <!--      <gtform-button-icon (btnClick)="actionBtnClicked(actionButton)"
                         [disabled]="actionButton.disabled ?? false"
