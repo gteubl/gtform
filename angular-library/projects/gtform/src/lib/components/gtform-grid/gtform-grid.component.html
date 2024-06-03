@@ -1,48 +1,42 @@
 <div [style.height]="gridHeight" class="form-grid">
   <div *ngIf="showHeader" class="table-header">
-    <input (input)="applyFilter()"
-           *ngIf="headerConfig.showFilter"
-           [(ngModel)]="magicFilter"
-           placeholder="Pesquisar nesta lista"
-           type="text"
+    <input (input)="applyFilter()" *ngIf="headerConfig.showFilter" [(ngModel)]="magicFilter" placeholder="Pesquisar nesta lista" type="text"
     >
     <gtform-button-icon (btnClick)="applyFilter()"
-                      *ngIf="headerConfig.showFilter"
-                      icon="filter_alt"
-                      gtformTooltip="Filter Columns"
+                        *ngIf="headerConfig.showFilter"
                         [gtformOverlayPanel]="opmColumnsToFilter"
                         [overlayPanelPosition]="'left'"
+                        gtformTooltip="Filter Columns"
+                        icon="filter_alt"
     ></gtform-button-icon>
     <ng-template #opmColumnsToFilter>
       <div *ngFor="let column of gridColumns" class="action-item">
         <ng-container *ngIf="!column.filterNotAllowed">
-          <gtform-input-checkbox (change)="onColumnFilterChange(column)"
-                               (click)="$event.stopPropagation()"
-                               [checked]="shouldFilter(column)"
+          <gtform-input-checkbox (change)="onColumnFilterChange(column)" (click)="$event.stopPropagation()" [checked]="shouldFilter(column)"
           ></gtform-input-checkbox>
           <span>{{ column.headerText }}</span>
         </ng-container>
       </div>
     </ng-template>
     <ng-container *ngFor="let actionButton of headerConfig.actionsButtons">
-<!--      <gtform-button-icon (btnClick)="actionBtnClicked(actionButton)"
-                        [disabled]="actionButton.disabled ?? false"
-                        [icon]="actionButton.icon"
-                        [pTooltip]="actionButton.tooltip ?? ''"
-      ></gtform-button-icon>-->
+      <gtform-button-icon (btnClick)="actionBtnClicked(actionButton)"
+                          [disabled]="actionButton.disabled ?? false"
+                          [gtformTooltip]="actionButton.tooltip ?? ''"
+                          [icon]="actionButton.icon"
+      ></gtform-button-icon>
     </ng-container>
     <ng-container *ngIf="headerConfig.moreActionsButtons">
       <ng-container *ngFor="let moreActionButton of  headerConfig.moreActionsButtons">
-<!--        <gtform-button-icon (click)="opMoreAction.toggle($event)" icon="more_vert"></gtform-button-icon>-->
-<!--        <p-overlayPanel #opMoreAction>
+        <gtform-button-icon [gtformOverlayPanel]="opMoreAction" [overlayPanelPosition]="'left'" icon="more_vert"></gtform-button-icon>
+        <ng-template #opMoreAction>
           <div (click)="onMoreHeaderActionClick(action)"
                *ngFor="let action of moreActionButton.moreActions"
                class="action-item {{ action.disabled ? 'disabled' : '' }}"
           >
-            <form-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></form-icon>
+            <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></gtform-icon>
             <span>{{ action.tooltip }}</span>
           </div>
-        </p-overlayPanel>-->
+        </ng-template>
       </ng-container>
     </ng-container>
   </div>
@@ -52,7 +46,7 @@
     </div>
     <table>
       <thead class="top-border">
-<!--      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">-->
+      <!--      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">-->
       <tr>
         <ng-container *ngIf="showNumber">
           <th class="fixed-index"></th>
@@ -62,16 +56,14 @@
             <gtform-input-checkbox (change)="onClickRowSelectable()" [(ngModel)]="shouldSelectAll"></gtform-input-checkbox>
           </th>
         </ng-container>
-<!--        <th (click)="onSort(column)"-->
-<!--            *ngFor="let column of gridColumns$ | async"-->
-<!--            [cdkDragDisabled]="!allowDrag"-->
-<!--            [formResizable]="column.resizable ?? false"-->
-<!--            [style.width]="column.width ? column.width : 'auto'"-->
-<!--            cdkDrag-->
-<!--        >-->
-        <th (click)="onSort(column)"
-            *ngFor="let column of gridColumns$ | async"
-            [style.width]="column.width ? column.width : 'auto'"
+        <!--        <th (click)="onSort(column)"-->
+        <!--            *ngFor="let column of gridColumns$ | async"-->
+        <!--            [cdkDragDisabled]="!allowDrag"-->
+        <!--            [formResizable]="column.resizable ?? false"-->
+        <!--            [style.width]="column.width ? column.width : 'auto'"-->
+        <!--            cdkDrag-->
+        <!--        >-->
+        <th (click)="onSort(column)" *ngFor="let column of gridColumns$ | async" [style.width]="column.width ? column.width : 'auto'"
         >
           <div class="default-header">
             <span class="header-text"> {{ column.headerText }}</span>
@@ -142,16 +134,20 @@
         </td>
         <ng-container *ngIf="showRowsActions">
           <td class="action-column">
-           <!-- <gtform-button-icon (click)="opRowAction.toggle($event); setCurrentRow(row)" icon="more_vert"></gtform-button-icon>
-            <p-overlayPanel #opRowAction>
+            <gtform-button-icon (click)="setCurrentRow(row)"
+                                [gtformOverlayPanel]="opRowAction"
+                                [overlayPanelPosition]="'left'"
+                                icon="more_vert"
+            ></gtform-button-icon>
+            <ng-template #opRowAction>
               <div (click)="onActionClick(action)"
                    *ngFor="let action of gridRowActions"
                    class="action-item {{ action.disabled ? 'disabled' : '' }}"
               >
-                <form-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></form-icon>
+                <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></gtform-icon>
                 <span>{{ action.text }}</span>
               </div>
-            </p-overlayPanel>-->
+            </ng-template>
           </td>
         </ng-container>
       </tr>
@@ -163,25 +159,22 @@
       Pagina: {{ (gridFooterInfo | async)?.page }} de {{ (gridFooterInfo | async)?.totalPages }}
     </div>
     <div class="footer-pagination">
-      <gtform-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"></gtform-button-icon>
-      <gtform-button-icon (btnClick)="onPreviousPage()"
-                        [disabled]="(gridFooterInfo | async)?.page === 1"
-                        icon="chevron_left"
+      <gtform-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"
+      ></gtform-button-icon>
+      <gtform-button-icon (btnClick)="onPreviousPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="chevron_left"
       ></gtform-button-icon>
       <gtform-button-icon (btnClick)="onNextPage()"
-                        [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
-                        icon="chevron_right"
+                          [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
+                          icon="chevron_right"
       ></gtform-button-icon>
       <gtform-button-icon (btnClick)="onLastPage()"
-                        [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
-                        icon="last_page"
+                          [disabled]="(gridFooterInfo | async)?.page === (gridFooterInfo | async)?.totalPages"
+                          icon="last_page"
       ></gtform-button-icon>
     </div>
     <div class="page-size-options">
       <ng-container *ngFor="let page of (gridFooterInfo | async)?.pageSizeOptions ">
-        <span (click)="changePageSize(page)"
-              [ngClass]="{'active': page == (gridFooterInfo | async)?.pageSize}"
-              class="page-link"
+        <span (click)="changePageSize(page)" [ngClass]="{'active': page == (gridFooterInfo | async)?.pageSize}" class="page-link"
         >{{ page }}</span>
       </ng-container>
     </div>

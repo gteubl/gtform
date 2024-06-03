@@ -98,16 +98,18 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
       break;
     }
 
-    // Adjust position to make sure the overlay is fully visible within the viewport
-    //  const viewportWidth = window.innerWidth;
-    // const viewportHeight = window.innerHeight;
-
     if (top < 0) top = 0;
     if (left < 0) left = 0;
 
-    //TODO: Uncomment the following lines to prevent the overlay from going out of the viewport
+
+    //TODO: Uncomment the following lines to prevent the overlay from going out of the viewport.
+
+    // Adjust position to make sure the overlay is fully visible within the viewport
+    // const viewportWidth = window.innerWidth;
+    // const viewportHeight = window.innerHeight;
+
     //  if (top + overlayPos.height > viewportHeight) top = viewportHeight - overlayPos.height;
-    //    if (left + overlayPos.width > viewportWidth) left = viewportWidth - overlayPos.width;
+    //  if (left + overlayPos.width > viewportWidth) left = viewportWidth - overlayPos.width;
 
     this.renderer.setStyle(this.overlay, 'top', `${top}px`);
     this.renderer.setStyle(this.overlay, 'left', `${left}px`);
@@ -115,7 +117,7 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
 
   private show(): void {
     this.overlay = this.renderer.createElement('div');
-    this.renderer.addClass(this.overlay, 'custom-overlay-panel');
+    this.renderer.addClass(this.overlay, 'gtform-overlay-panel');
 
     const embeddedView = this.viewContainerRef.createEmbeddedView(this.templateRef);
     embeddedView.rootNodes.forEach(node => this.renderer.appendChild(this.overlay, node));
