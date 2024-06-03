@@ -1,3 +1,4 @@
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { GtformTooltipDirective, GtResizableDirective } from './directives/index
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
+
 
 const components = [
   GtformAccordionComponent,
@@ -69,7 +71,7 @@ const templates = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, DragDropModule],
   declarations: [
     ...components,
     ...directives,

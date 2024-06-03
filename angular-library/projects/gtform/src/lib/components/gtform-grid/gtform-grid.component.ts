@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
-import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
-
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
+
+import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { GridColumns } from '../../models/grid-columns';
 import { GridCellData } from '../../models/grid-data';
@@ -15,8 +16,6 @@ import { GridHeaderActionsButtons, GridHeaderConfig } from '../../models/grid-he
 import { GridRow } from '../../models/grid-row';
 import { GridRowActions } from '../../models/grid-row.actions';
 import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
-
-
 
 @Component({
   selector: 'gtform-grid',
@@ -196,13 +195,9 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   }
 
-  /*public onDrop(event: CdkDragDrop<string[]>): void {
+  public onDrop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.gridColumns, event.previousIndex, event.currentIndex);
     this.reorderDataArray(event);
-  }*/
-  public onDrop(event: any): void {
-    //not implemented
-    console.log(event);
   }
 
   public onFirstPage(): void {
@@ -433,37 +428,37 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   private manageValueAsString(value: any, dataType: GridDataType): string {
 
     switch (dataType) {
-    case GridDataType.DATE:
-      return value ? formatDateToBRLocaleString(new Date(value)) : '';
-    case GridDataType.DATETIME:
-      return value ? formatDateTimeToBRLocaleString(new Date(value)) : '';
-    case GridDataType.CHOICEOPTION:
-      return value.description ?? '';
-    default:
-      return value.toString() ?? '';
+      case GridDataType.DATE:
+        return value ? formatDateToBRLocaleString(new Date(value)) : '';
+      case GridDataType.DATETIME:
+        return value ? formatDateTimeToBRLocaleString(new Date(value)) : '';
+      case GridDataType.CHOICEOPTION:
+        return value.description ?? '';
+      default:
+        return value.toString() ?? '';
     }
   }
 
   private normalizeValues(valueA: any, valueB: any, dataType: GridDataType): [any, any] {
     switch (dataType) {
-    case GridDataType.STRING:
-      valueA = valueA?.toString()
-        .toLowerCase() ?? '';
-      valueB = valueB?.toString()
-        .toLowerCase() ?? '';
-      break;
-    case GridDataType.NUMBER:
-      valueA = valueA ?? 0;
-      valueB = valueB ?? 0;
-      break;
-    case GridDataType.DATE:
-      valueA = valueA ? new Date(valueA) : new Date(0); // Use epoch if invalid
-      valueB = valueB ? new Date(valueB) : new Date(0);
-      break;
-    case GridDataType.CHOICEOPTION:
-      valueA = valueA.description ?? '';
-      valueB = valueB.description ?? '';
-      break;
+      case GridDataType.STRING:
+        valueA = valueA?.toString()
+          .toLowerCase() ?? '';
+        valueB = valueB?.toString()
+          .toLowerCase() ?? '';
+        break;
+      case GridDataType.NUMBER:
+        valueA = valueA ?? 0;
+        valueB = valueB ?? 0;
+        break;
+      case GridDataType.DATE:
+        valueA = valueA ? new Date(valueA) : new Date(0); // Use epoch if invalid
+        valueB = valueB ? new Date(valueB) : new Date(0);
+        break;
+      case GridDataType.CHOICEOPTION:
+        valueA = valueA.description ?? '';
+        valueB = valueB.description ?? '';
+        break;
     }
     return [valueA, valueB];
   }
@@ -508,7 +503,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     }
   }
 
-  /*  private reorderDataArray(event: CdkDragDrop<string[]>): void {
+  private reorderDataArray(event: CdkDragDrop<string[]>): void {
 
     const currentDataArray = this.dataArray.getValue();
 
@@ -519,7 +514,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     this.dataArray.next(currentDataArray);
 
     // Persist the new column order to the backend or localStorage  ?
-  }*/
+  }
 
   private sortOfflineData(column: GridColumns): void {
     if (!this.sortColumn || this.sortDirection === '') {

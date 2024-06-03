@@ -46,8 +46,7 @@
     </div>
     <table>
       <thead class="top-border">
-      <!--      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">-->
-      <tr>
+      <tr (cdkDropListDropped)="onDrop($event)" cdkDropList cdkDropListOrientation="horizontal">
         <ng-container *ngIf="showNumber">
           <th class="fixed-index"></th>
         </ng-container>
@@ -56,14 +55,12 @@
             <gtform-input-checkbox (change)="onClickRowSelectable()" [(ngModel)]="shouldSelectAll"></gtform-input-checkbox>
           </th>
         </ng-container>
-        <!--        <th (click)="onSort(column)"-->
-        <!--            *ngFor="let column of gridColumns$ | async"-->
-        <!--            [cdkDragDisabled]="!allowDrag"-->
-        <!--            [formResizable]="column.resizable ?? false"-->
-        <!--            [style.width]="column.width ? column.width : 'auto'"-->
-        <!--            cdkDrag-->
-        <!--        >-->
-        <th (click)="onSort(column)" *ngFor="let column of gridColumns$ | async" [style.width]="column.width ? column.width : 'auto'"
+        <th (click)="onSort(column)"
+            *ngFor="let column of gridColumns$ | async"
+            [cdkDragDisabled]="!allowDrag"
+            [gtformResizable]="column.resizable ?? false"
+            [style.width]="column.width ? column.width : 'auto'"
+            cdkDrag
         >
           <div class="default-header">
             <span class="header-text"> {{ column.headerText }}</span>
