@@ -19,3 +19,4 @@ export * from './grid-row.actions';
 export * from './grid-row';
 export * from './grid-sort-info';
 export * from './table-query-params';
+export * from './gtform-module.config';

@@ -1,7 +1,7 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -25,7 +25,9 @@ import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
 import { GtformResizeTableColumnDirective, GtformTooltipDirective, OverlayPanelDirective } from './directives/index';
 import { GtformTranslateLoader } from './locale/gtform-translate-loader';
+import { GtformConfig } from './models/index';
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
+import { GtformThemeService } from './services/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
 
@@ -72,6 +74,12 @@ const templates = [
   GtformHbfTemplateComponent
 ];
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
+  return new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json');
+}
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -104,8 +112,31 @@ const templates = [
   ]
 })
 export class GtformModule {
-  public constructor(private translateService: TranslateService) {
-    this.translateService.setDefaultLang('en'); // Set default language
-    this.translateService.use('en'); // Use default language
+  public constructor(
+    @Optional() @SkipSelf() parentModule: GtformModule,
+    @Inject('gtformConfig') private config: GtformConfig,
+    private translateService: TranslateService,
+    private themeService: GtformThemeService
+  ) {
+    if (parentModule) {
+      throw new Error('GtformModule is already loaded. Import it in the AppModule only');
+    }
+    this.initialize(config);
+  }
+
+  public static forRoot(config: GtformConfig): ModuleWithProviders<GtformModule> {
+    return {
+      ngModule: GtformModule,
+      providers: [
+        { provide: 'gtformConfig', useValue: config }
+      ]
+    };
+  }
+
+  private initialize(config: GtformConfig): void {
+    this.translateService.setDefaultLang(config.defaultLang);
+    this.translateService.use(config.defaultLang);
+
+    this.themeService.setTheme(config.defaultTheme);
   }
 }

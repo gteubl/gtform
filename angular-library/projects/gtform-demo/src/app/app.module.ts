@@ -11,8 +11,8 @@ import { DemoFullFormTab3Component } from './components/demo-full-forms/demo-ful
 import { DemoFullFormTab4Component } from './components/demo-full-forms/demo-full-form-tab4/demo-full-form-tab4.component';
 import { DemoFullFormsComponent } from './components/demo-full-forms/demo-full-forms.component';
 import { DemoLoremIpsumComponent } from './components/demo-lorem-ipsum/demo-lorem-ipsum.component';
-import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GtformModule
+    GtformModule.forRoot({
+      defaultLang: 'en',
+      defaultTheme: 'light'
+    })
   ],
   bootstrap: [AppComponent]
 })
