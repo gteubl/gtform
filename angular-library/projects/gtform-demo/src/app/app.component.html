@@ -1,12 +1,10 @@
 <gtform-drawer [alwaysShowDrawer]="true">
-<div left-drawer>
+  <div left-drawer>
     left drawer
     <button (click)="openLeftDrawer()">Close</button>
   </div>
   <div header>
-    header
-    <button (click)="openLeftDrawer()">Left</button>
-    <button (click)="openRightDrawer()">Right</button>
+    <app-navbar></app-navbar>
   </div>
   <div main>
     <app-demo-full-forms></app-demo-full-forms>
@@ -14,7 +12,7 @@
   <div footer>
     footer
   </div>
-    <div right-drawer>
-      right drawer NOT EMPTY
-    </div>
+  <div right-drawer>
+    right drawer NOT EMPTY
+  </div>
 </gtform-drawer>
