@@ -1,6 +1,5 @@
 <div [style.height]="gridHeight" class="form-grid">
   <div *ngIf="showHeader" class="table-header">
-    <p>Language: {{ "LANGUAGE" | translate }}</p>
     <input (input)="applyFilter()" *ngIf="headerConfig.showFilter" [(ngModel)]="magicFilter" placeholder="Pesquisar nesta lista" type="text"
     >
     <gtform-button-icon (btnClick)="applyFilter()"
@@ -154,7 +153,7 @@
   </div>
   <div *ngIf="showFooter" class="table-footer">
     <div>
-      {{ 'GRID.PAGE' | translate }} {{ (gridFooterInfo | async)?.page }} {{ 'GRID.OF' | translate }} {{ (gridFooterInfo | async)?.totalPages }}
+      {{ 'GRID.PAGE-OF' | translate:{ current: (gridFooterInfo | async)?.page, total: (gridFooterInfo | async)?.totalPages } }}
     </div>
     <div class="footer-pagination">
       <gtform-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"

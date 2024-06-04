@@ -2,8 +2,7 @@
   "LANGUAGE": "Português",
   "GRID": {
     "FILTER-COLUMN" : "Filtrar por coluna",
-    "PAGE" : "Página",
-    "OF" : "de",
-    "TOTAL" : "Total"
+    "TOTAL" : "Total",
+    "PAGE-OF" : "Página {{current}} de {{total}}"
   }
 }

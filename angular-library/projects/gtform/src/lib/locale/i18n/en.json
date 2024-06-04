@@ -2,8 +2,7 @@
   "LANGUAGE": "English",
   "GRID": {
     "FILTER-COLUMN" : "Filter Column",
-    "PAGE" : "Page",
-    "OF" : "of",
-    "TOTAL" : "Total"
+    "TOTAL" : "Total",
+    "PAGE-OF" : "Page {{current}} of {{total}}"
   }
 }
