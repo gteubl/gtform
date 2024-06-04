@@ -1,27 +1,81 @@
-# AngularLibrary
+## Install
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
+```bash
+npm install gtform@latest
+```
 
-## Development server
+## Config
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+angular.json
 
-## Code scaffolding
+```json
+{
+  "assets": [
+    {
+      "glob": "**/*",
+      "input": "node_modules/gtform/lib/i18n",
+      "output": "/assets/gtform/i18n"
+    }
+  ]
+}
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
 
-## Build
+## New Theme
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+By default its comes with light and dark theme. If you want to add new theme you can add it in the style.scss file.
 
-## Running unit tests
+```scss
+style.scss
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```scss
+[data-theme="custom"] {
+  --primary-color: #ff0000;
+  --secondary-color: #ffc107;
+  --accent-color: #e91e63;
+  --background-color: #f4f4f4;
+  --text-color: #212121;
+  --text-color-secondary: #f4f4f4;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  --header-background-color: #003e55;
+  --header-background-img: linear-gradient(to bottom, #005f7f 0%, #003e55 100%);
+  --header-border-color: #e5e8ea;
+  --header-menu-item-color: #fff;
 
-## Further help
+  --main-content-background-color: #ffffff;
+  --main-content-text-color: #231f20;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  --form-control-disabled-background-color: #e6e6e6;
+  --form-control-disabled-color: #9e9e9e;
+
+  --form-chips-background: #e8e8e8;
+
+  --form-back-ground-color: #fff;
+  --form-separetor-line-color: #181818;
+  --form-border-color: #b4b4b4; //var(--form-border-color);
+  --form-control-active-color: #007bff;
+  --form-header-control-background-img: linear-gradient(to bottom, #e8e8e8 0, #e8e8e8 100%);
+  --form-header-control-color: #231f20;
+  --form-header-control-active-background-img: linear-gradient(to bottom, #c9c9c9 0, #c9c9c9 100%);
+  --form-header-control-active-color: #231f20;
+
+}
+```
+
+To change the theme you can use the below code.
+
+```typescript
+export class MyComponent {
+  public constructor(private themeService: GtformThemeService) {
+  }
+
+  public setCustomTheme(): void {
+    this.themeService.setTheme('custom');
+
+  }
+}
+```

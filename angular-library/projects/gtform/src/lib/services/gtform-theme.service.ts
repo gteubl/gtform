@@ -25,7 +25,7 @@ export class GtformThemeService {
     document.documentElement.style.setProperty('--app-font-size', `${size}px`);
   }
 
-  public setTheme(theme: 'light' | 'dark'): void {
+  public setTheme(theme: string): void {
 
     document.body.setAttribute(
       'data-theme',
@@ -35,7 +35,15 @@ export class GtformThemeService {
     this.isLightTheme = theme === 'light';
   }
 
-  public toggleTheme(): void {
+  public setThemeDark(): void {
+    this.setTheme('dark');
+  }
+
+  public setThemeLight(): void {
+    this.setTheme('light');
+  }
+
+  public toggleLightDarkTheme(): void {
     this.isLightTheme = !this.isLightTheme;
 
     document.body.setAttribute(

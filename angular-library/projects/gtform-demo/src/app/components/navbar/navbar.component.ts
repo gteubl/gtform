@@ -15,7 +15,12 @@ export class NavbarComponent {
     this.themeService.changeLanguage(lang);
   }
 
+  public setTheme(theme: string): void {
+    this.themeService.setTheme(theme);
+
+  }
+
   public toggleTheme(): void {
-    this.themeService.toggleTheme();
+    this.themeService.toggleLightDarkTheme();
   }
 }
