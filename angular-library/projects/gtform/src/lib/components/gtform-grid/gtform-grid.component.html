@@ -1,5 +1,6 @@
 <div [style.height]="gridHeight" class="form-grid">
   <div *ngIf="showHeader" class="table-header">
+    <p>Language: {{"LANGUAGE" | translate}}</p>
     <input (input)="applyFilter()" *ngIf="headerConfig.showFilter" [(ngModel)]="magicFilter" placeholder="Pesquisar nesta lista" type="text"
     >
     <gtform-button-icon (btnClick)="applyFilter()"

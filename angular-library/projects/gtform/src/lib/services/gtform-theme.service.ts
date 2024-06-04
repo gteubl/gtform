@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GtformThemeService {
   private fontSize = 16;
   private isLightTheme = true;
+
+  public constructor(private translateService: TranslateService) {
+  }
+
+  public changeLanguage(lang: string): void {
+    this.translateService.use(lang);
+  }
 
   public getFontSize(): number {
     return this.fontSize;

@@ -1,7 +1,10 @@
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { GtformAccordionComponent } from './components/gtform-accordion/index';
 import { GtformAutocompleteComponent, GtformAutocompleteModalComponent } from './components/gtform-autocomplete/index';
@@ -20,12 +23,11 @@ import { GtformProgressStepperComponent } from './components/gtform-progress-ste
 import { GtformSelectComponent } from './components/gtform-select/index';
 import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
-import {  OverlayPanelDirective } from './directives/index';
-import { GtformTooltipDirective, GtformResizeTableColumnDirective } from './directives/index';
+import { GtformResizeTableColumnDirective, GtformTooltipDirective, OverlayPanelDirective } from './directives/index';
+import { GtformTranslateLoader } from './locale/gtform-translate-loader';
 import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
-
 
 const components = [
   GtformAccordionComponent,
@@ -71,12 +73,27 @@ const templates = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, DragDropModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DragDropModule,
+    HttpClientModule,
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http: HttpClient) => new GtformTranslateLoader(http, 'assets/gtform/i18n', '.json'),
+          deps: [HttpClient]
+        }
+      }
+    )
+  ],
   declarations: [
     ...components,
     ...directives,
     ...pipes,
-    ...templates,
+    ...templates
 
   ],
   exports: [
@@ -87,4 +104,8 @@ const templates = [
   ]
 })
 export class GtformModule {
+  public constructor(private translateService: TranslateService) {
+    this.translateService.setDefaultLang('en'); // Set default language
+    this.translateService.use('en'); // Use default language
+  }
 }
