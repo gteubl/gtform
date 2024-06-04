@@ -1,6 +1,9 @@
 {
   "LANGUAGE": "Português",
   "GRID": {
-    "FILTER-COLUMN" : "Filter Column"
+    "FILTER-COLUMN" : "Filtrar por coluna",
+    "PAGE" : "Página",
+    "OF" : "de",
+    "TOTAL" : "Total"
   }
 }

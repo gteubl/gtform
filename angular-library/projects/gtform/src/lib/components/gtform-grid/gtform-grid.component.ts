@@ -2,19 +2,23 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
-import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
-
 import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
-import { GridColumns } from '../../models/grid-columns';
-import { GridCellData } from '../../models/grid-data';
-import { GridDataSource } from '../../models/grid-data-source';
-import { GridDataType } from '../../models/grid-data-type';
-import { GridDataRequest } from '../../models/grid-data.request';
-import { GridFooterInfo } from '../../models/grid-footer-info';
-import { GridHeaderActionsButtons, GridHeaderConfig } from '../../models/grid-header-config';
-import { GridRow } from '../../models/grid-row';
-import { GridRowActions } from '../../models/grid-row.actions';
+import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
+
+
+import {
+  GridCellData,
+  GridColumns,
+  GridDataRequest,
+  GridDataSource,
+  GridDataType,
+  GridFooterInfo,
+  GridHeaderActionsButtons,
+  GridHeaderConfig,
+  GridRow,
+  GridRowActions
+} from '../../models/index';
 import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
 
 @Component({
@@ -428,37 +432,37 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   private manageValueAsString(value: any, dataType: GridDataType): string {
 
     switch (dataType) {
-      case GridDataType.DATE:
-        return value ? formatDateToBRLocaleString(new Date(value)) : '';
-      case GridDataType.DATETIME:
-        return value ? formatDateTimeToBRLocaleString(new Date(value)) : '';
-      case GridDataType.CHOICEOPTION:
-        return value.description ?? '';
-      default:
-        return value.toString() ?? '';
+    case GridDataType.DATE:
+      return value ? formatDateToBRLocaleString(new Date(value)) : '';
+    case GridDataType.DATETIME:
+      return value ? formatDateTimeToBRLocaleString(new Date(value)) : '';
+    case GridDataType.CHOICEOPTION:
+      return value.description ?? '';
+    default:
+      return value.toString() ?? '';
     }
   }
 
   private normalizeValues(valueA: any, valueB: any, dataType: GridDataType): [any, any] {
     switch (dataType) {
-      case GridDataType.STRING:
-        valueA = valueA?.toString()
-          .toLowerCase() ?? '';
-        valueB = valueB?.toString()
-          .toLowerCase() ?? '';
-        break;
-      case GridDataType.NUMBER:
-        valueA = valueA ?? 0;
-        valueB = valueB ?? 0;
-        break;
-      case GridDataType.DATE:
-        valueA = valueA ? new Date(valueA) : new Date(0); // Use epoch if invalid
-        valueB = valueB ? new Date(valueB) : new Date(0);
-        break;
-      case GridDataType.CHOICEOPTION:
-        valueA = valueA.description ?? '';
-        valueB = valueB.description ?? '';
-        break;
+    case GridDataType.STRING:
+      valueA = valueA?.toString()
+        .toLowerCase() ?? '';
+      valueB = valueB?.toString()
+        .toLowerCase() ?? '';
+      break;
+    case GridDataType.NUMBER:
+      valueA = valueA ?? 0;
+      valueB = valueB ?? 0;
+      break;
+    case GridDataType.DATE:
+      valueA = valueA ? new Date(valueA) : new Date(0); // Use epoch if invalid
+      valueB = valueB ? new Date(valueB) : new Date(0);
+      break;
+    case GridDataType.CHOICEOPTION:
+      valueA = valueA.description ?? '';
+      valueB = valueB.description ?? '';
+      break;
     }
     return [valueA, valueB];
   }

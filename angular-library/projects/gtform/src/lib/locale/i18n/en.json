@@ -1,6 +1,9 @@
 {
   "LANGUAGE": "English",
   "GRID": {
-    "FILTER-COLUMN" : "Filter Column"
+    "FILTER-COLUMN" : "Filter Column",
+    "PAGE" : "Page",
+    "OF" : "of",
+    "TOTAL" : "Total"
   }
 }

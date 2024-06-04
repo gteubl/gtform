@@ -1,6 +1,6 @@
 {
   "name": "gtform",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "author": "Guilherme Teubl",
   "license": "Apache-2.0",
   "peerDependencies": {

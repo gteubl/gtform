@@ -10,10 +10,5 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ],
-/*  "path": {
-    "gtform": [
-      "dist/gtform"
-    ]
-  }*/
+  ]
 }

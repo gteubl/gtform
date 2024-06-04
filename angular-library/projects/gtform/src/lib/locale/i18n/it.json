@@ -1,6 +1,10 @@
 {
   "LANGUAGE": "Italiano",
   "GRID": {
-    "FILTER-COLUMN" : "Filter Column"
+    "FILTER-COLUMN" : "Filtra per colonna",
+    "PAGE" : "Pagina",
+    "OF" : "di",
+    "TOTAL" : "Totale"
+
   }
 }
