@@ -83,7 +83,7 @@ const templates = [
       {
         loader: {
           provide: TranslateLoader,
-          useFactory: (http: HttpClient) => new GtformTranslateLoader(http, 'assets/gtform/i18n', '.json'),
+          useFactory: (http: HttpClient) => new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json'),
           deps: [HttpClient]
         }
       }

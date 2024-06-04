@@ -79,7 +79,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/gtform-demo/src/favicon.ico",
-              "projects/gtform-demo/src/assets"
+              "projects/gtform-demo/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/gtform/lib/i18n",
+                "output": "/assets/gtform/i18n"
+              }
             ],
             "styles": [
               "projects/gtform-demo/src/styles.scss"
