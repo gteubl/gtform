@@ -20,3 +20,5 @@ export * from './grid-row';
 export * from './grid-sort-info';
 export * from './table-query-params';
 export * from './gtform-module.config';
+export * from './gtform-toast';
+

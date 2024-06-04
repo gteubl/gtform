@@ -9,8 +9,8 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { GtformAccordionComponent } from './components/gtform-accordion/index';
 import { GtformAutocompleteComponent, GtformAutocompleteModalComponent } from './components/gtform-autocomplete/index';
 import { GtformBookmarkComponent } from './components/gtform-bookmark/index';
-import { GtformButtonComponent } from './components/gtform-button/index';
 import { GtformButtonIconComponent } from './components/gtform-button-icon/index';
+import { GtformButtonComponent } from './components/gtform-button/index';
 import { GtformInputCheckboxComponent } from './components/gtform-checkbox/index';
 import { GtformChipsComponent, GtformChipsModalComponent } from './components/gtform-chips/index';
 import { GtformFileFolderTreeComponent, GtformFileFolderUploaderModalComponent } from './components/gtform-file-folder-tree/index';
@@ -23,6 +23,7 @@ import { GtformProgressStepperComponent } from './components/gtform-progress-ste
 import { GtformSelectComponent } from './components/gtform-select/index';
 import { GtformSpinnerComponent } from './components/gtform-spinner/index';
 import { GtformTabsComponent } from './components/gtform-tabs/index';
+import { GtformToastComponent } from './components/gtform-toast/index';
 import { GtformResizeTableColumnDirective, GtformTooltipDirective, OverlayPanelDirective } from './directives/index';
 import { GtformTranslateLoader } from './locale/gtform-translate-loader';
 import { GtformConfig } from './models/index';
@@ -53,7 +54,8 @@ const components = [
   GtformSpinnerComponent,
   GtformTabsComponent,
   GtformGridComponent,
-  GtformDrawerComponent
+  GtformDrawerComponent,
+  GtformToastComponent
 ];
 
 const directives = [
@@ -78,7 +80,6 @@ const templates = [
 export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
   return new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json');
 }
-
 
 @NgModule({
   imports: [

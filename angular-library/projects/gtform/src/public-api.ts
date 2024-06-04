@@ -17,6 +17,7 @@ export * from './lib/components/gtform-progress-stepper';
 export * from './lib/components/gtform-select';
 export * from './lib/components/gtform-spinner';
 export * from './lib/components/gtform-tabs';
+export * from './lib/components/gtform-toast';
 
 //Directives
 export * from './lib/directives';
