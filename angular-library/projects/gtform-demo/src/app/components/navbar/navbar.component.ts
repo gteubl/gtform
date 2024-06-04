@@ -23,4 +23,8 @@ export class NavbarComponent {
   public toggleTheme(): void {
     this.themeService.toggleLightDarkTheme();
   }
+
+  public setFontSize(fontSize: number): void {
+    this.themeService.setFontSize(fontSize);
+  }
 }
