@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { GtformToast } from '../models/index';
+import { generateRandomID } from '../utils/index';
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +13,27 @@ export class GtformToastService {
   private toastSubjects: { [key: string]: BehaviorSubject<GtformToast[]> } = {};
 
   private limit = 3;
-  private defaultDuration = 3000; // 3 seconds
+  private defaultDuration = 3000;
+  private positionKeys: string[] = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'banner-top', 'banner-bottom'];
 
   public constructor() {
     this.initializePositions();
   }
 
-  public getAllToastStreams(): { [key: string]: BehaviorSubject<GtformToast[]> } {
-    return this.toastSubjects;
+  public getPositionKeys(): string[] {
+    return this.positionKeys;
   }
 
   public getToastStream(position: string): Observable<GtformToast[]> {
     return this.getToastSubject(position).asObservable();
   }
 
-  public removeToast(toast: GtformToast, position: string): void {
-    const toasts = this.getToasts(position);
-    const toastSubject = this.getToastSubject(position);
+  public removeToast(toast: GtformToast): void {
+    const toasts = this.getToasts(toast.position);
+    const toastSubject = this.getToastSubject(toast.position);
 
-    this.toasts[position] = toasts.filter(t => t !== toast);
-    toastSubject.next([...this.toasts[position]]);
+    this.toasts[toast.position] = toasts.filter(t => t.id !== toast.id);
+    toastSubject.next([...this.toasts[toast.position]]);
   }
 
   public setDefaultDuration(duration: number): void {
@@ -50,6 +52,7 @@ export class GtformToastService {
     duration?: number
   ): void {
     const toast: GtformToast = {
+      id: generateRandomID(),
       type,
       position,
       title,
@@ -68,8 +71,8 @@ export class GtformToastService {
     toastSubject.next([...toasts]);
 
     setTimeout(() => {
-      this.removeToast(toast, position);
-    }, toast.duration);
+      this.removeToast(toast);
+    }, toast.duration ?? this.defaultDuration); // Start fade-out before actual removal
   }
 
   private getToastSubject(position: string): BehaviorSubject<GtformToast[]> {
@@ -81,10 +84,10 @@ export class GtformToastService {
   }
 
   private initializePositions(): void {
-    const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'banner-top', 'banner-bottom'];
-    positions.forEach(position => {
+    this.positionKeys.forEach(position => {
       this.toasts[position] = [];
       this.toastSubjects[position] = new BehaviorSubject<GtformToast[]>([]);
     });
   }
+
 }

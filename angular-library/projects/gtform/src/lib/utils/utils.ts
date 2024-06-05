@@ -4,7 +4,6 @@ export function nameof<T>(key: Extract<keyof T, string>): string {
   return key;
 }
 
-
 /*
 // Create a mapping object for friendly names
 const HonorarioEventFriendlyNames: Record<keyof typeof HonorarioEvent, string> = {
@@ -22,7 +21,7 @@ export function enumToChoiceOption<T extends object>(enumObj: T, friendlyNames?:
 
   return keys.map((key): FormOption => ({
     value: enumObj[key as keyof T] as number,
-    description: friendlyNames ? friendlyNames[key as keyof T] || key : key,
+    description: friendlyNames ? friendlyNames[key as keyof T] || key : key
   }));
 }
 
@@ -32,7 +31,9 @@ export function ChoiceOptionToEnum<T extends object>(enumObj: T, choiceOption: F
   return enumObj[key as keyof T];
 }
 
-
+export function generateRandomID(): string {
+  return Math.random().toString(36).slice(2, 11);
+}
 
 export function normalizeString(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -49,6 +50,7 @@ export function startsWithAccentInsensitive(mainStr: string, searchStr: string):
 export function includesAccentInsensitive(mainStr: string, searchStr: string): boolean {
   return normalizeString(mainStr).includes(normalizeString(searchStr));
 }
+
 export function endsWithAccentInsensitive(mainStr: string, searchStr: string): boolean {
   return normalizeString(mainStr).endsWith(normalizeString(searchStr));
 }
@@ -67,14 +69,14 @@ export function mergeWithNonEmptyStringOverrides(source: any, updates: any): any
   return result;
 }
 
-export function  formatDateToBRLocaleString(date: Date): string {
+export function formatDateToBRLocaleString(date: Date): string {
   const day = date.getDate().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-based, add 1
   const year = date.getFullYear();
   return `${day}/${month}/${year}`;
 }
 
-export function  formatDateTimeToBRLocaleString(date: Date): string {
+export function formatDateTimeToBRLocaleString(date: Date): string {
   const day = date.getDate().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-based, add 1
   const year = date.getFullYear();
@@ -83,7 +85,7 @@ export function  formatDateTimeToBRLocaleString(date: Date): string {
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
-export function  levenshteinDistance(source: string, target: string): number {
+export function levenshteinDistance(source: string, target: string): number {
   if (!source) return target?.length ?? 0;
   if (!target) return source.length;
 
@@ -146,7 +148,6 @@ export function findBestMatch<T>(items: T[], searchValue: string, propertyName: 
   return itemsWithDistance[0].item;
 }
 
-
 export function findBestSegmentMatch<T>(items: T[], searchValue: string, propertyName: keyof T, threshold: number): T | null {
   // Normalize the search value by converting it to lowercase and removing non-alphanumeric characters
   const normalizedSearchValue = searchValue.toLowerCase().replace(/[^\w]/g, '');
@@ -183,9 +184,6 @@ export function findBestSegmentMatch<T>(items: T[], searchValue: string, propert
     return null; // Return null if no item is within the threshold or the list is empty
   }
 }
-
-
-
 
 export function findBestMatchStrings(items: string[], searchValue: string, threshold: number): string | null {
   // Map each string to an object containing the string and its distance to the searchValue
