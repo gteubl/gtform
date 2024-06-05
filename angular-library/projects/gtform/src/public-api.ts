@@ -18,6 +18,8 @@ export * from './lib/components/gtform-select';
 export * from './lib/components/gtform-spinner';
 export * from './lib/components/gtform-tabs';
 export * from './lib/components/gtform-toast';
+export * from './lib/components/gtform-dynamic-modal';
+export * from './lib/components/gtform-dynamic-modal-container';
 
 //Directives
 export * from './lib/directives';

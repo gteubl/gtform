@@ -31,6 +31,8 @@ import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe }
 import { GtformThemeService } from './services/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
+import { GtformDynamicModalComponent } from './components/gtform-dynamic-modal/gtform-dynamic-modal.component';
+import { GtformDynamicModalContainerComponent } from './components/gtform-dynamic-modal-container/gtform-dynamic-modal-container.component';
 
 const components = [
   GtformAccordionComponent,
@@ -102,7 +104,9 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     ...components,
     ...directives,
     ...pipes,
-    ...templates
+    ...templates,
+    GtformDynamicModalComponent,
+    GtformDynamicModalContainerComponent
 
   ],
   exports: [

@@ -1,0 +1,10 @@
+<div (click)="close()" class="modal-overlay"></div>
+<div [ngStyle]="config.style" class="modal">
+  <div class="modal-header">
+    <h3>{{ config.title }}</h3>
+    <button (click)="close()">X</button>
+  </div>
+  <div class="modal-body">
+    <ng-template #modalContainer></ng-template>
+  </div>
+</div>
