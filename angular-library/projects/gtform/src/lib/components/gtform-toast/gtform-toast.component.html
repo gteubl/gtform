@@ -1,5 +1,7 @@
-<div class="toast-container {{ position }}">
-  <div *ngFor="let toast of toasts" class="toast {{ toast.type }}">
-    {{ toast.message }}
+<div *ngFor="let position of positionKeys" class="toast-container {{ position }}">
+  <div *ngFor="let toast of positions[position] | async" class="toast {{ toast.type }}">
+    <strong>{{ toast.title }}</strong>
+    <p>{{ toast.message }}</p>
   </div>
 </div>
+
