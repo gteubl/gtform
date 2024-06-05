@@ -1,4 +1,3 @@
-import { DialogConfig } from '@angular/cdk/dialog';
 import {
   ApplicationRef,
   ComponentRef,
@@ -10,10 +9,9 @@ import {
   ViewContainerRef
 } from '@angular/core';
 
-import { GtformDynamicModalComponent } from '../components/gtform-dynamic-modal/gtform-dynamic-modal.component';
-import {
-  GtformDynamicModalContainerComponent
-} from '../components/gtform-dynamic-modal-container/gtform-dynamic-modal-container.component';
+import { GtformDynamicModalComponent } from '../components/gtform-dynamic-modal/index';
+import { GtformDynamicModalContainerComponent } from '../components/gtform-dynamic-modal-container/index';
+import { ModalConfig } from '../models/index';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +31,7 @@ export class GtformDynamicModalService {
     componentRef.destroy();
   }
 
-  public open<T>(component: Type<T>, config: DialogConfig): GtformDynamicModalComponent {
+  public open<T>(component: Type<T>, config: ModalConfig): GtformDynamicModalComponent {
     this.ensureModalContainerExists();
 
     const componentRef = createComponent(GtformDynamicModalComponent, {

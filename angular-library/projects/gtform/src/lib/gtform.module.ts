@@ -9,10 +9,12 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { GtformAccordionComponent } from './components/gtform-accordion/index';
 import { GtformAutocompleteComponent, GtformAutocompleteModalComponent } from './components/gtform-autocomplete/index';
 import { GtformBookmarkComponent } from './components/gtform-bookmark/index';
-import { GtformButtonIconComponent } from './components/gtform-button-icon/index';
 import { GtformButtonComponent } from './components/gtform-button/index';
+import { GtformButtonIconComponent } from './components/gtform-button-icon/index';
 import { GtformInputCheckboxComponent } from './components/gtform-checkbox/index';
 import { GtformChipsComponent, GtformChipsModalComponent } from './components/gtform-chips/index';
+import { GtformDynamicModalComponent } from './components/gtform-dynamic-modal/index';
+import { GtformDynamicModalContainerComponent } from './components/gtform-dynamic-modal-container/index';
 import { GtformFileFolderTreeComponent, GtformFileFolderUploaderModalComponent } from './components/gtform-file-folder-tree/index';
 import { GtformFileUploaderComponent } from './components/gtform-file-uploader/index';
 import { GtformGridComponent } from './components/gtform-grid/index';
@@ -31,8 +33,6 @@ import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe }
 import { GtformThemeService } from './services/index';
 import { GtformDrawerComponent } from './templates/gtform-drawer/index';
 import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template/index';
-import { GtformDynamicModalComponent } from './components/gtform-dynamic-modal/gtform-dynamic-modal.component';
-import { GtformDynamicModalContainerComponent } from './components/gtform-dynamic-modal-container/gtform-dynamic-modal-container.component';
 
 const components = [
   GtformAccordionComponent,
@@ -57,7 +57,9 @@ const components = [
   GtformTabsComponent,
   GtformGridComponent,
   GtformDrawerComponent,
-  GtformToastComponent
+  GtformToastComponent,
+  GtformDynamicModalComponent,
+  GtformDynamicModalContainerComponent
 ];
 
 const directives = [
@@ -105,8 +107,7 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     ...directives,
     ...pipes,
     ...templates,
-    GtformDynamicModalComponent,
-    GtformDynamicModalContainerComponent
+
 
   ],
   exports: [
@@ -114,7 +115,7 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     ...directives,
     ...pipes,
     ...templates
-  ]
+  ],
 })
 export class GtformModule {
   public constructor(

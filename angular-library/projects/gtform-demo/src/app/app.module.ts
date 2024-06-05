@@ -13,6 +13,7 @@ import { DemoFullFormsComponent } from './components/demo-full-forms/demo-full-f
 import { DemoLoremIpsumComponent } from './components/demo-lorem-ipsum/demo-lorem-ipsum.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
+import { DemoModalComponent } from './components/demo-full-forms/demo-full-form-tab4/demo-modal/demo-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DemoTableCompleteComponent } from './components/sample-tables/demo-tabl
     DemoFullFormTab2Component,
     DemoFullFormTab3Component,
     DemoFullFormTab4Component,
-    NavbarComponent
+    NavbarComponent,
+    DemoModalComponent
 
   ],
   imports: [
