@@ -9,11 +9,11 @@ import { DemoFullFormTab1Component } from './components/demo-full-forms/demo-ful
 import { DemoFullFormTab2Component } from './components/demo-full-forms/demo-full-form-tab2/demo-full-form-tab2.component';
 import { DemoFullFormTab3Component } from './components/demo-full-forms/demo-full-form-tab3/demo-full-form-tab3.component';
 import { DemoFullFormTab4Component } from './components/demo-full-forms/demo-full-form-tab4/demo-full-form-tab4.component';
+import { DemoModalComponent } from './components/demo-full-forms/demo-full-form-tab4/demo-modal/demo-modal.component';
 import { DemoFullFormsComponent } from './components/demo-full-forms/demo-full-forms.component';
 import { DemoLoremIpsumComponent } from './components/demo-lorem-ipsum/demo-lorem-ipsum.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
-import { DemoModalComponent } from './components/demo-full-forms/demo-full-form-tab4/demo-modal/demo-modal.component';
 
 @NgModule({
   declarations: [

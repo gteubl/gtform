@@ -21,6 +21,29 @@ angular.json
 
 ```
 
+import module
+
+```typescript
+@NgModule({
+  declarations: [],
+  imports: [
+    GtformModule.forRoot({
+      defaultLang: 'en',
+      defaultTheme: 'light'
+    })
+  ],
+})
+export class AppModule {
+}
+````
+
+## Style
+
+```scss
+
+@import "gtform/lib/styles/global.scss";
+```
+
 ## New Theme
 
 By default its comes with light and dark theme. If you want to add new theme you can add it in the style.scss file.
@@ -28,7 +51,10 @@ By default its comes with light and dark theme. If you want to add new theme you
 ```scss
 style.scss
 
-```scss
+`
+`
+`
+scss
 [data-theme="custom"] {
   --primary-color: #ff0000;
   --secondary-color: #ffc107;

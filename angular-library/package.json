@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build  gtform",
     "watch": "ng build gtform --watch --configuration development",
     "demo": "ng serve gtform-demo --configuration development",
     "test": "ng test",

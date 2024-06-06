@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { FileNodeDto,  } from 'src/api';
-import { FileMoreActions, FileNode } from 'src/library/gtform-file-folder-tree/gtform-file-folder-tree.component';
+import { FileTreeNode } from '../../models/auto-generated/file-tree-node';
 
-export function buildFileTree(files: FileNodeDto[]): FileNode[] {
+import { FileMoreActions, FileNode } from './gtform-file-folder-tree.component';
+
+export function buildFileTree(files: FileTreeNode[]): FileNode[] {
   const nodes: FileNode[] = files.map(file => ({
     id: file.id || '', // Default to empty string if id is undefined or null
     name: file.name || '', // Default to empty string if name is undefined or null
