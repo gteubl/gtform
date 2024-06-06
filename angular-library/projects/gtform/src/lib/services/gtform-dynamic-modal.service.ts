@@ -8,9 +8,10 @@ import {
   Type,
   ViewContainerRef
 } from '@angular/core';
+import { take } from 'rxjs/operators';
+import { GtformDynamicModalContainerComponent } from '../components/gtform-dynamic-modal-container/index';
 
 import { GtformDynamicModalComponent } from '../components/gtform-dynamic-modal/index';
-import { GtformDynamicModalContainerComponent } from '../components/gtform-dynamic-modal-container/index';
 import { ModalConfig } from '../models/index';
 
 @Injectable({
@@ -26,11 +27,6 @@ export class GtformDynamicModalService {
   ) {
   }
 
-  public close(componentRef: ComponentRef<any>, result: any): void {
-    componentRef.instance.close(result);
-    componentRef.destroy();
-  }
-
   public open<T>(component: Type<T>, config: ModalConfig): GtformDynamicModalComponent {
     this.ensureModalContainerExists();
 
@@ -43,9 +39,20 @@ export class GtformDynamicModalService {
     componentRef.instance.config = config;
     componentRef.instance.data = config.data;
 
+    componentRef.instance.closed
+      .pipe(take(1))
+      .subscribe(() => {
+        this.close(componentRef);
+      });
+
     this.modalContainerRef.insert(componentRef.hostView);
 
     return componentRef.instance;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private close(componentRef: ComponentRef<any>): void {
+    componentRef.destroy();
   }
 
   private ensureModalContainerExists(): void {

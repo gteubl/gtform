@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { ModalConfig } from '../../models/modal-config';
 
@@ -8,7 +8,7 @@ import { ModalConfig } from '../../models/modal-config';
   templateUrl: './gtform-dynamic-modal.component.html',
   styleUrls: ['./gtform-dynamic-modal.component.scss']
 })
-export class GtformDynamicModalComponent implements OnInit, OnDestroy {
+export class GtformDynamicModalComponent implements OnInit {
   @Input() public childComponent!: Type<any>;
   @Input() public config: ModalConfig = {};
   @Input() public data: any;
@@ -29,12 +29,7 @@ export class GtformDynamicModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy(): void {
-    this.container.clear();
-  }
-
   public close(result?: any): void {
     this.closed.emit(result);
-    this.ngOnDestroy();
   }
 }

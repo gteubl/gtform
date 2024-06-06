@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalDialogSizes } from '../../../models/index';
+import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalSizes } from '../../../models/index';
 
 export interface FormChipsModalData {
   options: ChoiceOption[];
@@ -32,7 +32,7 @@ export class GtformChipsModalComponent implements OnInit {
   public headerConfig: GridHeaderConfig = {
     showFilter: true
   };
-  protected readonly ModalDialogSizes = ModalDialogSizes;
+  protected readonly ModalDialogSizes = ModalSizes;
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
 

@@ -20,6 +20,6 @@ export * from './gtform-module.config';
 export * from './gtform-toast';
 export * from './menu-item';
 export * from './modal-config';
-export * from './modal-dialog-sizes';
+export * from './modal-sizes';
 export * from './table-query-params';
 

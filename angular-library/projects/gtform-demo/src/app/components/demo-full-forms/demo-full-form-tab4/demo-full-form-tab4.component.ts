@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { GtformDynamicModalService } from 'gtform';
+import { GtformDynamicModalService, ModalSizes } from 'gtform';
 
 import { DemoModalComponent } from './demo-modal/demo-modal.component';
 
@@ -16,7 +16,7 @@ export class DemoFullFormTab4Component {
   public showModal(): void {
     const ref = this.modalService.open(DemoModalComponent, {
       title: 'Dynamic Modal',
-      style: { width: '300px', height: '200px' },
+      style: { ...ModalSizes.large },
       data: { message: 'Hello from parent' }
     });
 
