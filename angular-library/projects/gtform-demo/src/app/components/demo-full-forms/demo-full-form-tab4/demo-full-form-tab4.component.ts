@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { GtformDynamicModalService } from 'gtform';
+
 import { DemoModalComponent } from './demo-modal/demo-modal.component';
 
 @Component({
@@ -23,6 +24,4 @@ export class DemoFullFormTab4Component {
       console.log('Modal closed with result:', result);
     });
   }
-  
-
 }
