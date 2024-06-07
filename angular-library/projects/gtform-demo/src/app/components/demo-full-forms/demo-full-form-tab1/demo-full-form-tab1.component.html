@@ -47,9 +47,26 @@
             <gtform-input-checkbox label="Checkbox1"></gtform-input-checkbox>
           </div>
           <div class="gtform-col-3">
-            <gtform-chips label="chips"
-                          [allowFreeText]="true"
+            <gtform-chips [allowFreeText]="true" label="chips"
             ></gtform-chips>
+          </div>
+          <div class="gtform-col-3">
+            <gtform-input-date label="Date"></gtform-input-date>
+          </div>
+          <div class="gtform-col-3">
+            <gtform-select [options]="[
+              {value: '1', description: 'Option 1'},
+              {value: '2', description: 'Option 2'},
+              {value: '3', description: 'Option 3'},
+              {value: '4', description: 'Option 4'},
+              {value: '5', description: 'Option 5'},
+            ]" label="Select"
+            ></gtform-select>
+          </div>
+        </div>
+        <div class="gtform-row">
+          <div class="gtform-col-3">
+            <gtform-spinner></gtform-spinner>
           </div>
         </div>
       </div>
