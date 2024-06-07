@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 
-import { GtformDynamicModalService, ModalSizes } from 'gtform';
-
-import { DemoModalComponent } from './demo-modal/demo-modal.component';
+import { FileNode } from 'gtform';
 
 @Component({
   selector: 'app-demo-full-form-tab4',
@@ -10,19 +8,49 @@ import { DemoModalComponent } from './demo-modal/demo-modal.component';
   styleUrl: './demo-full-form-tab4.component.scss'
 })
 export class DemoFullFormTab4Component {
-  public constructor(private modalService: GtformDynamicModalService) {
-  }
+  public treeData: FileNode[] = [
+    {
+      id: '1',
+      name: 'Folder 1',
+      type: 'folder',
+      parentId: null,
+      isOpen: true,
+      children: [
+        {
+          id: '2',
+          name: 'File 1',
+          type: 'file',
+          parentId: '1'
+        },
+        {
+          id: '3',
+          name: 'File 2',
+          type: 'file',
+          parentId: '1'
+        }
+      ]
+    },
+    {
+      id: '4',
+      name: 'Folder 2',
+      type: 'folder',
+      parentId: null,
+      isOpen: true,
+      children: [
+        {
+          id: '5',
+          name: 'File 3',
+          type: 'file',
+          parentId: '4'
+        },
+        {
+          id: '6',
+          name: 'File 4',
+          type: 'file',
+          parentId: '4'
+        }
+      ]
+    }
+  ];
 
-  public showModal(): void {
-    const ref = this.modalService.open(DemoModalComponent, {
-      title: 'Dynamic Modal',
-      style: { ...ModalSizes.large },
-      data: { message: 'Hello from parent' }
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ref.closed.subscribe((result: any) => {
-      console.log('Modal closed with result:', result);
-    });
-  }
 }
