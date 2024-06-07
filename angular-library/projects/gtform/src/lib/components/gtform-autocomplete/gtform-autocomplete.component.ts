@@ -2,7 +2,6 @@ import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleCh
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
 import { FormOption } from '../../models';
-import { GtformDialogService } from '../../services';
 import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
@@ -38,7 +37,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   public searchResults: FormOption[] = [];
   public suggestion: string = '';
 
-  public constructor(private dialog: GtformDialogService) {
+  public constructor() {
     super();
   }
 

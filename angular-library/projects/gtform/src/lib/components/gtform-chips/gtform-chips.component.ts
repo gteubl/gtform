@@ -2,7 +2,6 @@ import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleCh
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FormOption } from '../../models';
-import { GtformDialogService } from '../../services';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 @Component({
@@ -32,7 +31,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   public isModalOpen = false;
   public inputValue: string = '';
 
-  public constructor(private dialog: GtformDialogService) {
+  public constructor() {
     super();
   }
 

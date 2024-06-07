@@ -3,37 +3,46 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { GtformAccordionComponent } from './components/gtform-accordion';
-import { GtformAutocompleteComponent, GtformAutocompleteModalComponent } from './components/gtform-autocomplete';
-import { GtformBookmarkComponent } from './components/gtform-bookmark';
-import { GtformButtonComponent } from './components/gtform-button';
-import { GtformButtonIconComponent } from './components/gtform-button-icon';
-import { GtformInputCheckboxComponent } from './components/gtform-checkbox';
-import { GtformChipsComponent, GtformChipsModalComponent } from './components/gtform-chips';
-import { GtformDynamicModalComponent } from './components/gtform-dynamic-modal';
-import { GtformDynamicModalContainerComponent } from './components/gtform-dynamic-modal-container';
-import { GtformFileFolderTreeComponent, GtformFileFolderUploaderModalComponent } from './components/gtform-file-folder-tree';
-import { GtformFileUploaderComponent } from './components/gtform-file-uploader';
-import { GtformGridComponent } from './components/gtform-grid';
-import { GtformIconComponent } from './components/gtform-icon';
-import { GtformInputDateComponent } from './components/gtform-input-date';
-import { GtformInputTextComponent } from './components/gtform-input-text';
-import { GtformProgressStepperComponent } from './components/gtform-progress-stepper';
-import { GtformSelectComponent } from './components/gtform-select';
-import { GtformSpinnerComponent } from './components/gtform-spinner';
-import { GtformTabsComponent } from './components/gtform-tabs';
-import { GtformToastComponent } from './components/gtform-toast';
-import { GtformResizeTableColumnDirective, GtformTooltipDirective, OverlayPanelDirective } from './directives';
-import { GtformTranslateLoader } from './locale/gtform-translate-loader';
-import { GtformConfig } from './models';
-import { CastDataPipe, FileSizePipe, FormatChoiceOptionPipe, FormatCpfCnpjPipe } from './pipes';
-import { GtformThemeService } from './services';
-import { GtformDrawerComponent } from './templates/gtform-drawer';
-import { GtformHbfTemplateComponent } from './templates/gtform-hbf-template';
+import {
+  CastDataPipe,
+  FileSizePipe,
+  FormatChoiceOptionPipe,
+  FormatCpfCnpjPipe,
+  GtformAccordionComponent,
+  GtformAutocompleteComponent,
+  GtformAutocompleteModalComponent,
+  GtformBookmarkComponent,
+  GtformButtonComponent,
+  GtformButtonIconComponent,
+  GtformChipsComponent,
+  GtformChipsModalComponent,
+  GtformConfig,
+  GtformDrawerComponent,
+  GtformDynamicModalComponent,
+  GtformDynamicModalContainerComponent,
+  GtformFileFolderTreeComponent,
+  GtformFileFolderUploaderModalComponent,
+  GtformFileUploaderComponent,
+  GtformGridComponent,
+  GtformHbfTemplateComponent,
+  GtformIconComponent,
+  GtformInputCheckboxComponent,
+  GtformInputDateComponent,
+  GtformInputTextComponent,
+  GtformProgressStepperComponent,
+  GtformResizeTableColumnDirective,
+  GtformSelectComponent,
+  GtformSpinnerComponent,
+  GtformTabsComponent,
+  GtformThemeService,
+  GtformToastComponent,
+  GtformTooltipDirective,
+  GtformTranslateLoader,
+  OverlayPanelDirective
+} from '../public-api';
 
 const components = [
   GtformAccordionComponent,
@@ -45,7 +54,6 @@ const components = [
   GtformInputCheckboxComponent,
   GtformChipsModalComponent,
   GtformChipsComponent,
-  //GtformEditorComponent
   GtformFileFolderUploaderModalComponent,
   GtformFileFolderTreeComponent,
   GtformFileUploaderComponent,
@@ -91,7 +99,6 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     DragDropModule,
     HttpClientModule,
     TranslateModule.forRoot(
