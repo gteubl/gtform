@@ -20,6 +20,7 @@ export class DemoFullFormTab4Component {
       data: { message: 'Hello from parent' }
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref.closed.subscribe((result: any) => {
       console.log('Modal closed with result:', result);
     });

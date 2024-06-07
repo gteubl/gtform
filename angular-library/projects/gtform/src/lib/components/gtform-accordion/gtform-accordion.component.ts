@@ -1,5 +1,5 @@
-import {animate, style, transition, trigger} from '@angular/animations';
-import {Component, Input}                    from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'gtform-accordion',
@@ -8,11 +8,11 @@ import {Component, Input}                    from '@angular/core';
   animations: [
     trigger('slideFade', [
       transition(':enter', [
-        style({height: '0', opacity: 0}),
-        animate('500ms ease-in-out', style({height: '*', opacity: 1}))
+        style({ height: '0', opacity: 0 }),
+        animate('500ms ease-in-out', style({ height: '*', opacity: 1 }))
       ]),
       transition(':leave', [
-        animate('500ms ease-in-out', style({height: '0', opacity: 0}))
+        animate('500ms ease-in-out', style({ height: '0', opacity: 0 }))
       ])
     ])
   ]

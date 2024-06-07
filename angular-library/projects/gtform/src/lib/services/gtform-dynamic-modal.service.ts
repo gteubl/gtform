@@ -8,10 +8,11 @@ import {
   Type,
   ViewContainerRef
 } from '@angular/core';
+
 import { take } from 'rxjs/operators';
-import { GtformDynamicModalContainerComponent } from '../components/gtform-dynamic-modal-container/index';
 
 import { GtformDynamicModalComponent } from '../components/gtform-dynamic-modal/index';
+import { GtformDynamicModalContainerComponent } from '../components/gtform-dynamic-modal-container/index';
 import { ModalConfig } from '../models/index';
 
 @Injectable({

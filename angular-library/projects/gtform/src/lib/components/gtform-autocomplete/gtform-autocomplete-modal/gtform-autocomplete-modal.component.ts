@@ -4,7 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 
 import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalSizes } from '../../../models/index';
 
-
 export interface FormAutocompleteModalData {
   options: ChoiceOption[];
   title: string;
@@ -37,7 +36,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-  //  this.gridDataSource.next(new GridDataSource<ChoiceOption>(this.config.data.options, this.config.data.options.length));
+    //  this.gridDataSource.next(new GridDataSource<ChoiceOption>(this.config.data.options, this.config.data.options.length));
     console.log('empty');
   }
 

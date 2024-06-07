@@ -106,8 +106,7 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     ...components,
     ...directives,
     ...pipes,
-    ...templates,
-
+    ...templates
 
   ],
   exports: [
@@ -115,7 +114,7 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
     ...directives,
     ...pipes,
     ...templates
-  ],
+  ]
 })
 export class GtformModule {
   public constructor(

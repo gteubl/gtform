@@ -6,7 +6,6 @@ export * from './lib/components/gtform-button';
 export * from './lib/components/gtform-button-icon';
 export * from './lib/components/gtform-checkbox';
 export * from './lib/components/gtform-chips';
-export * from './lib/components/gtform-editor';
 export * from './lib/components/gtform-file-folder-tree';
 export * from './lib/components/gtform-file-uploader';
 export * from './lib/components/gtform-grid';

@@ -26,7 +26,7 @@ export class DemoFullFormTab1Component {
 
   public activeTab: TabLabel = this.tabs[0];
 
-// Actions
+  // Actions
 
   public onActiveTabChanged(activeTab: TabLabel): void {
     this.activeTab = activeTab;
