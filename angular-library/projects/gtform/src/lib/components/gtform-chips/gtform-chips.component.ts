@@ -1,9 +1,9 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { FormOption } from '../../models/index';
-import { GtformDialogService } from '../../services/index';
-import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
+import { FormOption } from '../../models';
+import { GtformDialogService } from '../../services';
+import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 @Component({
   selector: 'gtform-chips',

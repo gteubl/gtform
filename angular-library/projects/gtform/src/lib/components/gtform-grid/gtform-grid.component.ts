@@ -18,8 +18,8 @@ import {
   GridHeaderConfig,
   GridRow,
   GridRowActions
-} from '../../models/index';
-import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils/index';
+} from '../../models';
+import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils';
 
 @Component({
   selector: 'gtform-grid',

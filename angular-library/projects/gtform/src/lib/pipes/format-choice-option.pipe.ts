@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FormOption } from '../models/index';
+import { FormOption } from '../models';
 
 
 @Pipe({

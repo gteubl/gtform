@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 
 import { BehaviorSubject } from 'rxjs';
 
-import { MenuItem } from '../../models/index';
+import { MenuItem } from '../../models';
 
 
 export interface FileNode {

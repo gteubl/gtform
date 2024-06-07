@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalSizes } from '../../../models/index';
+import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalSizes } from '../../../models';
 
 export interface FormChipsModalData {
   options: ChoiceOption[];

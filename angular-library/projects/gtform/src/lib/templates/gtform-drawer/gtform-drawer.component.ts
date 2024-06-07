@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, E
 
 import { BehaviorSubject, filter } from 'rxjs';
 
-import { GtformDrawerService } from '../../services/index';
+import { GtformDrawerService } from '../../services';
 
 @Component({
   selector: 'gtform-drawer',

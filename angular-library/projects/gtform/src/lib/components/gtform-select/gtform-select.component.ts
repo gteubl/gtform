@@ -1,8 +1,8 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {NG_VALUE_ACCESSOR}            from '@angular/forms';
 
-import { FormOption } from '../../models/index';
-import {BaseControlValueAccessor} from '../base-control-value-accessor/base-control-value-accessor';
+import { FormOption } from '../../models';
+import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 
 @Component({

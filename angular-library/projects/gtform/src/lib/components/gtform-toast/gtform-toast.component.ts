@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { GtformToast } from '../../models/index';
-import { GtformToastService } from '../../services/index';
+import { GtformToast } from '../../models';
+import { GtformToastService } from '../../services';
 
 @Component({
   selector: 'gtform-toast',

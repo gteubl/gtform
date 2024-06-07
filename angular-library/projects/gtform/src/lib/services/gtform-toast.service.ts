@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { GtformToast } from '../models/index';
-import { generateRandomID } from '../utils/index';
+import { GtformToast } from '../models';
+import { generateRandomID } from '../utils';
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
-import { FormOption } from '../../models/index';
-import { GtformDialogService } from '../../services/index';
-import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils/index';
-import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
+import { FormOption } from '../../models';
+import { GtformDialogService } from '../../services';
+import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils';
+import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 
 

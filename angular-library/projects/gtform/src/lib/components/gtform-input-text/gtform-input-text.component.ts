@@ -2,7 +2,7 @@
 import { Component, ElementRef, forwardRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { BaseControlValueAccessor } from '../base-control-value-accessor/base-control-value-accessor';
+import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 @Component({
   selector: 'gtform-input-text',

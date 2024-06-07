@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { FileTreeNode } from '../../models/index';
+import { FileTreeNode } from '../../models';
 
 import { FileMoreActions, FileNode } from './gtform-file-folder-tree.component';
 

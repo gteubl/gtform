@@ -1,4 +1,4 @@
-import { FormOption } from '../models/index';
+import { FormOption } from '../models';
 
 export function nameof<T>(key: Extract<keyof T, string>): string {
   return key;
