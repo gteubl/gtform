@@ -39,5 +39,10 @@ export * from './lib/templates/gtform-hbf-template';
 //Utils
 export * from './lib/utils';
 
+//Modules
+export * from './lib/gtform-core.module';
+export * from './lib/gtform.module';
+
+
 
 
