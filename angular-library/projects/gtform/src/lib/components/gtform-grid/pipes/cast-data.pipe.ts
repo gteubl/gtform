@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { GridDataType } from '../models/index';
-
+import { GridDataType } from '../models';
 
 @Pipe({
   name: 'castData'

@@ -1,4 +1,4 @@
-import { FileMoreActions } from '../gtform-file-folder-tree.component';
+import { FileMoreActions } from './file-more-actions';
 
 export interface FileNode {
   id: string;

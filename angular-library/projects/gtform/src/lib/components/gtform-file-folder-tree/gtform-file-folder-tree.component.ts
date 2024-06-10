@@ -3,10 +3,9 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 
 import { BehaviorSubject } from 'rxjs';
 
-import { MenuItem } from '../../models';
-
 import { FileMoreActions } from './models/file-more-actions';
 import { FileNode } from './models/file-node';
+import { MenuItem } from './models/menu-item';
 import { NodeToUpdate } from './models/node-to-update';
 
 @Component({
