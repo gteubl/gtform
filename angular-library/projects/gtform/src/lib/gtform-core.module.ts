@@ -1,16 +1,18 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { Inject, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { GtformTranslateLoader } from './locale/index';
-import { GtformConfig } from './models/index';
+import { GtformTranslateLoader } from './locale';
+import { GtformConfig } from './models';
 import { GtformThemeService } from './services/index';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
   return new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json');
 }
+
+export const LIB_CONFIG = new InjectionToken<GtformConfig>('LIB_CONFIG');
 
 @NgModule({
   imports: [
@@ -29,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
 export class GtformCoreModule {
   public constructor(
     @Optional() @SkipSelf() parentModule: GtformCoreModule,
-    @Inject('gtformConfig') private config: GtformConfig,
+    @Inject(LIB_CONFIG) private config: GtformConfig,
     private translateService: TranslateService,
     private themeService: GtformThemeService
   ) {
@@ -43,7 +45,7 @@ export class GtformCoreModule {
     return {
       ngModule: GtformCoreModule,
       providers: [
-        { provide: 'gtformConfig', useValue: config }
+        { provide: LIB_CONFIG, useValue: config }
       ]
     };
   }

@@ -24,7 +24,7 @@ import { GtformCoreModule } from './gtform-core.module';
 import { GtformConfig } from './models/index';
 import { PipesModule } from './pipes/index';
 import { GtformDrawerModule } from './templates/gtform-drawer/index';
-import { GtformHbfTemplateModule } from './templates/gtform-hbf-template/gtform-hbf-template.module';
+import { GtformHbfTemplateModule } from './templates/gtform-hbf-template';
 
 export const ComponentsModules = [
   GtformAccordionModule,
