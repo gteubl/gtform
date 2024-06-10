@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { GtformIconModule } from '../gtform-icon/index';
+
 import { GtformButtonIconComponent } from './gtform-button-icon.component';
 
 @NgModule(
   {
-    imports: [CommonModule],
+    imports: [CommonModule, GtformIconModule],
     declarations: [GtformButtonIconComponent],
     exports: [GtformButtonIconComponent]
   })
 export class GtformButtonIconModule {
-  
+
 }

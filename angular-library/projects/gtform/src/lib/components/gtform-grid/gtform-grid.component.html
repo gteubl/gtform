@@ -105,9 +105,9 @@
             <ng-container *ngSwitchCase="GridDataType.PERCENTAGE">
               {{ cell.value | castData:cell.dataType | percent }}
             </ng-container>
-            <ng-container *ngSwitchCase="GridDataType.CPFCNPJ">
-              {{ cell.value | castData:cell.dataType | formatCpfCnpj }}
-            </ng-container>
+            <!--    <ng-container *ngSwitchCase="GridDataType.CPFCNPJ">
+                  {{ cell.value | castData:cell.dataType | formatCpfCnpj }}
+                </ng-container>-->
             <ng-container *ngSwitchCase="GridDataType.CHOICEOPTION">
               {{ (cell.value) | castData:cell.dataType | formatChoiceOption }}
             </ng-container>

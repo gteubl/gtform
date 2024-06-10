@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild, ViewContainerRef } from '@angular/core';
 
-import { ModalConfig } from '../../models';
+import { ModalConfig } from './models/modal-config';
 
 @Component({
   selector: 'gtform-dynamic-modal',

@@ -11,10 +11,7 @@ import {
 
 import { take } from 'rxjs/operators';
 
-import { ModalConfig } from '../../models/index';
-import { GtformDynamicModalContainerComponent } from './gtform-dynamic-modal-container/index';
-
-import { GtformDynamicModalComponent } from './index';
+import { GtformDynamicModalComponent, GtformDynamicModalContainerComponent, ModalConfig } from './index';
 
 @Injectable({
   providedIn: 'root'

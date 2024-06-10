@@ -1,64 +1,90 @@
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
-// import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { GtformAccordionModule } from './components/gtform-accordion/index';
+import { GtformAutocompleteModule } from './components/gtform-autocomplete/index';
+import { GtformBookmarkModule } from './components/gtform-bookmark/index';
+import { GtformButtonModule } from './components/gtform-button/index';
+import { GtformButtonIconModule } from './components/gtform-button-icon/index';
+import { GtformInputCheckboxModule } from './components/gtform-checkbox/index';
+import { GtformChipsModule } from './components/gtform-chips/index';
+import { GtformDynamicModalModule } from './components/gtform-dynamic-modal/index';
+import { GtformFileUploaderModule } from './components/gtform-file-uploader/index';
+import { GtformGridModule } from './components/gtform-grid/index';
+import { GtformIconModule } from './components/gtform-icon/index';
+import { GtformInputTextModule } from './components/gtform-input-text/index';
+import { GtformProgressStepperModule } from './components/gtform-progress-stepper/index';
+import { GtformSelectModule } from './components/gtform-select/index';
+import { GtformSpinnerModule } from './components/gtform-spinner/index';
+import { GtformTabsModule } from './components/gtform-tabs/index';
+import { GtformToastModule } from './components/gtform-toast/index';
+import { GtformOverlayPanelModule } from './directives/overlay-panel/index';
+import { GtformTooltipModule } from './directives/tooltip/index';
+import { GtformCoreModule } from './gtform-core.module';
+import { GtformConfig } from './models/index';
+import { PipesModule } from './pipes/index';
+import { GtformDrawerModule } from './templates/gtform-drawer/index';
+import { GtformHbfTemplateModule } from './templates/gtform-hbf-template/gtform-hbf-template.module';
 
-import {
+export const ComponentsModules = [
+  GtformAccordionModule,
+  GtformAutocompleteModule,
+  GtformBookmarkModule,
+  GtformButtonModule,
+  GtformButtonIconModule,
+  GtformInputCheckboxModule,
+  GtformChipsModule,
+  GtformDynamicModalModule,
+  GtformFileUploaderModule,
+  GtformGridModule,
+  GtformIconModule,
+  GtformInputTextModule,
+  GtformProgressStepperModule,
+  GtformSelectModule,
+  GtformSpinnerModule,
+  GtformTabsModule,
+  GtformToastModule
+];
 
-} from '../public-api';
+export const DirectivesModules = [
+  GtformOverlayPanelModule,
+  GtformTooltipModule
+];
 
+export const PipesModules = [
+  PipesModule
+];
 
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
-  return new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json');
-}
+export const TemplatesModules = [
+  GtformDrawerModule,
+  GtformHbfTemplateModule
+];
 
 @NgModule({
   imports: [
-    HttpClientModule,
-    TranslateModule.forRoot(
-      {
-        loader: {
-          provide: TranslateLoader,
-          useFactory: (http: HttpClient) => new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json'),
-          deps: [HttpClient]
-        }
-      }
-    )
-  ],
+    CommonModule,
+    GtformCoreModule,
+    ...ComponentsModules,
+    ...DirectivesModules,
+    ...PipesModules,
+    ...TemplatesModules
 
+  ],
+  exports: [
+    GtformCoreModule,
+    ...ComponentsModules,
+    ...DirectivesModules,
+    ...PipesModules,
+    ...TemplatesModules
+  ]
 })
 export class GtformModule {
-  public constructor(
-    @Optional() @SkipSelf() parentModule: GtformModule,
-    @Inject('gtformConfig') private config: GtformConfig,
-    // private translateService: TranslateService,
-    private themeService: GtformThemeService
-  ) {
-    if (parentModule) {
-      throw new Error('GtformModule is already loaded. Import it in the AppModule only');
-    }
-    this.initialize(config);
-  }
-
   public static forRoot(config: GtformConfig): ModuleWithProviders<GtformModule> {
     return {
       ngModule: GtformModule,
       providers: [
-        { provide: 'gtformConfig', useValue: config }
+        ...GtformCoreModule.forRoot(config).providers!
       ]
     };
-  }
-
-  private initialize(config: GtformConfig): void {
-    this.translateService.setDefaultLang(config.defaultLang);
-    this.translateService.use(config.defaultLang);
-
-    this.themeService.setTheme(config.defaultTheme);
   }
 }

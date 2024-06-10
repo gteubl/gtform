@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, ModalSizes } from '../../../models';
+import { ChoiceOption } from '../../../models';
+import { ModalSizes } from '../../gtform-dynamic-modal';
+import { GridColumn, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid';
 
 export interface FormChipsModalData {
   options: ChoiceOption[];
@@ -19,7 +21,7 @@ export interface FormChipsModalData {
 })
 export class GtformChipsModalComponent implements OnInit {
 
-  public gridColumns: GridColumns[] = [
+  public gridColumns: GridColumn[] = [
     {
       propertyName: 'description',
       headerText: 'Descrição',

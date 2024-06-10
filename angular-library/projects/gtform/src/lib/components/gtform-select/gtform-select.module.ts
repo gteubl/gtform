@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { GtformInputTextModule } from '../gtform-input-text/index';
+
 import { GtformSelectComponent } from './gtform-select.component';
 
 @NgModule(
   {
-    imports: [CommonModule],
+    imports: [CommonModule, GtformInputTextModule],
     declarations: [GtformSelectComponent],
     exports: [GtformSelectComponent]
   }
