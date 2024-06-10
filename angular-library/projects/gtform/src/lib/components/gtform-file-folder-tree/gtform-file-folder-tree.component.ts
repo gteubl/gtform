@@ -5,39 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 
 import { MenuItem } from '../../models';
 
-
-export interface FileNode {
-  id: string;
-  name: string;
-  type: 'file' | 'folder';
-  parentId: string | null;
-  isOpen?: boolean;
-  payload?: unknown;
-  children?: FileNode[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  action?: (node: FileNode) => any;
-  checked?: boolean;
-  extension?: string;
-  isNewElement?: boolean;
-  moreActions?: FileMoreActions[];
-  fileDate?: Date;
-  isDeleted?: boolean;
-  userDel?: string;
-  dateDel?: Date;
-}
-
-export interface FileMoreActions {
-  icon: string;
-  tooltip?: string;
-  action: (node: FileNode) => void;
-  disabled?: boolean;
-}
-
-export interface NodeToUpdate {
-  id: string;
-  oldParentId: string | null;
-  newParentId: string | null;
-}
+import { FileMoreActions } from './models/file-more-actions';
+import { FileNode } from './models/file-node';
+import { NodeToUpdate } from './models/node-to-update';
 
 @Component({
   selector: 'gtform-file-folder-tree',
@@ -80,8 +50,6 @@ export class GtformFileFolderTreeComponent implements OnInit, OnChanges {
   private showDeleted = false;
 
   private allNodes: FileNode[] = [];
-
-
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['treeData'] && changes['treeData'].currentValue !== changes['treeData'].previousValue) {

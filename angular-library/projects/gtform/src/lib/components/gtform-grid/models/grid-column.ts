@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {TemplateRef} from '@angular/core';
+import { TemplateRef } from '@angular/core';
 
 import { GridDataType } from './grid-data-type';
 
-
-
-export interface GridColumns {
+export interface GridColumn {
   propertyName: string;
   headerText: string;
   dataType: GridDataType;

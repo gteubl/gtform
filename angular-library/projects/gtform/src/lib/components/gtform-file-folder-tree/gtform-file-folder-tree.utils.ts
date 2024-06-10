@@ -2,7 +2,9 @@
 
 import { FileTreeNode } from '../../models';
 
-import { FileMoreActions, FileNode } from './gtform-file-folder-tree.component';
+import { FileMoreActions } from './models/file-more-actions';
+import { FileNode } from './models/file-node';
+
 
 export function buildFileTree(files: FileTreeNode[]): FileNode[] {
   const nodes: FileNode[] = files.map(file => ({

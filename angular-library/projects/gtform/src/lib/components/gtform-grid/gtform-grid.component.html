@@ -5,7 +5,7 @@
     <gtform-button-icon (btnClick)="applyFilter()"
                         *ngIf="headerConfig.showFilter"
                         [gtformOverlayPanel]="opmColumnsToFilter"
-                        [gtformTooltip]="'GRID.FILTER-COLUMN' | translate"
+                        [gtformTooltip]="'GRID.FILTER-COLUMN'"
                         [overlayPanelPosition]="'left'"
                         icon="filter_alt"
     ></gtform-button-icon>
@@ -153,7 +153,7 @@
   </div>
   <div *ngIf="showFooter" class="table-footer">
     <div>
-      {{ 'GRID.PAGE-OF' | translate:{ current: (gridFooterInfo | async)?.page, total: (gridFooterInfo | async)?.totalPages } }}
+      {{ 'GRID.PAGE-OF' }}
     </div>
     <div class="footer-pagination">
       <gtform-button-icon (btnClick)="onFirstPage()" [disabled]="(gridFooterInfo | async)?.page === 1" icon="first_page"
@@ -176,7 +176,7 @@
       </ng-container>
     </div>
     <div class="footer-total">
-      {{ 'GRID.TOTAL' | translate }} : {{ (gridFooterInfo | async)?.totalItems }}
+      {{ 'GRID.TOTAL' }} : {{ (gridFooterInfo | async)?.totalItems }}
     </div>
   </div>
 </div>

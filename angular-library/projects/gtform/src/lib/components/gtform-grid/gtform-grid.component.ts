@@ -7,9 +7,11 @@ import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
 
 
+import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils';
+
 import {
   GridCellData,
-  GridColumns,
+  GridColumn,
   GridDataRequest,
   GridDataSource,
   GridDataType,
@@ -18,8 +20,7 @@ import {
   GridHeaderConfig,
   GridRow,
   GridRowActions
-} from '../../models';
-import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils';
+} from './models';
 
 @Component({
   selector: 'gtform-grid',
@@ -31,7 +32,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   @Input() public magicFilter = '';
   @Input() public allowDrag = false;
   @Input() public dataSource: GridDataSource<T> | undefined;
-  @Input() public gridColumns!: GridColumns[];
+  @Input() public gridColumns!: GridColumn[];
   @Input() public gridDataRequest: GridDataRequest = {
     skip: 0,
     take: 10,
@@ -63,7 +64,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   public currentRow: GridRow | null = null;
   public activeRow: GridRow | null = null; //TODO Juntar con currentRow ?
   public dataArray = new BehaviorSubject<GridRow[]>([]);
-  public columnsToFilter: GridColumns[] = [];
+  public columnsToFilter: GridColumn[] = [];
   public gridFooterInfo = new BehaviorSubject<GridFooterInfo>({
     totalItems: 0,
     page: 1,
@@ -78,7 +79,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   public shouldSelectAll = false;
   public seletectedRows: GridRow[] = [];
   protected readonly GridDataType = GridDataType;
-  private gridColumnsSubject = new BehaviorSubject<GridColumns[]>(this.gridColumns);
+  private gridColumnsSubject = new BehaviorSubject<GridColumn[]>(this.gridColumns);
   public gridColumns$ = this.gridColumnsSubject.asObservable().pipe(
     filter(columns => columns.length > 0),
     take(1)
@@ -188,7 +189,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     this.dataArray.next(currentDataArray);
   }
 
-  public onColumnFilterChange(column: GridColumns): void {
+  public onColumnFilterChange(column: GridColumn): void {
 
     if (this.shouldFilter(column)) {
       const index = this.columnsToFilter.findIndex(c => c.propertyName === column.propertyName);
@@ -279,7 +280,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   }
 
-  public onSort(column: GridColumns): void {
+  public onSort(column: GridColumn): void {
 
     if (this.sortColumn === column.propertyName) {
       // Toggle sort direction
@@ -402,7 +403,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     this.currentRow = row;
   }
 
-  public shouldFilter(column: GridColumns): boolean {
+  public shouldFilter(column: GridColumn): boolean {
     return this.columnsToFilter.some(c => c.propertyName === column.propertyName);
   }
 
@@ -520,7 +521,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     // Persist the new column order to the backend or localStorage  ?
   }
 
-  private sortOfflineData(column: GridColumns): void {
+  private sortOfflineData(column: GridColumn): void {
     if (!this.sortColumn || this.sortDirection === '') {
       return;
     }

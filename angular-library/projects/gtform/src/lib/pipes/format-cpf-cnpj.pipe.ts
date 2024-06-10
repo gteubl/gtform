@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'formatCpfCnpj'
 })
 export class FormatCpfCnpjPipe implements PipeTransform {
-
+//TODO: Move to application
   public transform(value: string): string {
     if (!value) {
       return '';

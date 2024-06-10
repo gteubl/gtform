@@ -45,7 +45,7 @@ private defaultRequestFilter: GridDataSourceRequest = {
 };
 
 @ViewChild('andamento') public andamento!: TemplateRef<any>;
-public get gridColumns(): GridColumns[] {
+public get gridColumns(): GridColumn[] {
   return [
     {
       propertyName: 'tipo',

@@ -1,5 +1,4 @@
-//Components
-export * from './lib/components/base-control-value-accessor';
+// Components
 export * from './lib/components/gtform-accordion';
 export * from './lib/components/gtform-autocomplete';
 export * from './lib/components/gtform-bookmark';
@@ -8,7 +7,6 @@ export * from './lib/components/gtform-button-icon';
 export * from './lib/components/gtform-checkbox';
 export * from './lib/components/gtform-chips';
 export * from './lib/components/gtform-dynamic-modal';
-export * from './lib/components/gtform-dynamic-modal-container';
 export * from './lib/components/gtform-file-folder-tree';
 export * from './lib/components/gtform-file-uploader';
 export * from './lib/components/gtform-grid';
@@ -21,31 +19,25 @@ export * from './lib/components/gtform-spinner';
 export * from './lib/components/gtform-tabs';
 export * from './lib/components/gtform-toast';
 
-
 //Directives
-export * from './lib/directives';
-
-//Locales
-export * from './lib/locale';
+export * from './lib/directives/overlay-panel';
+export * from './lib/directives/tooltip';
 
 //Models
 export * from './lib/models';
 
-//Pipes
+// Pipes
 export * from './lib/pipes';
 
 //Services
 export * from './lib/services';
 
-//Templates
-export * from './lib/templates/gtform-hbf-template';
+// Templates
 export * from './lib/templates/gtform-drawer';
-
-
+export * from './lib/templates/gtform-hbf-template';
 
 //Utils
 export * from './lib/utils';
 
 
-// Main Module
-export * from './lib/gtform.module';
+

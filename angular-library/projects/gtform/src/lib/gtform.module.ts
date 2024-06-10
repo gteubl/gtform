@@ -3,91 +3,15 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+// import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
-  CastDataPipe,
-  FileSizePipe,
-  FormatChoiceOptionPipe,
-  FormatCpfCnpjPipe,
-  GtformAccordionComponent,
-  GtformAutocompleteComponent,
-  GtformAutocompleteModalComponent,
-  GtformBookmarkComponent,
-  GtformButtonComponent,
-  GtformButtonIconComponent,
-  GtformChipsComponent,
-  GtformChipsModalComponent,
-  GtformConfig,
-  GtformDrawerComponent,
-  GtformDynamicModalComponent,
-  GtformDynamicModalContainerComponent,
-  GtformFileFolderTreeComponent,
-  GtformFileFolderUploaderModalComponent,
-  GtformFileUploaderComponent,
-  GtformGridComponent,
-  GtformHbfTemplateComponent,
-  GtformIconComponent,
-  GtformInputCheckboxComponent,
-  GtformInputDateComponent,
-  GtformInputTextComponent,
-  GtformProgressStepperComponent,
-  GtformResizeTableColumnDirective,
-  GtformSelectComponent,
-  GtformSpinnerComponent,
-  GtformTabsComponent,
-  GtformThemeService,
-  GtformToastComponent,
-  GtformTooltipDirective,
-  GtformTranslateLoader,
-  OverlayPanelDirective
+
 } from '../public-api';
 
-const components = [
-  GtformAccordionComponent,
-  GtformAutocompleteComponent,
-  GtformAutocompleteModalComponent,
-  GtformBookmarkComponent,
-  GtformButtonComponent,
-  GtformButtonIconComponent,
-  GtformInputCheckboxComponent,
-  GtformChipsModalComponent,
-  GtformChipsComponent,
-  GtformFileFolderUploaderModalComponent,
-  GtformFileFolderTreeComponent,
-  GtformFileUploaderComponent,
-  GtformIconComponent,
-  GtformInputDateComponent,
-  GtformInputTextComponent,
-  GtformProgressStepperComponent,
-  GtformSelectComponent,
-  GtformSpinnerComponent,
-  GtformTabsComponent,
-  GtformGridComponent,
-  GtformDrawerComponent,
-  GtformToastComponent,
-  GtformDynamicModalComponent,
-  GtformDynamicModalContainerComponent
-];
 
-const directives = [
-  GtformResizeTableColumnDirective,
-  GtformTooltipDirective,
-  OverlayPanelDirective
-];
-
-const pipes = [
-  FileSizePipe,
-  FormatChoiceOptionPipe,
-  FormatCpfCnpjPipe,
-  CastDataPipe
-
-];
-
-const templates = [
-  GtformHbfTemplateComponent
-];
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
@@ -96,10 +20,6 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DragDropModule,
     HttpClientModule,
     TranslateModule.forRoot(
       {
@@ -111,25 +31,13 @@ export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
       }
     )
   ],
-  declarations: [
-    ...components,
-    ...directives,
-    ...pipes,
-    ...templates
 
-  ],
-  exports: [
-    ...components,
-    ...directives,
-    ...pipes,
-    ...templates
-  ]
 })
 export class GtformModule {
   public constructor(
     @Optional() @SkipSelf() parentModule: GtformModule,
     @Inject('gtformConfig') private config: GtformConfig,
-    private translateService: TranslateService,
+    // private translateService: TranslateService,
     private themeService: GtformThemeService
   ) {
     if (parentModule) {
