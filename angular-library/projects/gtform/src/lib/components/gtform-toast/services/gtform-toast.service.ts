@@ -5,9 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { generateRandomID } from '../../../utils';
 import { GtformToast } from '../models/gtform-toast';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GtformToastService {
   private toasts: { [key: string]: GtformToast[] } = {};
   private toastSubjects: { [key: string]: BehaviorSubject<GtformToast[]> } = {};

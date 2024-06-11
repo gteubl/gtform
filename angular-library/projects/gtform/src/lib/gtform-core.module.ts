@@ -3,6 +3,8 @@ import { Inject, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSe
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
+import { GtformDynamicModalService } from './components/gtform-dynamic-modal';
+import { GtformToastService } from './components/gtform-toast';
 import { GtformTranslateLoader } from './locale';
 import { GtformConfig } from './models';
 import { GtformThemeService } from './services';
@@ -46,7 +48,10 @@ export class GtformCoreModule {
     return {
       ngModule: GtformCoreModule,
       providers: [
-        { provide: LIB_CONFIG, useValue: config }
+        { provide: LIB_CONFIG, useValue: config },
+        GtformDynamicModalService,
+        GtformToastService,
+        GtformThemeService
       ]
     };
   }

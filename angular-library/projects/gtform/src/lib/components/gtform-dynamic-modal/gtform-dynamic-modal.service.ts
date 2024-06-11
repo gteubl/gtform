@@ -13,9 +13,7 @@ import { take } from 'rxjs/operators';
 
 import { GtformDynamicModalComponent, GtformDynamicModalContainerComponent, ModalConfig } from '.';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GtformDynamicModalService {
   private modalContainerRef!: ViewContainerRef;
 
