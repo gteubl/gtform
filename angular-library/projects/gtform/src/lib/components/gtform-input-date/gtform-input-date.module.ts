@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { GtformInputTextModule } from '../gtform-input-text/index';
+import { GtformInputTextModule } from '../gtform-input-text';
 
 import { GtformInputDateComponent } from './gtform-input-date.component';
 

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { GtformOverlayPanelModule } from '../../directives/overlay-panel/index';
-import { GtformTooltipModule } from '../../directives/tooltip/index';
-import { GtformButtonIconModule } from '../gtform-button-icon/index';
-import { GtformInputCheckboxModule } from '../gtform-checkbox/index';
-import { GtformIconModule } from '../gtform-icon/index';
-import { GtformSpinnerModule } from '../gtform-spinner/index';
+import { GtformOverlayPanelModule } from '../../directives/overlay-panel';
+import { GtformTooltipModule } from '../../directives/tooltip';
+import { GtformButtonIconModule } from '../gtform-button-icon';
+import { GtformInputCheckboxModule } from '../gtform-checkbox';
+import { GtformIconModule } from '../gtform-icon';
+import { GtformSpinnerModule } from '../gtform-spinner';
 
 import { GtformResizeTableColumnDirective } from './directives/gtform-resize-table-column';
 import { GtformGridComponent } from './gtform-grid.component';

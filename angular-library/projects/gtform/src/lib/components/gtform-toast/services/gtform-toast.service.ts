@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { generateRandomID } from '../../../utils/index';
+import { generateRandomID } from '../../../utils';
 import { GtformToast } from '../models/gtform-toast';
 
 @Injectable({
