@@ -12,6 +12,7 @@
     "**/*.spec.ts"
   ],
   "angularCompilerOptions": {
-    "compilationMode": "partial"
+    "compilationMode": "partial",
+    "enableIvy": true
   }
 }

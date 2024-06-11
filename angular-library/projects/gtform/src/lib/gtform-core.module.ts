@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Inject, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { Inject, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -30,14 +30,11 @@ export const LIB_CONFIG = new InjectionToken<GtformConfig>('LIB_CONFIG');
 })
 export class GtformCoreModule {
   public constructor(
-    @Optional() @SkipSelf() parentModule: GtformCoreModule,
     @Inject(LIB_CONFIG) private config: GtformConfig,
     private translateService: TranslateService,
     private themeService: GtformThemeService
   ) {
-    if (parentModule) {
-      throw new Error('GtformCoreModule is already loaded. Import it in the AppModule only');
-    }
+
     this.initialize(config);
   }
 
