@@ -24,6 +24,11 @@ export class GtformDynamicModalService {
   ) {
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public close(componentRef: ComponentRef<any>): void {
+    componentRef.destroy();
+  }
+
   public open<T>(component: Type<T>, config: ModalConfig): GtformDynamicModalComponent {
     this.ensureModalContainerExists();
 
@@ -45,11 +50,6 @@ export class GtformDynamicModalService {
     this.modalContainerRef.insert(componentRef.hostView);
 
     return componentRef.instance;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private close(componentRef: ComponentRef<any>): void {
-    componentRef.destroy();
   }
 
   private ensureModalContainerExists(): void {
