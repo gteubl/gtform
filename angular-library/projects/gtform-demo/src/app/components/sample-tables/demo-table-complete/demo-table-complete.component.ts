@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ChoiceOption, GridColumns, GridDataSource, GridDataType, GridHeaderConfig, GridRow, GridRowActions } from 'gtform';
+import { ChoiceOption, GridColumn, GridDataSource, GridDataType, GridHeaderConfig, GridRow, GridRowActions } from 'gtform';
 
 export interface DemoData {
   id: number,
@@ -17,7 +17,7 @@ export interface DemoData {
 })
 export class DemoTableCompleteComponent implements OnInit {
   public gridDataSource: GridDataSource<DemoData> | undefined;
-  public gridColumns: GridColumns[] = [
+  public gridColumns: GridColumn[] = [
     {
       propertyName: 'column1',
       headerText: 'Column 1',

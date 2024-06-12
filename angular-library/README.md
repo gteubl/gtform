@@ -21,12 +21,23 @@ angular.json
 
 ```
 
+add ngx-translate module
+
+```json
+{
+  "dependencies": {
+    "@ngx-translate/core": "^15.0.0"
+  }
+}
+```
+
 import module
 
 ```typescript
 @NgModule({
   declarations: [],
   imports: [
+    TranslateModule.forRoot(),
     GtformModule.forRoot({
       defaultLang: 'en',
       defaultTheme: 'light'
