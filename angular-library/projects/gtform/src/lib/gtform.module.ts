@@ -9,7 +9,7 @@ import { GtformButtonIconModule } from './components/gtform-button-icon';
 import { GtformInputCheckboxModule } from './components/gtform-checkbox';
 import { GtformChipsModule } from './components/gtform-chips';
 import { GtformDynamicModalModule } from './components/gtform-dynamic-modal';
-import { GtformFileFolderTreeComponent } from './components/gtform-file-folder-tree/index';
+import { GtformFileFolderTreeModule } from './components/gtform-file-folder-tree';
 import { GtformFileUploaderModule } from './components/gtform-file-uploader';
 import { GtformGridModule } from './components/gtform-grid';
 import { GtformIconModule } from './components/gtform-icon';
@@ -36,7 +36,7 @@ export const ComponentsModules = [
   GtformInputCheckboxModule,
   GtformChipsModule,
   GtformDynamicModalModule,
-  GtformFileFolderTreeComponent,
+  GtformFileFolderTreeModule,
   GtformFileUploaderModule,
   GtformGridModule,
   GtformIconModule,
