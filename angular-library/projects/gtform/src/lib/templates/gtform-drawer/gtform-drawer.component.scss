@@ -69,6 +69,25 @@
     &.right.min {
       transform: translateX(calc(100% - 50px));
     }
+
+    .collapsed-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      transition: all 0.3s ease;
+
+      &.left {
+        padding-left: calc(250px - 50px);
+      }
+
+      &.right {
+        padding-right: calc(250px - 50px);
+      }
+
+    }
+
   }
 
   .content {
