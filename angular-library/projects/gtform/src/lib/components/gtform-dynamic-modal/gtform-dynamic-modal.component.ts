@@ -11,15 +11,14 @@ import { ModalConfig } from './models/modal-config';
 export class GtformDynamicModalComponent implements OnInit {
   @Input() public childComponent!: Type<any>;
   @Input() public config: ModalConfig = {};
-  @Input() public data: any;
   @Output() public closed = new EventEmitter<any>();
   @ViewChild('modalContainer', { read: ViewContainerRef, static: true }) public container!: ViewContainerRef;
 
   public ngOnInit(): void {
     const componentRef = this.container.createComponent(this.childComponent);
 
-    if (componentRef.instance.data) {
-      componentRef.instance.data = this.data;
+    if (componentRef.instance.config) {
+      componentRef.instance.config = this.config;
     }
 
   }

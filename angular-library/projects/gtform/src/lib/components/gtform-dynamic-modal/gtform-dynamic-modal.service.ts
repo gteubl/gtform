@@ -21,12 +21,21 @@ import { ModalConfig } from './models/modal-config';
 export class GtformDynamicModalService {
   private modalContainerRef!: ViewContainerRef;
   private componentRefs: ComponentRef<GtformDynamicModalComponent>[] = [];
+  private _config: ModalConfig = {};
 
   public constructor(
     private appRef: ApplicationRef,
     private injector: Injector,
     private envInjector: EnvironmentInjector
   ) {
+  }
+
+  public get config(): ModalConfig {
+    return this._config;
+  }
+
+  private set config(value: ModalConfig) {
+    this._config = value;
   }
 
   public close<T>(component: T, result?: any): void {
@@ -53,9 +62,9 @@ export class GtformDynamicModalService {
       elementInjector: this.injector
     });
 
+    this.config = config;
     componentRef.instance.childComponent = component;
     componentRef.instance.config = config;
-    componentRef.instance.data = config.data;
 
     componentRef.instance.closed
       .pipe(take(1))

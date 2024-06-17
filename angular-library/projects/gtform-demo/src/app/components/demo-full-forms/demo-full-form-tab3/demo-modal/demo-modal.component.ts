@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { GtformDynamicModalService } from 'gtform';
 
@@ -7,16 +7,20 @@ import { GtformDynamicModalService } from 'gtform';
   templateUrl: './demo-modal.component.html',
   styleUrl: './demo-modal.component.scss'
 })
-export class DemoModalComponent {
+export class DemoModalComponent implements OnInit {
+
+  public data: { message: string } | undefined;
 
   public constructor(private modalService: GtformDynamicModalService) {
+  }
+
+  public ngOnInit(): void {
+    console.log('Hello from Modal', this.modalService.config);
+    this.data = this.modalService.config.data;
   }
 
   public close(): void {
     this.modalService.close(this, { message: 'Hello from child' });
   }
 
-  public okResult(): void {
-
-  }
 }
