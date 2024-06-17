@@ -20,7 +20,6 @@ export class GtformDynamicModalComponent implements OnInit {
     if (componentRef.instance.config) {
       componentRef.instance.config = this.config;
     }
-
   }
 
   public close(): void {
