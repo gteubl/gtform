@@ -22,14 +22,13 @@ export class GtformDynamicModalComponent implements OnInit {
       componentRef.instance.data = this.data;
     }
 
-    if (componentRef.instance.onClose) {
-      componentRef.instance.onClose.subscribe((result: any) => {
-        this.close(result);
-      });
-    }
   }
 
-  public close(result?: any): void {
+  public close(): void {
+    this.closed.emit(undefined);
+  }
+
+  public emitResult(result: any): void {
     this.closed.emit(result);
   }
 }

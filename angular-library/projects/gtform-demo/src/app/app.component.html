@@ -1,10 +1,12 @@
 <gtform-toast></gtform-toast>
-<gtform-drawer [alwaysShowDrawer]="true">
+<gtform-drawer #drawer [alwaysShowDrawer]="true">
   <div left-drawer>
     left drawer
     <button (click)="openLeftDrawer()">Close</button>
   </div>
   <div header>
+    <button (click)="openLeftDrawer()">Open Left</button>
+    <button (click)="openRightDrawer()">Open Right</button>
     <app-navbar></app-navbar>
   </div>
   <div main>

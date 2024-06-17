@@ -11,11 +11,16 @@ import {
 
 import { take } from 'rxjs/operators';
 
-import { GtformDynamicModalComponent, GtformDynamicModalContainerComponent, ModalConfig } from '.';
+import { GtformDynamicModalContainerComponent } from './gtform-dynamic-modal-container/gtform-dynamic-modal-container.component';
+import { GtformDynamicModalComponent } from './gtform-dynamic-modal.component';
+import { ModalConfig } from './models/modal-config';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GtformDynamicModalService {
   private modalContainerRef!: ViewContainerRef;
+  private componentRefs: ComponentRef<GtformDynamicModalComponent>[] = [];
 
   public constructor(
     private appRef: ApplicationRef,
@@ -24,9 +29,20 @@ export class GtformDynamicModalService {
   ) {
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public close(componentRef: ComponentRef<any>): void {
-    componentRef.destroy();
+  public close<T>(component: T, result?: any): void {
+    const modalRef = this.componentRefs.find(ref => ref.instance.childComponent === (component as any).constructor);
+    if (modalRef) {
+      modalRef.instance.emitResult(result);
+      this.destroy(modalRef);
+    }
+  }
+
+  public closeAll(): void {
+    this.componentRefs.forEach(ref => {
+      ref.instance.close();
+      ref.destroy();
+    });
+    this.componentRefs = [];
   }
 
   public open<T>(component: Type<T>, config: ModalConfig): GtformDynamicModalComponent {
@@ -44,12 +60,18 @@ export class GtformDynamicModalService {
     componentRef.instance.closed
       .pipe(take(1))
       .subscribe(() => {
-        this.close(componentRef);
+        this.destroy(componentRef);
       });
 
     this.modalContainerRef.insert(componentRef.hostView);
+    this.componentRefs.push(componentRef);
 
     return componentRef.instance;
+  }
+
+  private destroy(componentRef: ComponentRef<GtformDynamicModalComponent>): void {
+    componentRef.destroy();
+    this.componentRefs = this.componentRefs.filter(ref => ref !== componentRef);
   }
 
   private ensureModalContainerExists(): void {

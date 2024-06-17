@@ -8,8 +8,7 @@ import { GtformDrawerService } from './gtform-drawer.service';
   selector: 'gtform-drawer',
   templateUrl: './gtform-drawer.component.html',
   styleUrl: './gtform-drawer.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [GtformDrawerService]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformDrawerComponent implements OnInit, AfterViewInit {
   @Input() public alwaysShowDrawer = false;

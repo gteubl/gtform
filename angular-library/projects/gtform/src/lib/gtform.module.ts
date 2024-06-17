@@ -13,6 +13,7 @@ import { GtformFileFolderTreeModule } from './components/gtform-file-folder-tree
 import { GtformFileUploaderModule } from './components/gtform-file-uploader';
 import { GtformGridModule } from './components/gtform-grid';
 import { GtformIconModule } from './components/gtform-icon';
+import { GtformInputDateModule } from './components/gtform-input-date/index';
 import { GtformInputTextModule } from './components/gtform-input-text';
 import { GtformProgressStepperModule } from './components/gtform-progress-stepper';
 import { GtformSelectModule } from './components/gtform-select';
@@ -41,6 +42,7 @@ export const ComponentsModules = [
   GtformGridModule,
   GtformIconModule,
   GtformInputTextModule,
+  GtformInputDateModule,
   GtformProgressStepperModule,
   GtformSelectModule,
   GtformSpinnerModule,
