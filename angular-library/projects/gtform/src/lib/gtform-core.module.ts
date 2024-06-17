@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -32,18 +32,19 @@ export function initializeThemeService(config: GtformConfig, themeService: Gtfor
 export const LIB_CONFIG = new InjectionToken<GtformConfig>('LIB_CONFIG');
 
 @NgModule({
+  declarations: [],
+  exports: [],
   imports: [
-    HttpClientModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
-  ],
-  declarations: [],
-  exports: []
+    })],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class GtformCoreModule {
 
