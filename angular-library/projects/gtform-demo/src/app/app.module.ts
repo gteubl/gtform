@@ -1,9 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { GtformModule } from 'gtform';
+
+import { gtformTranslateLoader } from '../../../gtform/src/lib/gtform-core.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
@@ -35,7 +38,15 @@ import { DemoTableCompleteComponent } from './components/sample-tables/demo-tabl
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (gtformTranslateLoader),
+          deps: [HttpClient]
+        }
+      }
+    ),
     GtformModule.forRoot({
       defaultLang: 'en',
       defaultTheme: 'light'

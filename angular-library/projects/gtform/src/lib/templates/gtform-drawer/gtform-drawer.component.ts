@@ -41,7 +41,6 @@ export class GtformDrawerComponent implements OnInit, AfterViewInit {
         filter(() => this.leftDrawerExpanded !== undefined)
       )
       .subscribe(state => {
-        console.log('left drawer state', state);
         this.isLeftDrawerOpen = 'expanded' === state;
         this.cdr.detectChanges();
       });

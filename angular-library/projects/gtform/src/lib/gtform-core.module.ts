@@ -2,21 +2,20 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { GtformDynamicModalService } from './components/gtform-dynamic-modal';
 import { GtformToastService } from './components/gtform-toast/index';
-import { GtformTranslateLoader } from './locale';
 import { GtformConfig } from './models';
 import { GtformThemeService } from './services';
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient): GtformTranslateLoader {
-  return new GtformTranslateLoader(http, 'assets/gtform/i18n/', '.json');
+export function gtformTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/gtform/i18n/', '.json');
 }
 
 export function initializeTranslateService(config: GtformConfig, translateService: TranslateService): () => void {
   return () => {
-    console.log('initializeTranslateService');
     translateService.setDefaultLang(config.defaultLang);
     translateService.use(config.defaultLang);
   };
@@ -24,7 +23,6 @@ export function initializeTranslateService(config: GtformConfig, translateServic
 
 export function initializeThemeService(config: GtformConfig, themeService: GtformThemeService): () => void {
   return () => {
-    console.log('initializeThemeService');
     themeService.setTheme(config.defaultTheme);
   };
 }
@@ -38,7 +36,7 @@ export const LIB_CONFIG = new InjectionToken<GtformConfig>('LIB_CONFIG');
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (gtformTranslateLoader),
         deps: [HttpClient]
       }
     })],

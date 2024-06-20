@@ -26,7 +26,8 @@ add ngx-translate module
 ```json
 {
   "dependencies": {
-    "@ngx-translate/core": "^15.0.0"
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0"
   }
 }
 ```
@@ -37,7 +38,15 @@ import module
 @NgModule({
   declarations: [],
   imports: [
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (gtformTranslateLoader),
+          deps: [HttpClient]
+        }
+      }
+    ),
     GtformModule.forRoot({
       defaultLang: 'en',
       defaultTheme: 'light'

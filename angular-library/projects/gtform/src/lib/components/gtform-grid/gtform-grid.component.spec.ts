@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {GtformGridComponent} from 'projects/gtform/src/lib/components/gtform-grid/gtform-grid.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GtformGridComponent } from './gtform-grid.component';
 
 describe('GridComponent', () => {
   let component: GtformGridComponent<any>;
