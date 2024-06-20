@@ -3,7 +3,7 @@
  * Any changes made to this file can be lost when this file is regenerated.
  */
 
-import { FileTreeNodeType } from './file-tree-node-type';
+import { FileTreeNodeType } from "./file-tree-node-type";
 
 export interface FileTreeNode {
     id: string;
