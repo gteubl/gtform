@@ -177,10 +177,10 @@ table {
 }
 
 .action-column {
-  width: 20px;
+  width: 2rem;
   text-align: right;
 
-  ::ng-deep form-button-icon .icon-btn {
+  ::ng-deep gtform-button-icon .icon-btn {
     width: auto;
     height: auto;
     padding: 0;
