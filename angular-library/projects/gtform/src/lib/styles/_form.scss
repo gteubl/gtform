@@ -38,6 +38,21 @@ $breakpoints: (
   }
 }
 
+.gtform-container {
+  .gtform-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em 1em; // vertical gap, horizontal gap
+    margin-bottom: 0.5em;
+
+    // Ensure no margins or paddings are applied that could break the layout
+    > [class*='gtform-col-'] {
+      flex: 1 1 auto;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
 
 .gtform-container {
   padding: 0.3em;

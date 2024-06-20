@@ -15,7 +15,6 @@ export class DemoModalComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    console.log('Hello from Modal', this.modalService.config);
     this.data = this.modalService.config.data;
   }
 
