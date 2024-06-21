@@ -7,6 +7,7 @@ import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 import { BehaviorSubject, filter, Subject, takeWhile } from 'rxjs';
 
 
+import { OverlayPanelDirective } from '../../directives/overlay-panel/index';
 import { formatDateTimeToBRLocaleString, formatDateToBRLocaleString } from '../../utils';
 
 import {
@@ -148,7 +149,8 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   // Actions
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public onActionClick(action: GridRowActions): void {
+  public onActionClick(action: GridRowActions, actionsOverlay: OverlayPanelDirective): void {
+    actionsOverlay.hide();
     action.action(this.currentRow!);
   }
 
@@ -392,11 +394,6 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   public openContextMenu(event: MouseEvent, row: GridRow): void {
     event.preventDefault(); // Prevent the browser context menu
     this.currentRow = row;
-
-    //TODO: OVERLAY PANEL
-    /* if (this.contextMenu) {
-      this.contextMenu.toggle(event);
-    }*/
   }
 
   public setCurrentRow(row: GridRow): void {

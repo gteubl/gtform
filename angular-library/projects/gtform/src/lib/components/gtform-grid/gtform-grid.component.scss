@@ -180,6 +180,7 @@ table {
   width: 2rem;
   text-align: right;
 
+
   ::ng-deep gtform-button-icon .icon-btn {
     width: auto;
     height: auto;
@@ -275,39 +276,16 @@ th.resizing {
   border-right: 2px dashed var(--form-separetor-line-color);
 }
 
-///* PrimeNg */
-::ng-deep.p-overlaypanel .p-overlaypanel-content {
-  padding: 0;
-}
 
-::ng-deep.action-item {
+.action-item {
   min-width: 12em;
   display: flex;
   align-items: center;
   padding: 0.5em;
   cursor: pointer;
 
-  form-input-checkbox {
-    height: 1.8em;
-    width: 1.8em;
-
-    .input-container {
-      margin: 0;
-      padding: 0;
-    }
-  }
-
   span {
-    margin-left: 0.8em;
-  }
-
-  form-icon {
-    margin: 0;
-    font-size: 0.8em;
-
-    span.material-icons {
-      margin: 0;
-    }
+    margin-left: 0.5em;
   }
 
   &:hover {

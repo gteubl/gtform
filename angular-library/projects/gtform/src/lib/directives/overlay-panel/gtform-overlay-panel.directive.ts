@@ -11,7 +11,8 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[gtformOverlayPanel]'
+  selector: '[gtformOverlayPanel]',
+  exportAs: 'gtformOverlayPanel'
 })
 export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,6 +21,9 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
 
   private overlay: HTMLElement | null = null;
   private resizeListener!: () => void;
+
+  private documentClickListener!: () => void;
+  private overlayClickListener!: () => void;
 
   public constructor(
     private viewContainerRef: ViewContainerRef,
@@ -46,19 +50,51 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
     }
   }
 
-  @HostListener('click')
-  public toggle(): void {
+  public hide(): void {
+    if (this.overlay) {
+      this.renderer.removeChild(document.body, this.overlay);
+      this.overlay = null;
+      if (this.documentClickListener) {
+        this.documentClickListener();
+      }
+      if (this.overlayClickListener) {
+        this.overlayClickListener();
+      }
+    }
+  }
+
+  public show(): void {
+    this.overlay = this.renderer.createElement('div');
+    this.renderer.addClass(this.overlay, 'gtform-overlay-panel');
+
+    const embeddedView = this.viewContainerRef.createEmbeddedView(this.templateRef);
+    embeddedView.rootNodes.forEach(node => this.renderer.appendChild(this.overlay, node));
+
+    this.renderer.appendChild(document.body, this.overlay);
+
+    // Ensure overlay is rendered to calculate its dimensions
+    setTimeout(() => {
+      this.setPosition();
+    });
+
+    this.documentClickListener = this.renderer.listen('document', 'click', (event: MouseEvent) => {
+      if (this.overlay && !this.overlay.contains(event.target as Node) && !this.elementRef.nativeElement.contains(event.target as Node)) {
+        this.hide();
+      }
+    });
+
+    this.overlayClickListener = this.renderer.listen(this.overlay, 'click', (event: MouseEvent) => {
+      event.stopPropagation();
+    });
+  }
+
+  @HostListener('click', ['$event'])
+  public toggle(event: MouseEvent): void {
+    event.stopPropagation();
     if (this.overlay) {
       this.hide();
     } else {
       this.show();
-    }
-  }
-
-  private hide(): void {
-    if (this.overlay) {
-      this.renderer.removeChild(document.body, this.overlay);
-      this.overlay = null;
     }
   }
 
@@ -101,7 +137,6 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
     if (top < 0) top = 0;
     if (left < 0) left = 0;
 
-
     //TODO: Uncomment the following lines to prevent the overlay from going out of the viewport.
 
     // Adjust position to make sure the overlay is fully visible within the viewport
@@ -113,20 +148,5 @@ export class OverlayPanelDirective implements AfterViewInit, OnDestroy {
 
     this.renderer.setStyle(this.overlay, 'top', `${top}px`);
     this.renderer.setStyle(this.overlay, 'left', `${left}px`);
-  }
-
-  private show(): void {
-    this.overlay = this.renderer.createElement('div');
-    this.renderer.addClass(this.overlay, 'gtform-overlay-panel');
-
-    const embeddedView = this.viewContainerRef.createEmbeddedView(this.templateRef);
-    embeddedView.rootNodes.forEach(node => this.renderer.appendChild(this.overlay, node));
-
-    this.renderer.appendChild(document.body, this.overlay);
-
-    // Ensure overlay is rendered to calculate its dimensions
-    setTimeout(() => {
-      this.setPosition();
-    });
   }
 }

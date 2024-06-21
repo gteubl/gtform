@@ -131,17 +131,18 @@
         </td>
         <ng-container *ngIf="showRowsActions">
           <td class="action-column">
-            <gtform-button-icon (click)="setCurrentRow(row)"
+            <gtform-button-icon #actionsOverlay="gtformOverlayPanel"
+                                (click)="setCurrentRow(row)"
                                 [gtformOverlayPanel]="opRowAction"
                                 [overlayPanelPosition]="'left'"
                                 icon="more_vert"
             ></gtform-button-icon>
             <ng-template #opRowAction>
-              <div (click)="onActionClick(action)"
+              <div (click)="onActionClick(action, actionsOverlay)"
                    *ngFor="let action of gridRowActions"
                    class="action-item {{ action.disabled ? 'disabled' : '' }}"
               >
-                <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></gtform-icon>
+                <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon" fontSize="1rem"></gtform-icon>
                 <span>{{ action.text }}</span>
               </div>
             </ng-template>
