@@ -10,6 +10,8 @@ import { DemoModalComponent } from './demo-modal/demo-modal.component';
   styleUrl: './demo-full-form-tab3.component.scss'
 })
 export class DemoFullFormTab3Component {
+  protected readonly ModalSizes = ModalSizes;
+
   public constructor(private messageService: GtformToastService, private modalService: GtformDynamicModalService) {
   }
 
@@ -29,10 +31,11 @@ export class DemoFullFormTab3Component {
     this.messageService.showToast('warning', 'bottom-right', 'Warning message', 'This is a warning message');
   }
 
-  public showModal(): void {
+  // eslint-disable-next-line
+  public showModal(size: any): void {
     const ref = this.modalService.open(DemoModalComponent, {
       title: 'Dynamic Modal',
-      style: { ...ModalSizes.large },
+      style: { ...size },
       data: { message: 'Hello from parent' }
     });
 

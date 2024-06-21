@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ChoiceOption } from '../../../models';
-import { ModalSizes } from '../../gtform-dynamic-modal';
+import { ModalSizes } from '../../gtform-dynamic-modal/index';
 import { GridColumn, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid';
 
 export interface FormAutocompleteModalData {
@@ -30,7 +30,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
   public headerConfig: GridHeaderConfig = {
     showFilter: true
   };
-  protected readonly ModalDialogSizes = ModalSizes;
+  protected readonly ModalSizes = ModalSizes;
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
 

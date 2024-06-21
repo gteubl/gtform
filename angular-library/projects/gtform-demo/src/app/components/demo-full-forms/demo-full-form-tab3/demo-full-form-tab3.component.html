@@ -46,8 +46,20 @@
     </div>
   </div>
   <div class="gtform-row">
-    <div class="gtform-col-12">
-      <gtform-button (click)="showModal()">Show Modal</gtform-button>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.warning)">Show warning Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.small)">Show small Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.medium)">Show medium Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.large)">Show large Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.fullScreen)">Show fullScreen Modal</gtform-button>
     </div>
   </div>
 </div>

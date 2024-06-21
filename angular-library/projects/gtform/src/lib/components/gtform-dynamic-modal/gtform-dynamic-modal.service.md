@@ -23,6 +23,10 @@ ParentComponent
 
 ```typescript
 export class DemoParentComponent {
+
+  public constructor(private modalService: GtformDynamicModalService) {
+  }
+
   public showModal(): void {
     const ref = this.modalService.open(DemoModalComponent, {
       title: 'Dynamic Modal',
