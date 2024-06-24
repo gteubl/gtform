@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ChoiceOption } from '../../../models';
-import { ModalSizes } from '../../gtform-dynamic-modal';
-import { GridColumn, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid';
+import { GtformDynamicModalService, ModalSizes } from '../../gtform-dynamic-modal';
+import { GridColumn, GridColumnSizeConstants, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid';
 
 export interface FormChipsModalData {
   options: ChoiceOption[];
@@ -25,8 +25,8 @@ export class GtformChipsModalComponent implements OnInit {
     {
       propertyName: 'description',
       headerText: 'Descrição',
-      dataType: GridDataType.STRING
-      //  width: GridColumnSizeConstants.XLARGE
+      dataType: GridDataType.STRING,
+      width: GridColumnSizeConstants.XLARGE
 
     }
 
@@ -38,13 +38,15 @@ export class GtformChipsModalComponent implements OnInit {
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
 
-  public ngOnInit(): void {
+  public constructor(private modalService: GtformDynamicModalService) {
+  }
 
-    // const gridDataSource = new GridDataSource<ChoiceOption>(this.config.data.options, this.config.data.options.length);
-    // this.selectedRows = this.config.data.selectedOptions;
-    // gridDataSource.populateSelected(this.config.data.selectedOptions);
-    // this.gridDataSource.next(gridDataSource);
-    console.log('empty');
+  public ngOnInit(): void {
+    const data = this.modalService.config.data as FormChipsModalData;
+    const gridDataSource = new GridDataSource<ChoiceOption>(data.options, data.options.length);
+    this.selectedRows = data.selectedOptions;
+    gridDataSource.populateSelected(data.selectedOptions);
+    this.gridDataSource.next(gridDataSource);
 
   }
 
@@ -54,11 +56,11 @@ export class GtformChipsModalComponent implements OnInit {
   }
 
   public closeDialog(): void {
-    // this.dialogRef.close();
+    this.modalService.close(this);
   }
 
   public confirm(): void {
-    // this.dialogRef.close(this.selectedRows);
+    this.modalService.close(this, this.selectedRows);
   }
 
   // Selectors

@@ -3,6 +3,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FormOption } from '../../models';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
+import { GtformDynamicModalService, ModalSizes } from '../gtform-dynamic-modal/index';
+
+import { GtformChipsModalComponent } from './gtform-chips-modal/gtform-chips-modal.component';
 
 @Component({
   selector: 'gtform-chips',
@@ -31,7 +34,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   public isModalOpen = false;
   public inputValue: string = '';
 
-  public constructor() {
+  public constructor(private modalService: GtformDynamicModalService) {
     super();
   }
 
@@ -62,23 +65,23 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   }
 
   public dispatchShowDefaultGrid(): void {
-    /* this.isModalOpen = true;
-     const ref = this.dialog.open(FormChipsModalComponent, {
-       ...ModalDialogSizes.medium,
-       data: {
-         options: this.allOptions,
-         selectedOptions: this.chipsValues
-       },
-       header: this.label
-     });
+    this.isModalOpen = true;
+    const ref = this.modalService.open(GtformChipsModalComponent, {
+      ...ModalSizes.medium,
+      data: {
+        options: this.allOptions,
+        selectedOptions: this.chipsValues
+      },
+      title: this.label
+    });
 
-     ref.onClose.subscribe((result) => {
-       this.isModalOpen = false;
+    ref.closed.subscribe((result) => {
+      this.isModalOpen = false;
 
-       if (result) {
-         this.writeValue(result);
-       }
-     });*/
+      if (result) {
+        this.writeValue(result);
+      }
+    });
 
   }
 
