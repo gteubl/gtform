@@ -16,7 +16,7 @@ const HonorarioEventFriendlyNames: Record<keyof typeof HonorarioEvent, string> =
 };
 * */
 
-export function enumToChoiceOption<T extends object>(enumObj: T, friendlyNames?: Record<keyof T, string>): FormOption[] {
+export function enumToFormOption<T extends object>(enumObj: T, friendlyNames?: Record<keyof T, string>): FormOption[] {
   const keys = Object.keys(enumObj).filter(key => isNaN(Number(key)));
 
   return keys.map((key): FormOption => ({
@@ -25,7 +25,7 @@ export function enumToChoiceOption<T extends object>(enumObj: T, friendlyNames?:
   }));
 }
 
-export function ChoiceOptionToEnum<T extends object>(enumObj: T, choiceOption: FormOption): T[keyof T] {
+export function FormOptionToEnum<T extends object>(enumObj: T, choiceOption: FormOption): T[keyof T] {
   const keys = Object.keys(enumObj).filter(key => isNaN(Number(key)));
   const key = keys.find(k => enumObj[k as keyof T] === choiceOption.value);
   return enumObj[key as keyof T];

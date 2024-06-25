@@ -30,7 +30,6 @@ export class GtformSelectComponent extends BaseControlValueAccessor<FormOption |
   }
 
   public override writeValue(value: FormOption | null): void {
-    console.log(`Select writeValue: ${this.label}`, value);
     if (value !== null && this.options.some(option => option.value === value.value)) {
       this.value = value;
     } else {
