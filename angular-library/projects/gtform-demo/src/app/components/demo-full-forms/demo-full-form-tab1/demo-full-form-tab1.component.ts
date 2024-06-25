@@ -33,6 +33,14 @@ export class DemoFullFormTab1Component implements OnInit {
     { value: 3, description: 'Option 3' },
     { value: 4, description: 'Option 4' },
     { value: 5, description: 'Option 5' }];
+
+  public chips1Options: FormOption[] = [
+    { value: 1, description: 'Option 1' },
+    { value: 2, description: 'Option 2' },
+    { value: 3, description: 'Option 3' },
+    { value: 4, description: 'Option 4' },
+    { value: 5, description: 'Option 5' }
+  ];
   //FormGroups
   public formGroup = new FormGroup({
     ctrl1: new FormControl(null, Validators.required),
@@ -47,6 +55,8 @@ export class DemoFullFormTab1Component implements OnInit {
     ctrl10: new FormControl(null, Validators.required),
     checkBox1: new FormControl(true, Validators.required),
     ctrl12: new FormControl(null, Validators.required),
+    chips1: new FormControl(null, Validators.required),
+    chips2: new FormControl(null, Validators.required),
 
     selectOption1: new FormControl(this.selectOptions1[2], Validators.required)
 
@@ -55,6 +65,14 @@ export class DemoFullFormTab1Component implements OnInit {
   public ngOnInit(): void {
     this.formGroup.controls.selectOption1.valueChanges.subscribe((value) => {
       console.log('selectOption1 value changed', value);
+    });
+
+    this.formGroup.controls.chips1.valueChanges.subscribe((value) => {
+      console.log('chips1 value changed', value);
+    });
+
+    this.formGroup.controls.chips2.valueChanges.subscribe((value) => {
+      console.log('chips2 value changed', value);
     });
   }
 

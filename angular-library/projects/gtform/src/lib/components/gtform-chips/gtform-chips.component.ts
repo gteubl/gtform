@@ -115,8 +115,11 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   }
 
   public removeChip(index: number): void {
-    this.chipsValues.splice(index, 1);
-    this.onChange(this.chipsValues);
+    const allChips = this.value;
+    const value = allChips.filter((chip, i) => i !== index);
+
+    this.chipsValues = value;
+    this.value = value;
   }
 
   public override setDisabledState(isDisabled: boolean): void {
@@ -124,7 +127,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
   }
 
   public override writeValue(value: FormOption[]): void {
-    this.innerValue = value;
     this.chipsValues = value || [];
+    this.value = value;
   }
 }

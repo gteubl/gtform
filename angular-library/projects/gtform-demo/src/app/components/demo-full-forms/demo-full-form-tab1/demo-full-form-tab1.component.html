@@ -48,15 +48,25 @@
               <gtform-input-checkbox formControlName="checkBox1" label="Checkbox1"></gtform-input-checkbox>
             </div>
             <div class="gtform-col-3">
-              <gtform-chips [allowFreeText]="true" label="chips"
-              ></gtform-chips>
-            </div>
-            <div class="gtform-col-3">
               <gtform-input-date label="Date"></gtform-input-date>
             </div>
             <div class="gtform-col-3">
               <gtform-select [options]="selectOptions1" formControlName="selectOption1" label="Select"
               ></gtform-select>
+            </div>
+          </div>
+          <div class="gtform-row">
+            <div class="gtform-col-3">
+              <gtform-chips [allOptions]="chips1Options"
+                            [allowFreeText]="false"
+                            [showDefaultGrid]="true"
+                            formControlName="chips1"
+                            label="Grid Chips"
+              ></gtform-chips>
+            </div>
+            <div class="gtform-col-3">
+              <gtform-chips [allowFreeText]="true" formControlName="chips2" label="Free chips"
+              ></gtform-chips>
             </div>
           </div>
           <div class="gtform-row">
