@@ -1,14 +1,10 @@
 <ng-container *ngIf="!disabled">
   <div class="input-container">
-    <label>{{ label }}:</label>
-
-    <select [value]="selectedOptionValue" [disabled]="disabled" (change)="onSelectChange($event)">
-      <option *ngFor="let option of options" [value]="option.value">{{ option.description }}</option>
-    </select>
+    <label>{{ label }}:</label> <select [(ngModel)]="value" [disabled]="disabled">
+    <option *ngFor="let option of options" [ngValue]="option">{{ option.description }}</option>
+  </select>
   </div>
 </ng-container>
 <ng-container *ngIf="disabled">
-  <gtform-input-text [label]="label"
-                   [inputValue]="value?.description ?? ''"
-                   [disabled]="true"></gtform-input-text>
+  <gtform-input-text [disabled]="true" [inputValue]="value?.description ?? ''" [label]="label"></gtform-input-text>
 </ng-container>

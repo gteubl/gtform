@@ -1,9 +1,8 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {NG_VALUE_ACCESSOR}            from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FormOption } from '../../models';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
-
 
 @Component({
   selector: 'gtform-select',
@@ -22,8 +21,6 @@ export class GtformSelectComponent extends BaseControlValueAccessor<FormOption |
   @Input() public disabled: boolean = false;
   @Input() public options: FormOption[] = [];
 
-  public selectedOptionValue: string | null = null;
-
   public constructor() {
     super();
   }
@@ -32,28 +29,12 @@ export class GtformSelectComponent extends BaseControlValueAccessor<FormOption |
     this.disabled = isDisabled;
   }
 
-  public onSelectChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    const value = target.value;
-
-    // This approach remains unchanged; it's concise and does the job well.
-    const selectedOption = this.options.find(option => option.value.toString() === value);
-    this.writeValue(selectedOption ?? null);
-
-  }
-
   public override writeValue(value: FormOption | null): void {
+    console.log(`Select writeValue: ${this.label}`, value);
     if (value !== null && this.options.some(option => option.value === value.value)) {
-      //this.innerValue = value;
       this.value = value;
-      // Update a new property to store the selected option's value as a string
-      this.selectedOptionValue = value.value.toString();
     } else {
       this.value = null;
-      // this.value = null;
-      //this.innerValue = null;
-      this.selectedOptionValue = null; // Or a default value, as appropriate
     }
   }
-
 }

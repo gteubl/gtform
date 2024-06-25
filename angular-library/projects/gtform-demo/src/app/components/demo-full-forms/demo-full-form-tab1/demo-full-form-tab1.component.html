@@ -1,81 +1,77 @@
 <div class="gtform-container">
   <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabLevel]="2" [tabs]="tabs">
-    <ng-container [ngSwitch]="activeTab">
-      <div *ngSwitchCase="tabs[0]">
-        <div class="gtform-container">
-          <div class="gtform-row">
-            <div class=" gtform-col-3">
-              <gtform-input-text formControlName="ctrl1" label="Control 1"></gtform-input-text>
+    <form [formGroup]="formGroup">
+      <ng-container [ngSwitch]="activeTab">
+        <div *ngSwitchCase="tabs[0]">
+          <div class="gtform-container">
+            <div class="gtform-row">
+              <div class=" gtform-col-3">
+                <gtform-input-text formControlName="ctrl1" label="Control 1"></gtform-input-text>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-input-text formControlName="ctrl2" label="Control 2"></gtform-input-text>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-input-text formControlName="ctrl3" label="Control 3"></gtform-input-text>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-input-text formControlName="ctrl4" label="Control 4"></gtform-input-text>
+              </div>
             </div>
-            <div class="gtform-col-3">
-              <gtform-input-text formControlName="ctrl2" label="Control 2"></gtform-input-text>
+            <div class="gtform-row">
+              <div class=" gtform-col-4">
+                <gtform-input-text formControlName="ctrl5" label="Control 5"></gtform-input-text>
+              </div>
+              <div class="gtform-col-4">
+                <gtform-input-text formControlName="ctrl6" label="Control 6"></gtform-input-text>
+              </div>
+              <div class="gtform-col-4">
+                <gtform-input-text formControlName="ctrl7" label="Control 7"></gtform-input-text>
+              </div>
             </div>
-            <div class="gtform-col-3">
-              <gtform-input-text formControlName="ctrl3" label="Control 3"></gtform-input-text>
+            <div class="gtform-row">
+              <div class=" gtform-col-6">
+                <gtform-input-text formControlName="ctrl8" label="Control 8"></gtform-input-text>
+              </div>
+              <div class="gtform-col-6">
+                <gtform-input-text formControlName="ctrl9" label="Control 9"></gtform-input-text>
+              </div>
             </div>
-            <div class="gtform-col-3">
-              <gtform-input-text formControlName="ctrl4" label="Control 4"></gtform-input-text>
+            <div class="gtform-row">
+              <div class=" gtform-col-12">
+                <gtform-input-text formControlName="ctrl10" label="Control 10"></gtform-input-text>
+              </div>
             </div>
           </div>
           <div class="gtform-row">
-            <div class=" gtform-col-4">
-              <gtform-input-text formControlName="ctrl5" label="Control 5"></gtform-input-text>
+            <div class="gtform-col-3">
+              <gtform-input-checkbox formControlName="checkBox1" label="Checkbox1"></gtform-input-checkbox>
             </div>
-            <div class="gtform-col-4">
-              <gtform-input-text formControlName="ctrl6" label="Control 6"></gtform-input-text>
+            <div class="gtform-col-3">
+              <gtform-chips [allowFreeText]="true" label="chips"
+              ></gtform-chips>
             </div>
-            <div class="gtform-col-4">
-              <gtform-input-text formControlName="ctrl7" label="Control 7"></gtform-input-text>
+            <div class="gtform-col-3">
+              <gtform-input-date label="Date"></gtform-input-date>
             </div>
-          </div>
-          <div class="gtform-row">
-            <div class=" gtform-col-6">
-              <gtform-input-text formControlName="ctrl8" label="Control 8"></gtform-input-text>
-            </div>
-            <div class="gtform-col-6">
-              <gtform-input-text formControlName="ctrl9" label="Control 9"></gtform-input-text>
+            <div class="gtform-col-3">
+              <gtform-select [options]="selectOptions1" formControlName="selectOption1" label="Select"
+              ></gtform-select>
             </div>
           </div>
           <div class="gtform-row">
-            <div class=" gtform-col-12">
-              <gtform-input-text formControlName="ctrl10" label="Control 10"></gtform-input-text>
+            <div class="gtform-col-3">
+              <!--            <gtform-spinner></gtform-spinner>-->
             </div>
           </div>
         </div>
-        <div class="gtform-row">
-          <div class="gtform-col-3">
-            <gtform-input-checkbox label="Checkbox1"></gtform-input-checkbox>
-          </div>
-          <div class="gtform-col-3">
-            <gtform-chips [allowFreeText]="true" label="chips"
-            ></gtform-chips>
-          </div>
-          <div class="gtform-col-3">
-            <gtform-input-date label="Date"></gtform-input-date>
-          </div>
-          <div class="gtform-col-3">
-            <gtform-select [options]="[
-              {value: '1', description: 'Option 1'},
-              {value: '2', description: 'Option 2'},
-              {value: '3', description: 'Option 3'},
-              {value: '4', description: 'Option 4'},
-              {value: '5', description: 'Option 5'},
-            ]" label="Select"
-            ></gtform-select>
-          </div>
+        <div *ngSwitchCase="tabs[1]">
+          tab 2
         </div>
-        <div class="gtform-row">
-          <div class="gtform-col-3">
-            <!--            <gtform-spinner></gtform-spinner>-->
-          </div>
+        <div *ngSwitchCase="tabs[2]">
+          tab 3
         </div>
-      </div>
-      <div *ngSwitchCase="tabs[1]">
-        tab 2
-      </div>
-      <div *ngSwitchCase="tabs[2]">
-        tab 3
-      </div>
-    </ng-container>
+      </ng-container>
+    </form>
   </gtform-tabs>
 </div>

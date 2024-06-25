@@ -1,4 +1,4 @@
-import {ControlValueAccessor} from '@angular/forms';
+import { ControlValueAccessor } from '@angular/forms';
 
 export abstract class BaseControlValueAccessor<T> implements ControlValueAccessor {
 
@@ -13,7 +13,7 @@ export abstract class BaseControlValueAccessor<T> implements ControlValueAccesso
   protected onTouched = (): void => {
   };
 
-  protected get value(): T {
+  public get value(): T {
     return this.innerValue;
   }
 
@@ -22,10 +22,6 @@ export abstract class BaseControlValueAccessor<T> implements ControlValueAccesso
       this.innerValue = v;
       this.onChange(v);
     }
-  }
-
-  public writeValue(value: T): void {
-    this.innerValue = value;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,5 +37,9 @@ export abstract class BaseControlValueAccessor<T> implements ControlValueAccesso
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public setDisabledState?(isDisabled: boolean): void {
 
+  }
+
+  public writeValue(value: T): void {
+    this.innerValue = value;
   }
 }
