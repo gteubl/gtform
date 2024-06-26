@@ -22,7 +22,7 @@ export class GtformInputTextComponent extends BaseControlValueAccessor<string> i
   @Input() public label: string = '';
   @Input() public placeholder: string = '';
   @Input() public invalid: boolean = false;
-  @Input() public formatType: 'default' | 'cpf' | 'cnpj' | 'currency' | 'cep' = 'default';
+  @Input() public formatType: 'default' | 'cpf' | 'cnpj' | 'currency' | 'cep' | 'numbers' = 'default';
 
   @ViewChild('inputRef', { static: true }) public inputElement!: ElementRef;
 
@@ -51,12 +51,12 @@ export class GtformInputTextComponent extends BaseControlValueAccessor<string> i
       value = value.replace(/\D/g, '').slice(0, 8);
       break;
     case 'currency':
-
       // eslint-disable-next-line no-case-declarations
       const numericValue = parseInt(value.replace(/\D/g, ''), 10) || 0;
-
       value = numericValue.toString();
-
+      break;
+    case 'numbers':
+      value = value.replace(/\D/g, '');
       break;
     }
 
