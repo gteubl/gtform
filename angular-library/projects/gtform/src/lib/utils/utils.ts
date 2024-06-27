@@ -25,10 +25,15 @@ export function enumToFormOption<T extends object>(enumObj: T, friendlyNames?: R
   }));
 }
 
-export function FormOptionToEnum<T extends object>(enumObj: T, choiceOption: FormOption): T[keyof T] {
+export function formOptionToEnum<T extends object>(enumObj: T, choiceOption: FormOption): T[keyof T] {
   const keys = Object.keys(enumObj).filter(key => isNaN(Number(key)));
   const key = keys.find(k => enumObj[k as keyof T] === choiceOption.value);
   return enumObj[key as keyof T];
+}
+
+export function getFilteredEnumOptions<T extends object>(enumType: T, friendlyNames: Record<keyof T, string>, excludeValues: any[]): FormOption[] {
+  const allOptions = enumToFormOption(enumType, friendlyNames);
+  return allOptions.filter(option => !excludeValues.includes(option.value));
 }
 
 export function generateRandomID(): string {
