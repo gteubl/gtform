@@ -1,7 +1,7 @@
 <div class="input-container">
   <label *ngIf="labelAbove && label.length > 0" class="label-above">{{ label }}:</label>
-  <div (click)="toggle()" class="switch-container">
-    <div [class.active]="value" class="switch-thumb"></div>
+  <div class="switch-container">
+    <div (click)="toggle()" [class.active]="value" class="switch-thumb"></div>
     <div *ngIf="!labelAbove" class="switch-label">{{ label }}</div>
   </div>
 </div>
