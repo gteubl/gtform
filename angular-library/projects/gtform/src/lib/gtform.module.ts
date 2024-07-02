@@ -18,6 +18,7 @@ import { GtformInputTextModule } from './components/gtform-input-text';
 import { GtformProgressStepperModule } from './components/gtform-progress-stepper';
 import { GtformSelectModule } from './components/gtform-select';
 import { GtformSpinnerModule } from './components/gtform-spinner';
+import { GtformSwitchModule } from './components/gtform-switch/index';
 import { GtformTabsModule } from './components/gtform-tabs';
 import { GtformToastModule } from './components/gtform-toast';
 import { GtformOverlayPanelModule } from './directives/overlay-panel';
@@ -46,6 +47,7 @@ export const ComponentsModules = [
   GtformProgressStepperModule,
   GtformSelectModule,
   GtformSpinnerModule,
+  GtformSwitchModule,
   GtformTabsModule,
   GtformToastModule
 ];

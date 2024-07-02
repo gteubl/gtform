@@ -54,6 +54,7 @@ export class DemoFullFormTab1Component implements OnInit {
     ctrl9: new FormControl(null, Validators.required),
     ctrl10: new FormControl(null, Validators.required),
     checkBox1: new FormControl(true, Validators.required),
+    checkSwitch1: new FormControl(true, Validators.required),
     ctrl12: new FormControl(null, Validators.required),
     chips1: new FormControl(null, Validators.required),
     chips2: new FormControl(null, Validators.required),

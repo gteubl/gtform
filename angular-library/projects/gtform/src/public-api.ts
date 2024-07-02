@@ -16,6 +16,7 @@ export * from './lib/components/gtform-input-text';
 export * from './lib/components/gtform-progress-stepper';
 export * from './lib/components/gtform-select';
 export * from './lib/components/gtform-spinner';
+export * from './lib/components/gtform-switch';
 export * from './lib/components/gtform-tabs';
 export * from './lib/components/gtform-toast';
 
