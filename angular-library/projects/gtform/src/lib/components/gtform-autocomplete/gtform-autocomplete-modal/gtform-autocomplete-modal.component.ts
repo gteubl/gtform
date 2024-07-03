@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ChoiceOption } from '../../../models';
-import { ModalSizes } from '../../gtform-dynamic-modal/index';
+import { GtformDynamicModalService, ModalSizes } from '../../gtform-dynamic-modal/index';
 import { GridColumn, GridDataSource, GridDataType, GridHeaderConfig } from '../../gtform-grid';
 
 export interface FormAutocompleteModalData {
@@ -24,7 +24,6 @@ export class GtformAutocompleteModalComponent implements OnInit {
       headerText: 'Descrição',
       dataType: GridDataType.STRING
     }
-
   ];
 
   public headerConfig: GridHeaderConfig = {
@@ -34,21 +33,19 @@ export class GtformAutocompleteModalComponent implements OnInit {
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
 
-  public constructor() {
+  public constructor(private modalService: GtformDynamicModalService) {
   }
 
   public ngOnInit(): void {
-    //  this.gridDataSource.next(new GridDataSource<ChoiceOption>(this.config.data.options, this.config.data.options.length));
-    console.log('empty');
+    this.gridDataSource.next(new GridDataSource<ChoiceOption>(this.modalService.config.data.options, this.modalService.config.data.options.length));
   }
 
   public closeDialog(): void {
-    //this.dialogRef.close();
+    this.modalService.close(this);
   }
 
   public rowClicked($event: ChoiceOption): void {
-    //this.dialogRef.close($event);
-    console.log('row clicked', $event);
+    this.modalService.close(this, $event);
 
   }
 }

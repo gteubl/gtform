@@ -12,13 +12,18 @@
 
 ```angular17html
 
-<gtform-autocomplete [allOptions]="(options$ | async)!" [showDefaultGrid]="true" formControlName="uf" label="Estado"
+<gtform-autocomplete [allOptions]="(options$ | async)!" [showDefaultGrid]="true" formControlName="demo" label="Demo"
 ></gtform-autocomplete>
 ```
 
 ```typescript
+import { blankChoiceOption, FormOption } from 'gtform';
 
 export class DemoComponent {
   options$: Observable<FormOption[]>;
+
+  public formGroup: FormGroup = new FormGroup({
+    demo: new FormControl(blankChoiceOption, Validators.required),
+  });
 }
 ```

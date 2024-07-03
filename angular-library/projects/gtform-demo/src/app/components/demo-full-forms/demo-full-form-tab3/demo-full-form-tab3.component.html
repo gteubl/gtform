@@ -22,13 +22,7 @@
   <div class="gtform-row">
     <div class="gtform-col-6">
       <gtform-accordion header="Accordion 1">
-        <gtform-autocomplete [allOptions]="[{
-                           value: '1',
-                           description: 'Option 1'
-                           }, {
-                             value: '2',
-                           description: 'Option 2'
-                           }]" label="AutoComplete"
+        <gtform-autocomplete [allOptions]="autoCompleteDemoOptions" [showDefaultGrid]="true" label="AutoComplete"
         ></gtform-autocomplete>
       </gtform-accordion>
     </div>

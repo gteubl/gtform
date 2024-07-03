@@ -13,7 +13,7 @@ ul {
   position: absolute;
   z-index: 2;
   width: calc(100% - 1em);
- // background-color: $app-back-ground-color;
+  background-color: var(--form-back-ground-color);
   border: 1px solid var(--form-border-color);
 }
 
@@ -39,13 +39,11 @@ li.selected {
 .suggestion {
   position: absolute;
   color: rgba(0, 0, 0, 0.3);
-  font-family: Arial, serif;
   font-size: 1em;
   padding: 0.5em;
   z-index: 2;
   bottom: 1px;
   left: 1px;
-  //height: 1.3em;
 }
 
 .hide {

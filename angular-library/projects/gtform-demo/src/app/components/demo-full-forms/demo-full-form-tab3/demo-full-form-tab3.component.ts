@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { GtformDynamicModalService, GtformToastService, ModalSizes } from 'gtform';
 
+import { ChoiceOption } from '../../../../../../gtform/src/lib/models/index';
+
 import { DemoModalComponent } from './demo-modal/demo-modal.component';
 
 @Component({
@@ -13,6 +15,15 @@ export class DemoFullFormTab3Component {
   protected readonly ModalSizes = ModalSizes;
 
   public constructor(private messageService: GtformToastService, private modalService: GtformDynamicModalService) {
+  }
+
+  public get autoCompleteDemoOptions(): ChoiceOption[] {
+    const qtdOfOptions = 100;
+
+    return Array.from({ length: qtdOfOptions }, (_, i) => ({
+      value: i + 1,
+      description: `Option ${i + 1}`
+    }));
   }
 
   public showBannerBottomSuccessMessage(): void {

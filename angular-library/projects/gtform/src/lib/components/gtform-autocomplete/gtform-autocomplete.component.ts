@@ -4,8 +4,9 @@ import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 import { FormOption } from '../../models';
 import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
+import { GtformDynamicModalService, ModalSizes } from '../gtform-dynamic-modal/index';
 
-
+import { GtformAutocompleteModalComponent } from './gtform-autocomplete-modal/gtform-autocomplete-modal.component';
 
 @Component({
   selector: 'gtform-autocomplete',
@@ -16,7 +17,7 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => GtformAutocompleteComponent),
       multi: true
-    },
+    }
   ]
 })
 export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOption | null> implements OnChanges {
@@ -37,7 +38,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   public searchResults: FormOption[] = [];
   public suggestion: string = '';
 
-  public constructor() {
+  public constructor(private modalService: GtformDynamicModalService) {
     super();
   }
 
@@ -65,24 +66,23 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   }
 
   public dispatchShowDefaultGrid(): void {
-
-    /*  const ref = this.dialog.open(FormAutocompleteModalComponent, {
-      ...ModalDialogSizes.small,
+    const ref = this.modalService.open(GtformAutocompleteModalComponent, {
+      ...ModalSizes.small,
       data: {
-        options: this.allOptions,
+        options: this.allOptions
       },
-      header: this.label
+      title: this.label
 
     });
 
-    ref.onClose.subscribe((result) => {
+    ref.closed.subscribe((result) => {
       if (result) {
         this.writeValue(result);
         this.updateSuggestion();
 
         this.setAutoSearchValid();
       }
-    });*/
+    });
 
   }
 
