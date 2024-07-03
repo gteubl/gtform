@@ -61,7 +61,13 @@ li.selected {
   cursor: pointer;
   color: var(--main-content-text-color);
   font-size: 0.5em;
+
+  &.close {
+    right: 0.3em;
+  }
 }
+
+
 
 
 

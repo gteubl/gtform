@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
-import { FormOption } from '../../models';
+import { blankChoiceOption, FormOption } from '../../models';
 import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 import { GtformDynamicModalService, ModalSizes } from '../gtform-dynamic-modal/index';
@@ -63,6 +63,14 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
     }
 
     this.actionButtonClicked.emit();
+  }
+
+  public onClickClearButton(): void {
+    this.searchTerm = '';
+    this.searchResults = [];
+    this.suggestion = '';
+    this.setAutoSearchValid();
+    this.writeValue(blankChoiceOption);
   }
 
   public dispatchShowDefaultGrid(): void {

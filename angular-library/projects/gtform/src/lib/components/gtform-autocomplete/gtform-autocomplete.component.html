@@ -10,6 +10,9 @@
   ></gtform-input-text>
   <div [class.hide]="!suggestion || suggestion === searchTerm" class="suggestion">{{ suggestion }}
   </div>
+  <div (click)="onClickClearButton()" class="action-button close">
+    <gtform-icon icon="close"></gtform-icon>
+  </div>
   <div (click)="onClickActionButton()" *ngIf="actionButtonIcon != null" class="action-button">
     <gtform-icon [icon]="actionButtonIcon"></gtform-icon>
   </div>
