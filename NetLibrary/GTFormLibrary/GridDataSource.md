@@ -1,4 +1,5 @@
 
+```csharp
 public async Task<GridDataSource<ParteResponseDto>> GetAllParteAsync(GridDataRequest filter)
 {
 var query = _dataContext.Partes.AsQueryable();
@@ -28,3 +29,4 @@ var query = _dataContext.Partes.AsQueryable();
 
         return await data.ToGridDataSourceAsync(filter);
     }
+```
