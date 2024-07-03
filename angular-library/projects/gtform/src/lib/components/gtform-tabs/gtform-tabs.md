@@ -2,12 +2,12 @@ How to use:
 
 ```html
 
-<form class="form-container">
+<div class="form-container">
   <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabs]="tabs">
     <app-component1 [hidden]="activeTab.contentKey !== 'component1'"></app-component1>
     <app-component2 [hidden]="activeTab.contentKey !== 'component2'"></app-component2>
   </gtform-tabs>
-</form>
+</div>
 
 ```
 
