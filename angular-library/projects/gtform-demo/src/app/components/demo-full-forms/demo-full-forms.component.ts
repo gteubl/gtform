@@ -11,19 +11,22 @@ export class DemoFullFormsComponent {
   public tabs: TabLabel[] = [
     {
       label: 'Tab 1',
-      contentKey: 'tab1'
+      id: 'tab1'
     },
     {
       label: 'Tab 2',
-      contentKey: 'tab2'
+      id: 'tab2',
+      canClose: true
     },
     {
       label: 'Tab 3',
-      contentKey: 'tab3'
+      id: 'tab3',
+      canClose: true
     },
     {
       label: 'Tab 4',
-      contentKey: 'tab4'
+      id: 'tab4'
+
     }
 
   ];

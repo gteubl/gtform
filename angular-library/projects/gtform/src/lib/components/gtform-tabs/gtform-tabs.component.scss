@@ -51,6 +51,23 @@
         }
       }
     }
+
+    .tab-label-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      position: relative;
+
+      .text {
+        flex-grow: 1;
+      }
+
+      .close {
+        position: absolute;
+        right: -5px;
+        top: -5px;
+      }
+    }
   }
 
   .tab-container {

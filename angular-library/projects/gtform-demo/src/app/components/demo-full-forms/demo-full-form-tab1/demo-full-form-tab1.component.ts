@@ -14,15 +14,15 @@ export class DemoFullFormTab1Component implements OnInit {
   public tabs: TabLabel[] = [
     {
       label: 'Sub Tab 1',
-      contentKey: 'sub-tab1'
+      id: 'sub-tab1'
     },
     {
       label: 'Sub Tab 2',
-      contentKey: 'sub-tab2'
+      id: 'sub-tab2'
     },
     {
       label: 'Sub Tab 3',
-      contentKey: 'sub-tab3'
+      id: 'sub-tab3'
     }
   ];
   public activeTab: TabLabel = this.tabs[0];
