@@ -1,0 +1,17 @@
+<div class="drawer">
+  <div [class.open]="isLeftOpen"
+       [ngStyle]="{'background-color': backgroundColor, 'color': color, 'width': isLeftOpen ? panelWidth : '0'}"
+       class="left-panel"
+  >
+    <ng-container *ngIf="leftContent" [ngTemplateOutlet]="leftContent"></ng-container>
+  </div>
+  <div [class.left-open]="isLeftOpen" [class.right-open]="isRightOpen" class="main-content">
+    <ng-content></ng-content>
+  </div>
+  <div [class.open]="isRightOpen"
+       [ngStyle]="{'background-color': backgroundColor, 'color': color, 'width': isRightOpen ? panelWidth : '0'}"
+       class="right-panel"
+  >
+    <ng-container *ngIf="rightContent" [ngTemplateOutlet]="rightContent"></ng-container>
+  </div>
+</div>

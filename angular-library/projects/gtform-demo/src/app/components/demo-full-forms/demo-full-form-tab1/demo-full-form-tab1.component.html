@@ -79,7 +79,23 @@
           </div>
         </div>
         <div *ngSwitchCase="tabs[1]">
-          tab 2
+          <gtform-side-drawer #drawer [leftContent]="leftTemplate" [rightContent]="rightTemplate">
+            <p>Main content goes here.</p>
+            <div class="gtform-row">
+              <div class="gtform-col-6">
+                <gtform-button (click)="drawer.toggleLeft()" slot="left">Left</gtform-button>
+              </div>
+              <div class="gtform-col-6">
+                <gtform-button (click)="drawer.toggleRight()" slot="right">Right</gtform-button>
+              </div>
+            </div>
+          </gtform-side-drawer>
+          <ng-template #leftTemplate>
+            <p>Left panel content.</p>
+          </ng-template>
+          <ng-template #rightTemplate>
+            <p>Right panel content.</p>
+          </ng-template>
         </div>
         <div *ngSwitchCase="tabs[2]">
           tab 3

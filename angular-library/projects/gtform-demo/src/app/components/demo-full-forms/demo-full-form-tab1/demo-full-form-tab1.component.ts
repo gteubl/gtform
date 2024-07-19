@@ -11,6 +11,9 @@ import { FormOption } from '../../../../../../gtform/src/lib/models/index';
   styleUrl: './demo-full-form-tab1.component.scss'
 })
 export class DemoFullFormTab1Component implements OnInit {
+
+  // @ViewChild('drawerContent') public drawerContent!: GtformSideDrawerComponent;
+
   public tabs: TabLabel[] = [
     {
       label: 'Sub Tab 1',

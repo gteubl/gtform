@@ -36,6 +36,7 @@ export * from './lib/services';
 // Templates
 export * from './lib/templates/gtform-drawer';
 export * from './lib/templates/gtform-hbf-template';
+export * from './lib/templates/gtform-side-drawer';
 
 //Utils
 export * from './lib/utils';

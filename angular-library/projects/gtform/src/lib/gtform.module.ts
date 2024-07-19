@@ -28,6 +28,7 @@ import { GtformConfig } from './models';
 import { PipesModule } from './pipes';
 import { GtformDrawerModule } from './templates/gtform-drawer';
 import { GtformHbfTemplateModule } from './templates/gtform-hbf-template';
+import { GtformSideDrawerModule } from './templates/gtform-side-drawer/index';
 
 export const ComponentsModules = [
   GtformAccordionModule,
@@ -63,7 +64,8 @@ export const PipesModules = [
 
 export const TemplatesModules = [
   GtformDrawerModule,
-  GtformHbfTemplateModule
+  GtformHbfTemplateModule,
+  GtformSideDrawerModule
 ];
 
 @NgModule({

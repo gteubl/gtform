@@ -1,0 +1,30 @@
+.drawer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  .left-panel,
+  .right-panel {
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+
+  .left-panel.open,
+  .right-panel.open {
+    width: inherit; // Use inherited width from ngStyle
+  }
+
+  .main-content {
+    flex: 1;
+    transition: margin 0.3s ease;
+
+    &.left-open {
+      margin-left: inherit; // Use inherited margin from ngStyle
+    }
+
+    &.right-open {
+      margin-right: inherit; // Use inherited margin from ngStyle
+    }
+  }
+}
