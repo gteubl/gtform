@@ -2,7 +2,7 @@ How to use
 
 ```html
 
-<gtform-side-drawer [leftContent]="leftTemplate" [rightContent]="rightTemplate">
+<gtform-side-drawer [leftContent]="leftTemplate" [rightContent]="rightTemplate" #drawer>
   <p>Main content goes here.</p>
   <gtform-button slot="left" (click)="drawer.toggleLeft()">Left</gtform-button>
   <gtform-button slot="right" (click)="drawer.toggleRight()">Right</gtform-button>
