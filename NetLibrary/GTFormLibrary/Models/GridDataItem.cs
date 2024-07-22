@@ -3,5 +3,5 @@
 public interface IGridDataItem
 {
     bool? Selected { get; set; }
-    int Id { get; set; }
+    Guid Id { get; set; }
 }

@@ -4,8 +4,8 @@ How to use:
 
 <div class="form-container">
   <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabs]="tabs">
-    <app-component1 [hidden]="activeTab.contentKey !== 'component1'"></app-component1>
-    <app-component2 [hidden]="activeTab.contentKey !== 'component2'"></app-component2>
+    <app-component1 [hidden]="activeTab.id !== 'component1'"></app-component1>
+    <app-component2 [hidden]="activeTab.id !== 'component2'"></app-component2>
   </gtform-tabs>
 </div>
 
@@ -16,11 +16,11 @@ export class DemoComponent {
   public tabs: TabLabel[] = [
     {
       label: 'Component1',
-      contentKey: 'component1'
+      id: 'component1'
     },
     {
       label: 'Component2',
-      contentKey: 'component2'
+      id: 'component2'
     }
   ];
 
