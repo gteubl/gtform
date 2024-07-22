@@ -5,4 +5,5 @@ export interface GridRowActions {
   text: string;
   action: (row: GridRow) => void;
   disabled?: boolean;
+  show?: boolean;
 }

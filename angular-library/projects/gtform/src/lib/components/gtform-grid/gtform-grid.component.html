@@ -140,10 +140,12 @@
             <ng-template #opRowAction>
               <div (click)="onActionClick(action, actionsOverlay)"
                    *ngFor="let action of gridRowActions"
-                   class="action-item {{ action.disabled ? 'disabled' : '' }}"
+                   class="{{action.show ? 'action-item' : '' }} {{ action.disabled ? 'disabled' : '' }}"
               >
-                <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon" fontSize="1rem"></gtform-icon>
-                <span>{{ action.text }}</span>
+                <ng-container *ngIf="action.show">
+                  <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon" fontSize="1rem"></gtform-icon>
+                  <span>{{ action.text }}</span>
+                </ng-container>
               </div>
             </ng-template>
           </td>
