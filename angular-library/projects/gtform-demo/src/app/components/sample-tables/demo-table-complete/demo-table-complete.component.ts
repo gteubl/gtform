@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ChoiceOption, GridColumn, GridDataSource, GridDataType, GridHeaderConfig, GridRow, GridRowActions } from 'gtform';
+import { ChoiceOption, GridColumn, GridDataSource, GridDataType, GridHeaderConfig, GridRow, GridRowActions, GridRowStyles } from 'gtform';
 
 export interface DemoData {
   id: number,
@@ -38,14 +38,35 @@ export class DemoTableCompleteComponent implements OnInit {
     {
       icon: 'edit',
       action: (row) => this.dispatchEdit(row),
-      text: 'Edit'
+      text: 'Edit',
+      show: (row) => row.rawData.id != 1
     },
     {
       icon: 'delete',
       action: (row) => this.dispatchDelete(row),
       text: 'Delete'
+    },
+    {
+      icon: 'add',
+      action: (row) => this.dispatchAdd(row),
+      disabled: (row) => row.rawData.column2,
+
+      text: 'Add'
     }
   ];
+
+  public gridRowsStyles: GridRowStyles[] = [
+    {
+      color: (row) => row.rawData.column2 ? 'white' : null,
+      backgroundColor: (row) => row.rawData.column2 ? 'red' : null
+    },
+    {
+      fontWeight: (row) => row.rawData.id == 1 ? 'bold' : null,
+      fontStyle: (row) => row.rawData.id == 3 ? 'italic' : null
+    }
+
+  ];
+
   public headerConfig: GridHeaderConfig = {
     showFilter: true,
     actionsButtons: [
@@ -76,12 +97,58 @@ export class DemoTableCompleteComponent implements OnInit {
       column2: false,
       colum4: { value: 3, description: 'Choice 3' }
 
+    },
+    {
+      id: 4,
+      column1: 'Column 4',
+      column2: false,
+      colum4: { value: 4, description: 'Choice 4' }
+    },
+    {
+      id: 5,
+      column1: 'Column 5',
+      column2: false,
+      colum4: { value: 5, description: 'Choice 5' }
+    },
+    {
+      id: 6,
+      column1: 'Column 6',
+      column2: false,
+      colum4: { value: 6, description: 'Choice 6' }
+    },
+    {
+      id: 7,
+      column1: 'Column 7',
+      column2: false,
+      colum4: { value: 7, description: 'Choice 7' }
+    },
+    {
+      id: 8,
+      column1: 'Column 8',
+      column2: false,
+      colum4: { value: 8, description: 'Choice 8' }
+    },
+    {
+      id: 9,
+      column1: 'Column 9',
+      column2: false,
+      colum4: { value: 9, description: 'Choice 9' }
+    },
+    {
+      id: 10,
+      column1: 'Column 10',
+      column2: false,
+      colum4: { value: 10, description: 'Choice 10' }
     }
 
   ];
 
   public ngOnInit(): void {
     this.gridDataSource = new GridDataSource<DemoData>(this.mockData, this.mockData.length);
+  }
+
+  private dispatchAdd(row: GridRow): void {
+    alert(`Add row ${row.rawData.id}`);
   }
 
   private dispatchDelete(row: GridRow): void {

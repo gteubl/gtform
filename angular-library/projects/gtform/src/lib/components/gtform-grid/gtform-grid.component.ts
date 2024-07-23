@@ -1,6 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 
 import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 
@@ -22,11 +32,13 @@ import {
   GridRow,
   GridRowActions
 } from './models';
+import { GridRowStyles } from './models/grid-row-styles';
 
 @Component({
   selector: 'gtform-grid',
   templateUrl: './gtform-grid.component.html',
-  styleUrls: ['./gtform-grid.component.scss']
+  styleUrls: ['./gtform-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
@@ -44,6 +56,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
   };
   @Input() public remoteDataSource = false;
   @Input() public gridRowActions: GridRowActions[] = [];
+  @Input() public gridRowStyles: GridRowStyles[] = [];
   @Input() public headerConfig: GridHeaderConfig = {
     showFilter: false,
     actionsButtons: []
@@ -110,6 +123,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     }
 
     if (changes['gridRowActions']?.currentValue) {
+      console.log('gridRowActions', this.gridRowActions);
       this.showRowsActions = this.gridRowActions?.length > 0;
     }
 
@@ -149,8 +163,12 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   // Actions
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public onActionClick(action: GridRowActions, actionsOverlay: OverlayPanelDirective): void {
+  public onActionClick(row: GridRow, action: GridRowActions, actionsOverlay: OverlayPanelDirective): void {
     actionsOverlay.hide();
+    if (action.disabled && action.disabled(this.currentRow!)) {
+      return;
+
+    }
     action.action(this.currentRow!);
   }
 
@@ -389,6 +407,26 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
       this.rowSelected.emit(cleanedSelectedRows);
     }
 
+  }
+
+  public getBackgroundColor(row: GridRow): string | null {
+    const styles = this.gridRowStyles.find(style => style.backgroundColor && style.backgroundColor(row));
+    return styles && styles.backgroundColor ? styles.backgroundColor(row) : null;
+  }
+
+  public getColor(row: GridRow): string | null {
+    const styles = this.gridRowStyles.find(style => style.color && style.color(row));
+    return styles && styles.color ? styles.color(row) : null;
+  }
+
+  public getFontStyle(row: GridRow): string | null {
+    const style = this.gridRowStyles.find(style => style.fontStyle && style.fontStyle(row));
+    return style && style.fontStyle ? style.fontStyle(row) : null;
+  }
+
+  public getFontWeight(row: GridRow): string | null {
+    const style = this.gridRowStyles.find(style => style.fontWeight && style.fontWeight(row));
+    return style && style.fontWeight ? style.fontWeight(row) : null;
   }
 
   public openContextMenu(event: MouseEvent, row: GridRow): void {

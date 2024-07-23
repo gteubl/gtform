@@ -10,3 +10,4 @@ export * from './grid-header-config';
 export * from './grid-row';
 export * from './grid-row-actions';
 export * from './grid-sort-info';
+export * from './grid-row-styles';

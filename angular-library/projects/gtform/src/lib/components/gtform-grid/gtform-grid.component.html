@@ -80,7 +80,17 @@
       <tr (click)="setCurrentRow(row)"
           (contextmenu)="openContextMenu($event, row)"
           *ngFor="let row of dataArray | async, let idx = index "
-          [ngClass]="{'row-hover': rowHover, 'active': row == activeRow && enableActiveRow}"
+          [ngClass]="{
+          'row-hover': rowHover,
+          'active': row == activeRow && enableActiveRow,
+            'dynamic-style': getBackgroundColor(row) !== null
+          }"
+          [ngStyle]="{
+               'background-color': getBackgroundColor(row),
+              'color': getColor(row),
+              'font-weight': getFontWeight(row),
+              'font-style': getFontStyle(row),
+                          }"
           class="row-hover"
       >
         <ng-container *ngIf="showNumber">
@@ -138,12 +148,14 @@
                                 icon="more_vert"
             ></gtform-button-icon>
             <ng-template #opRowAction>
-              <div (click)="onActionClick(action, actionsOverlay)"
-                   *ngFor="let action of gridRowActions"
-                   class="{{action.show ? 'action-item' : '' }} {{ action.disabled ? 'disabled' : '' }}"
+              <div (click)="onActionClick(row, action, actionsOverlay)" *ngFor="let action of gridRowActions" [ngClass]="{
+                'action-item': action.show ? action.show(row) : true,
+                'disabled': action.disabled && action.disabled(row)
+              }"
               >
-                <ng-container *ngIf="action.show">
-                  <gtform-icon [disabled]="action.disabled ?? false" [icon]="action.icon" fontSize="1rem"></gtform-icon>
+                <ng-container *ngIf="action.show ? action.show(row) : true">
+                  <gtform-icon [disabled]="action.disabled ? action.disabled(row) : false" [icon]="action.icon" fontSize="1rem"
+                  ></gtform-icon>
                   <span>{{ action.text }}</span>
                 </ng-container>
               </div>
