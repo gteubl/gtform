@@ -76,7 +76,7 @@ export class DemoTableCompleteComponent implements OnInit {
       },
       {
         icon: 'delete',
-        action: () => console.warn('Delete button clicked'),
+        action: () => console.log('Delete button clicked'),
         tooltip: 'Delete button',
         toggle: true
       }

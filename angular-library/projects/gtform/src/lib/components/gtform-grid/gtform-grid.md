@@ -36,7 +36,7 @@ export class GridComponent {
       },
       {
         icon: 'delete',
-        action: () => alert('Delete button clicked'),
+        action: () => console.log('Delete button clicked'),
         tooltip: 'Delete button',
         toggle: true
       }
