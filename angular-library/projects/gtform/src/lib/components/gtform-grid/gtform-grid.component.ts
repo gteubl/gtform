@@ -123,7 +123,6 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
     }
 
     if (changes['gridRowActions']?.currentValue) {
-      console.log('gridRowActions', this.gridRowActions);
       this.showRowsActions = this.gridRowActions?.length > 0;
     }
 
