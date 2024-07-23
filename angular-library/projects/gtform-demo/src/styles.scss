@@ -2,7 +2,14 @@
 @import 'material-icons/iconfont/material-icons.css';
 @import "../../../dist/gtform/lib/styles/global.scss";
 
-
+html, body {
+  //height: 100%;
+  //width: 100%;
+  background-color: lightgrey;
+  //background-image: var(--form-header-control-background-img);
+  //color: var(--main-content-text-color);
+  //font-size: var(--app-font-size);
+}
 
 [data-theme="test"] {
   --primary-color: #ff0000;
