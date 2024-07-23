@@ -10,6 +10,10 @@
   justify-content: center;
   cursor: pointer;
 
+  &.toggle {
+    background-color: var(--form-control-disabled-color);
+  }
+
   &:hover {
     background-color: var(--form-border-color);
   }

@@ -32,7 +32,7 @@ import {
   GridRow,
   GridRowActions
 } from './models';
-import { GridRowStyles } from './models/grid-row-styles';
+import { GridRowStyles } from './models/index';
 
 @Component({
   selector: 'gtform-grid',
@@ -76,7 +76,7 @@ export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {
 
   // @ViewChild('opRowAction') public contextMenu: OverlayPanel | undefined;
   public currentRow: GridRow | null = null;
-  public activeRow: GridRow | null = null; //TODO Juntar con currentRow ?
+  public activeRow: GridRow | null = null; //TODO Merge with currentRow ?
   public dataArray = new BehaviorSubject<GridRow[]>([]);
   public columnsToFilter: GridColumn[] = [];
   public gridFooterInfo = new BehaviorSubject<GridFooterInfo>({

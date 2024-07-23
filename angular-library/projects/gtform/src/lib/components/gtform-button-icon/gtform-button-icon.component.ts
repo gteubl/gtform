@@ -9,7 +9,10 @@ export class GtformButtonIconComponent {
 
   @Input() public disabled: boolean = false;
   @Input() public icon!: string;
+  @Input() public toggle: boolean = false;
   @Output() public btnClick = new EventEmitter<void>();
+
+  public active: boolean = false;
 
   // Actions
   public onClick(): void {
@@ -17,6 +20,7 @@ export class GtformButtonIconComponent {
     if (this.disabled) {
       return;
     }
+    this.active = !this.active;
     this.btnClick.emit();
 
   }

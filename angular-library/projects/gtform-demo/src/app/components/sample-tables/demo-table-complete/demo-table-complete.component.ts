@@ -73,6 +73,12 @@ export class DemoTableCompleteComponent implements OnInit {
         icon: 'add',
         action: () => alert('Add new row'),
         tooltip: 'Add new row'
+      },
+      {
+        icon: 'delete',
+        action: () => console.warn('Delete button clicked'),
+        tooltip: 'Delete button',
+        toggle: true
       }
     ]
   };

@@ -31,8 +31,14 @@ export class GridComponent {
     actionsButtons: [
       {
         icon: 'add',
-        action: () => this.dispatchAddNewLocal(),
-        tooltip: 'Adicionar local'
+        action: () => alert('Add new row'),
+        tooltip: 'Add new row'
+      },
+      {
+        icon: 'delete',
+        action: () => alert('Delete button clicked'),
+        tooltip: 'Delete button',
+        toggle: true
       }
     ]
   };

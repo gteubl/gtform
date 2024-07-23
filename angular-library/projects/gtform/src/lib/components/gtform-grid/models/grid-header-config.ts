@@ -4,6 +4,7 @@ export interface GridHeaderActionsButtons {
   disabled?: boolean;
   icon: string;
   tooltip?: string;
+  toggle?: boolean;
 }
 
 export interface GridHeaderMoreActions {
