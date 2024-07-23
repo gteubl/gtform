@@ -64,7 +64,6 @@ export class DemoTableCompleteComponent implements OnInit {
       fontWeight: (row) => row.rawData.id == 1 ? 'bold' : null,
       fontStyle: (row) => row.rawData.id == 3 ? 'italic' : null
     }
-
   ];
 
   public headerConfig: GridHeaderConfig = {

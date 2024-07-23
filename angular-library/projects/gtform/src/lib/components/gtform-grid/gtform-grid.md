@@ -8,6 +8,7 @@ Como utilizar:
       <gtform-grid [dataSource]="(gridDataSource$ | async)!"
                    [gridColumns]="defaultGridColumns"
                    [gridRowActions]="gridRowActions"
+                   [gridRowStyles]="gridRowsStyles"
                    [remoteDataSource]="true"
                    [headerConfig]="headerConfig"
                    (gridDataRequestChanged)="dispatchGetAllLocal($event)"
@@ -80,13 +81,26 @@ export class GridComponent {
     {
       icon: 'open_in_new',
       action: (row) => this.dispatchOpenLocal(row),
-      text: 'Abrir local'
+      text: 'Abrir local',
+      show: (row) => row.rawData.id != 1
     },
     {
       icon: 'edit',
       action: (row) => this.dispatchEditLocal(row),
-      text: 'Editar local'
+      text: 'Editar local',
+      disabled: (row) => row.rawData.column2,
     },
+  ];
+
+  public gridRowsStyles: GridRowStyles[] = [
+    {
+      color: (row) => row.rawData.column2 ? 'white' : null,
+      backgroundColor: (row) => row.rawData.column2 ? 'red' : null
+    },
+    {
+      fontWeight: (row) => row.rawData.id == 1 ? 'bold' : null,
+      fontStyle: (row) => row.rawData.id == 3 ? 'italic' : null
+    }
   ];
 
   public ngOnInit(): void {
