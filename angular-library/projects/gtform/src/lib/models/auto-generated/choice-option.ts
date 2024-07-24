@@ -4,6 +4,6 @@
  */
 
 export interface ChoiceOption {
-    value: number;
+    value: string;
     description: string;
 }

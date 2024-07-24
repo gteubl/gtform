@@ -4,8 +4,8 @@ namespace GTFormLibrary.Utils;
 
 public static class ModelUtils
 {
-    public static ChoiceOption CreateChoiceOption(int? cod, string? nome)
+    public static ChoiceOption CreateChoiceOption(Guid? cod, string? nome)
     {
-        return new ChoiceOption(cod ?? 0, nome ?? "");
+        return new ChoiceOption(cod ?? Guid.Empty, nome ?? "");
     }
 }

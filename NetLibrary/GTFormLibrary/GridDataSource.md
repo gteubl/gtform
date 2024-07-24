@@ -25,8 +25,6 @@ public class TenantGridResponse : IGridDataItem
 ```csharp
 public async Task<GridDataSource<ParteResponseDto>> GetAllParteAsync(GridDataRequest filter)
 {
-var query = _dataContext.Partes.AsQueryable();
-
          var query = _context.Tenants.AsQueryable();
 
         // Apply Filters
@@ -54,4 +52,5 @@ var query = _dataContext.Partes.AsQueryable();
         }).AsNoTracking();
 
         return await data.ToGridDataSourceAsync(filter);
+}
 ```
