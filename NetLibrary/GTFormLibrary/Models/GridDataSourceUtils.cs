@@ -9,6 +9,7 @@ public static class GridDataSourceUtils
     public static async Task<GridDataSource<T>> ToGridDataSourceAsync<T>(this IQueryable<T> query, GridDataRequest request) where T : IGridDataItem
     {
         var count = await query.CountAsync();
+        query = EnsureOrderBy(query, request);
         var items = await query.Skip(request.Skip).Take(request.Take).ToListAsync();
 
         return new GridDataSource<T>(items, request.Skip, request.Take, count);
@@ -17,6 +18,7 @@ public static class GridDataSourceUtils
     public static GridDataSource<T> ToGridDataSource<T>(this IQueryable<T> query, GridDataRequest request) where T : IGridDataItem
     {
         var count = query.Count();
+        query = EnsureOrderBy(query, request);
         var items = query.Skip(request.Skip).Take(request.Take).ToList();
 
         return new GridDataSource<T>(items, request.Skip, request.Take, count);
@@ -42,6 +44,15 @@ public static class GridDataSourceUtils
         if (!string.IsNullOrEmpty(request.OrderBy))
         {
             query = query.OrderBy($"{request.OrderBy} {(request.OrderDescending ? "descending" : "ascending")}");
+        }
+        return query;
+    }
+
+    private static IQueryable<T> EnsureOrderBy<T>(IQueryable<T> query, GridDataRequest request)
+    {
+        if (!query.Expression.ToString().Contains("OrderBy"))
+        {
+            query = query.OrderBy("Id");
         }
         return query;
     }
