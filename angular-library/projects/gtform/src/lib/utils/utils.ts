@@ -1,4 +1,4 @@
-import { FormOption } from '../models';
+import { ChoiceOption } from '../models';
 
 export function nameof<T>(key: Extract<keyof T, string>): string {
   return key;
@@ -16,22 +16,22 @@ const HonorarioEventFriendlyNames: Record<keyof typeof HonorarioEvent, string> =
 };
 * */
 
-export function enumToFormOption<T extends object>(enumObj: T, friendlyNames?: Record<keyof T, string>): FormOption[] {
+export function enumToFormOption<T extends object>(enumObj: T, friendlyNames?: Record<keyof T, string>): ChoiceOption[] {
   const keys = Object.keys(enumObj).filter(key => isNaN(Number(key)));
 
-  return keys.map((key): FormOption => ({
-    value: enumObj[key as keyof T] as number,
+  return keys.map((key): ChoiceOption => ({
+    value: enumObj[key as keyof T] as string,
     description: friendlyNames ? friendlyNames[key as keyof T] || key : key
   }));
 }
 
-export function formOptionToEnum<T extends object>(enumObj: T, choiceOption: FormOption): T[keyof T] {
+export function formOptionToEnum<T extends object>(enumObj: T, choiceOption: ChoiceOption): T[keyof T] {
   const keys = Object.keys(enumObj).filter(key => isNaN(Number(key)));
   const key = keys.find(k => enumObj[k as keyof T] === choiceOption.value);
   return enumObj[key as keyof T];
 }
 
-export function getFilteredEnumOptions<T extends object>(enumType: T, friendlyNames: Record<keyof T, string>, excludeValues: any[]): FormOption[] {
+export function getFilteredEnumOptions<T extends object>(enumType: T, friendlyNames: Record<keyof T, string>, excludeValues: any[]): ChoiceOption[] {
   const allOptions = enumToFormOption(enumType, friendlyNames);
   return allOptions.filter(option => !excludeValues.includes(option.value));
 }

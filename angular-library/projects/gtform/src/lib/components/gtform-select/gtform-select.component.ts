@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { FormOption } from '../../models';
+import { ChoiceOption } from '../../models';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
 @Component({
@@ -15,11 +15,11 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor';
       multi: true
     }]
 })
-export class GtformSelectComponent extends BaseControlValueAccessor<FormOption | null> {
+export class GtformSelectComponent extends BaseControlValueAccessor<ChoiceOption | null> {
   @Input() public placeholder: string = '';
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
-  @Input() public options: FormOption[] = [];
+  @Input() public options: ChoiceOption[] = [];
 
   public constructor() {
     super();
@@ -29,7 +29,7 @@ export class GtformSelectComponent extends BaseControlValueAccessor<FormOption |
     this.disabled = isDisabled;
   }
 
-  public override writeValue(value: FormOption | null): void {
+  public override writeValue(value: ChoiceOption | null): void {
     if (value !== null && this.options.some(option => option.value === value.value)) {
       this.value = value;
     } else {

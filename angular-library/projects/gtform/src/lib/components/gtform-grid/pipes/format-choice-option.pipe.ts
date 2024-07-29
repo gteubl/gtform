@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { FormOption } from '../../../models';
+import { ChoiceOption } from '../../../models';
 
 @Pipe({
   name: 'formatChoiceOption'
 })
 export class FormatChoiceOptionPipe implements PipeTransform {
 
-  public transform(value: FormOption): string {
+  public transform(value: ChoiceOption): string {
     if (!value) {
       return '';
     }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { FormOption } from '../../models';
+import { ChoiceOption } from '../../models';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 import { GtformDynamicModalService, ModalSizes } from '../gtform-dynamic-modal/index';
 
@@ -18,19 +18,19 @@ import { GtformChipsModalComponent } from './gtform-chips-modal/gtform-chips-mod
       multi: true
     }]
 })
-export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]> implements OnChanges {
+export class GtformChipsComponent extends BaseControlValueAccessor<ChoiceOption[]> implements OnChanges {
   @Input() public placeholder: string = '';
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
   @Input() public invalid: boolean = false;
-  @Input() public allOptions: FormOption[] = [];
+  @Input() public allOptions: ChoiceOption[] = [];
   @Input() public actionButtonIcon: string | null = null;
   @Input() public showDefaultGrid: boolean = false;
   @Input() public allowFreeText: boolean = false;
 
   @Output() public actionButtonClicked = new EventEmitter<void>();
-  @Output() public valueChangeD = new EventEmitter<FormOption>();
-  public chipsValues: FormOption[] = [];
+  @Output() public valueChangeD = new EventEmitter<ChoiceOption>();
+  public chipsValues: ChoiceOption[] = [];
   public isModalOpen = false;
   public inputValue: string = '';
 
@@ -87,7 +87,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
 
   public addChip(description: string): void {
     if (description && !this.chipsValues.some(chip => chip.description === description)) {
-      const newChip: FormOption = {
+      const newChip: ChoiceOption = {
         value: description,
         description: description
       };
@@ -126,7 +126,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<FormOption[]>
     this.disabled = isDisabled;
   }
 
-  public override writeValue(value: FormOption[]): void {
+  public override writeValue(value: ChoiceOption[]): void {
     this.chipsValues = value || [];
     this.value = value;
   }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
-import { blankChoiceOption, FormOption } from '../../models';
+import { ChoiceOption } from '../../models';
 import { includesAccentInsensitive, startsWithAccentInsensitive } from '../../utils';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 import { GtformDynamicModalService, ModalSizes } from '../gtform-dynamic-modal/index';
@@ -20,12 +20,12 @@ import { GtformAutocompleteModalComponent } from './gtform-autocomplete-modal/gt
     }
   ]
 })
-export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOption | null> implements OnChanges {
+export class GtformAutocompleteComponent extends BaseControlValueAccessor<ChoiceOption | null> implements OnChanges {
   @Input() public placeholder: string = '';
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
   @Input() public invalid: boolean = false;
-  @Input() public allOptions: FormOption[] = [];
+  @Input() public allOptions: ChoiceOption[] = [];
   @Input() public actionButtonIcon: string | null = null;
   @Input() public showDefaultGrid: boolean = false;
 
@@ -35,7 +35,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   @ViewChild(NgModel) public model!: NgModel;
 
   public searchTerm: string = '';
-  public searchResults: FormOption[] = [];
+  public searchResults: ChoiceOption[] = [];
   public suggestion: string = '';
 
   public constructor(private modalService: GtformDynamicModalService) {
@@ -70,7 +70,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
     this.searchResults = [];
     this.suggestion = '';
     this.setAutoSearchValid();
-    this.writeValue(blankChoiceOption);
+    this.writeValue({ value: '', description: '' });
   }
 
   public dispatchShowDefaultGrid(): void {
@@ -153,7 +153,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
     this.disabled = isDisabled;
   }
 
-  public override writeValue(value: FormOption): void {
+  public override writeValue(value: ChoiceOption): void {
     if (value !== this.innerValue) {
       this.innerValue = value;
       this.searchTerm = value?.description || '';
@@ -175,7 +175,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<FormOp
   // Selectors
   public selectedIndex: number = -1;
 
-  public selectItem(item: FormOption): void {
+  public selectItem(item: ChoiceOption): void {
     this.searchTerm = item.description;
     this.searchResults = [];
     this.selectedIndex = -1;

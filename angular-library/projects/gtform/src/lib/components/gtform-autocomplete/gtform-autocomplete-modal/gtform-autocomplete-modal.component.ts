@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ChoiceOption } from '../../../models';
@@ -21,7 +22,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
   public gridColumns: GridColumn[] = [
     {
       propertyName: 'description',
-      headerText: 'Descrição',
+      headerText: this.translateService.instant('DESCRIPTION'),
       dataType: GridDataType.STRING
     }
   ];
@@ -33,7 +34,7 @@ export class GtformAutocompleteModalComponent implements OnInit {
   private gridDataSource = new BehaviorSubject(new GridDataSource<ChoiceOption>([], 0));
   public gridDataSource$ = this.gridDataSource.asObservable();
 
-  public constructor(private modalService: GtformDynamicModalService) {
+  public constructor(private modalService: GtformDynamicModalService, private translateService: TranslateService) {
   }
 
   public ngOnInit(): void {

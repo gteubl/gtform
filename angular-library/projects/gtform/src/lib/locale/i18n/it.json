@@ -1,8 +1,9 @@
 {
   "LANGUAGE": "Italiano",
   "GRID": {
-    "FILTER-COLUMN" : "Filtra per colonna",
-    "PAGE" : "Pagina",
-    "PAGE-OF" : "Pagina {{current}} di {{total}}"
-  }
+    "FILTER-COLUMN": "Filtra per colonna",
+    "PAGE": "Pagina",
+    "PAGE-OF": "Pagina {{current}} di {{total}}"
+  },
+  "DESCRIPTION": "Descrizione"
 }
