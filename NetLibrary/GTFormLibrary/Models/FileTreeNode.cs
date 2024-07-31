@@ -11,6 +11,7 @@ public class FileTreeNode
     public FileTreeNodeType Type { get; set; }
     public string ParentId { get; set; }
     public string Extension { get; set; }
+
     [TsType("any")]
     public object Payload { get; set; }
 }

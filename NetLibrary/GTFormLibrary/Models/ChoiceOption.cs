@@ -5,12 +5,12 @@ namespace GTFormLibrary.Models;
 [ExportTsInterface]
 public class ChoiceOption
 {
-    public ChoiceOption(Guid value, string description)
+    public ChoiceOption(string value, string description)
     {
         Value = value;
         Description = description;
     }
 
-    public Guid Value { get; set; }
+    public string Value { get; set; }
     public string Description { get; set; }
 }
