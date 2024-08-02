@@ -14,8 +14,8 @@ export class GtformSideDrawerComponent {
   @Input() public panelWidth: string = '250px';
   @Input() public backgroundColor: string = 'var(--primary-color)';
   @Input() public color: string = 'var(--text-color-secondary)';
-  public isLeftOpen = false;
-  public isRightOpen = false;
+  @Input() public isLeftOpen = false;
+  @Input() public isRightOpen = false;
 
   public constructor(private cdr: ChangeDetectorRef) {
   }
