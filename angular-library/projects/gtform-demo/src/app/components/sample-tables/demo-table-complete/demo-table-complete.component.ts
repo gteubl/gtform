@@ -88,62 +88,62 @@ export class DemoTableCompleteComponent implements OnInit {
       id: 1,
       column1: 'Column 1',
       column2: false,
-      colum4: { value: 1, description: 'Choice 1' }
+      colum4: { value: '1', description: 'Choice 1' }
     },
     {
       id: 2,
       column1: 'Column 2',
       column2: true,
-      colum4: { value: 2, description: 'Choice 2' }
+      colum4: { value: '2', description: 'Choice 2' }
     },
     {
       id: 3,
       column1: 'Column 3',
       column2: false,
-      colum4: { value: 3, description: 'Choice 3' }
+      colum4: { value: '3', description: 'Choice 3' }
 
     },
     {
       id: 4,
       column1: 'Column 4',
       column2: false,
-      colum4: { value: 4, description: 'Choice 4' }
+      colum4: { value: '4', description: 'Choice 4' }
     },
     {
       id: 5,
       column1: 'Column 5',
       column2: false,
-      colum4: { value: 5, description: 'Choice 5' }
+      colum4: { value: '5', description: 'Choice 5' }
     },
     {
       id: 6,
       column1: 'Column 6',
       column2: false,
-      colum4: { value: 6, description: 'Choice 6' }
+      colum4: { value: '6', description: 'Choice 6' }
     },
     {
       id: 7,
       column1: 'Column 7',
       column2: false,
-      colum4: { value: 7, description: 'Choice 7' }
+      colum4: { value: '7', description: 'Choice 7' }
     },
     {
       id: 8,
       column1: 'Column 8',
       column2: false,
-      colum4: { value: 8, description: 'Choice 8' }
+      colum4: { value: '8', description: 'Choice 8' }
     },
     {
       id: 9,
       column1: 'Column 9',
       column2: false,
-      colum4: { value: 9, description: 'Choice 9' }
+      colum4: { value: '9', description: 'Choice 9' }
     },
     {
       id: 10,
       column1: 'Column 10',
       column2: false,
-      colum4: { value: 10, description: 'Choice 10' }
+      colum4: { value: '10', description: 'Choice 10' }
     }
 
   ];

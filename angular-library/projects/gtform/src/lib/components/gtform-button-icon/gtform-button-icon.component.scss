@@ -10,6 +10,17 @@
   justify-content: center;
   cursor: pointer;
 
+  &.small {
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  &.large {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+
   &.toggle {
     background-color: var(--form-control-disabled-color);
   }

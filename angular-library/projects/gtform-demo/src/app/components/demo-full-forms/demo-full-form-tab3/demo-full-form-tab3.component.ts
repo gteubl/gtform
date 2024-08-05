@@ -21,7 +21,7 @@ export class DemoFullFormTab3Component {
     const qtdOfOptions = 100;
 
     return Array.from({ length: qtdOfOptions }, (_, i) => ({
-      value: i + 1,
+      value: (i + 1).toString(),
       description: `Option ${i + 1}`
     }));
   }

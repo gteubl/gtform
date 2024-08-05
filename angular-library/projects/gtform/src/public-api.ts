@@ -23,6 +23,7 @@ export * from './lib/components/gtform-toast';
 //Directives
 export * from './lib/directives/overlay-panel';
 export * from './lib/directives/tooltip';
+export * from './lib/directives/drag-control-panel';
 
 //Models
 export * from './lib/models';

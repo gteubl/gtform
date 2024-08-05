@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { TabLabel } from 'gtform';
 
-import { FormOption } from '../../../../../../gtform/src/lib/models/index';
+import { ChoiceOption } from '../../../../../../gtform/src/lib/models/index';
 
 @Component({
   selector: 'app-demo-full-form-tab1',
@@ -29,20 +29,20 @@ export class DemoFullFormTab1Component implements OnInit {
     }
   ];
   public activeTab: TabLabel = this.tabs[0];
-  public selectOptions1: FormOption[] = [
-    { value: -1, description: '' },
-    { value: 1, description: 'Option 1' },
-    { value: 2, description: 'Option 2' },
-    { value: 3, description: 'Option 3' },
-    { value: 4, description: 'Option 4' },
-    { value: 5, description: 'Option 5' }];
+  public selectOptions1: ChoiceOption[] = [
+    { value: '-1', description: '' },
+    { value: '1', description: 'Option 1' },
+    { value: '2', description: 'Option 2' },
+    { value: '3', description: 'Option 3' },
+    { value: '4', description: 'Option 4' },
+    { value: '5', description: 'Option 5' }];
 
-  public chips1Options: FormOption[] = [
-    { value: 1, description: 'Option 1' },
-    { value: 2, description: 'Option 2' },
-    { value: 3, description: 'Option 3' },
-    { value: 4, description: 'Option 4' },
-    { value: 5, description: 'Option 5' }
+  public chips1Options: ChoiceOption[] = [
+    { value: '1', description: 'Option 1' },
+    { value: '2', description: 'Option 2' },
+    { value: '3', description: 'Option 3' },
+    { value: '4', description: 'Option 4' },
+    { value: '5', description: 'Option 5' }
   ];
   //FormGroups
   public formGroup = new FormGroup({

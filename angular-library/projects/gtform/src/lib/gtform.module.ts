@@ -21,6 +21,7 @@ import { GtformSpinnerModule } from './components/gtform-spinner';
 import { GtformSwitchModule } from './components/gtform-switch/index';
 import { GtformTabsModule } from './components/gtform-tabs';
 import { GtformToastModule } from './components/gtform-toast';
+import { GtformDragControlPanelModule } from './directives/drag-control-panel/index';
 import { GtformOverlayPanelModule } from './directives/overlay-panel';
 import { GtformTooltipModule } from './directives/tooltip';
 import { GtformCoreModule } from './gtform-core.module';
@@ -55,7 +56,8 @@ export const ComponentsModules = [
 
 export const DirectivesModules = [
   GtformOverlayPanelModule,
-  GtformTooltipModule
+  GtformTooltipModule,
+  GtformDragControlPanelModule
 ];
 
 export const PipesModules = [
