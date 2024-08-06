@@ -18,11 +18,18 @@ $breakpoints: (
   }
 }
 
+// Box-sizing border-box for all elements
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 // Generate column classes
 @for $i from 1 through 12 {
   .gtform-col-#{$i} {
     flex: 0 0 calc((100% / 12) * #{$i});
     max-width: calc((100% / 12) * #{$i});
+    padding-right: 0.25em;
+    padding-left: 0.25em;
   }
 }
 
@@ -33,34 +40,25 @@ $breakpoints: (
       .gtform-col-#{$breakpoint}-#{$i} {
         flex: 0 0 calc((100% / 12) * #{$i});
         max-width: calc((100% / 12) * #{$i});
+        padding-right: 0.25em;
+        padding-left: 0.25em;
       }
     }
   }
 }
 
 .gtform-container {
-  .gtform-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em 1em; // vertical gap, horizontal gap
-    margin-bottom: 0.5em;
-
-    // Ensure no margins or paddings are applied that could break the layout
-    > [class*='gtform-col-'] {
-      flex: 1 1 auto;
-      margin-bottom: 0.5em;
-    }
-  }
-}
-
-.gtform-container {
-  padding: 0.3em;
+  padding-right: 0.25em;
+  padding-left: 0.25em;
   margin: 0 auto;
 }
 
 .gtform-row {
   display: flex;
   flex-wrap: wrap;
+  margin-right: -0.25em;
+  margin-left: -0.25em;
+  margin-bottom: 0.5em;
 }
 
 .gtform-group {
@@ -71,7 +69,7 @@ $breakpoints: (
   height: 100%;
   width: 1px;
   background-color: var(--form-border-color);
-  margin-left: 0.5em
+  margin-left: 0.5em;
 }
 
 .gtform-row-center {

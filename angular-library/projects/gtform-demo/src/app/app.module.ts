@@ -17,9 +17,10 @@ import { DemoFullFormTab3Component } from './components/demo-full-forms/demo-ful
 import { DemoModalComponent } from './components/demo-full-forms/demo-full-form-tab3/demo-modal/demo-modal.component';
 import { DemoFullFormTab4Component } from './components/demo-full-forms/demo-full-form-tab4/demo-full-form-tab4.component';
 import { DemoFullFormsComponent } from './components/demo-full-forms/demo-full-forms.component';
-import { DemoLoremIpsumComponent } from './components/demo-lorem-ipsum/demo-lorem-ipsum.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { DemoTableCompleteComponent } from './components/sample-tables/demo-table-complete/demo-table-complete.component';
+import { DemoLoremIpsumComponent } from './components/shared/demo-lorem-ipsum/demo-lorem-ipsum.component';
+import { DemoTableCompleteComponent } from './components/shared/demo-table-complete/demo-table-complete.component';
+import { FormBuilderSampleComponent } from './components/shared/form-builder-sample/form-builder-sample.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DemoTableCompleteComponent } from './components/sample-tables/demo-tabl
     DemoFullFormTab3Component,
     DemoFullFormTab4Component,
     NavbarComponent,
-    DemoModalComponent
+    DemoModalComponent,
+    FormBuilderSampleComponent
 
   ],
   imports: [
