@@ -1,0 +1,26 @@
+/* Animate items as they're being sorted */
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate an item that has been dropped */
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Style for custom placeholder */
+.example-custom-placeholder {
+  background: #f0f0f0; /* Light grey background */
+  border: 2px dashed #ccc; /* Dashed border */
+  min-height: 60px; /* Minimum height */
+  width: 100%; /* Full width of the column */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666; /* Text color */
+  font-size: 1rem;
+}
+
+
+
