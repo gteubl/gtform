@@ -3,11 +3,13 @@ import {
   ComponentRef,
   Directive,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   Renderer2,
   ViewContainerRef
 } from '@angular/core';
@@ -19,6 +21,8 @@ import { GtformDragControlPanelMenuComponent } from './gtform-drag-control-panel
 })
 export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDestroy {
   @Input() public enableMenu: boolean = true;
+  @Output() public editEvent = new EventEmitter<void>();
+  @Output() public deleteEvent = new EventEmitter<void>();
 
   private componentRef: ComponentRef<GtformDragControlPanelMenuComponent> | null = null;
 
@@ -30,7 +34,6 @@ export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDes
   }
 
   public ngOnChanges(): void {
-    console.log('Enable menu:', this.enableMenu);
     if (this.enableMenu) {
       this.addMenu();
     } else {
@@ -54,11 +57,7 @@ export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDes
 
   // Actions
   private onDelete(): void {
-    console.log('Delete action triggered');
-  }
-
-  private onDrag(): void {
-    console.log('Drag action triggered');
+    this.deleteEvent.emit();
   }
 
   @HostListener('cdkDragEnded', ['$event'])
@@ -78,7 +77,7 @@ export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDes
   }
 
   private onEdit(): void {
-    console.log('Edit action triggered');
+    this.editEvent.emit();
   }
 
   private addMenu(): void {
@@ -88,7 +87,6 @@ export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDes
     const componentRef = this.viewContainerRef.createComponent(GtformDragControlPanelMenuComponent);
     const instance = componentRef.instance;
 
-    instance.dragEvent.subscribe(() => this.onDrag());
     instance.editEvent.subscribe(() => this.onEdit());
     instance.deleteEvent.subscribe(() => this.onDelete());
 

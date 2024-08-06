@@ -11,8 +11,12 @@
       <div class="gtform-container" style="margin-top: 1rem">
         <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="formControls" cdkDropList class="gtform-row">
           <ng-container *ngFor="let control of formControls">
-            <div cdkDrag class="gtform-col-6">
-              <gtform-input-text [label]="control.label" gtformDragControlPanel></gtform-input-text>
+            <div [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-6">
+              <gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
+                                 [enableMenu]="isEditEnabled"
+                                 [label]="control.label"
+                                 gtformDragControlPanel
+              ></gtform-input-text>
             </div>
           </ng-container>
         </div>
@@ -20,6 +24,16 @@
     </gtform-side-drawer>
     <ng-template #leftTemplate>
       <div class="gtform-container">
+        <div class="gtform-row">
+          <div class="gtform-col-12">
+            <gtform-button (click)="tgogleEdit()">Enable Edit</gtform-button>
+          </div>
+        </div>
+        <div class="gtform-row">
+          <div class="gtform-col-12">
+            <h3>Available Controls</h3>
+          </div>
+        </div>
         <div class="gtform-row">
           <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="controlsAvailable" cdkDropList class="gtform-col-12">
             <div *ngFor="let control of controlsAvailable" cdkDrag>{{ control.label }}</div>

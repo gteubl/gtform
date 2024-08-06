@@ -16,6 +16,7 @@ export interface Control {
 })
 export class FormBuilderSampleComponent {
 
+  public isEditEnabled: boolean = true;
   public controlsAvailable: Control[] = [
     {
       type: 'text',
@@ -25,7 +26,6 @@ export class FormBuilderSampleComponent {
       required: true
     }
   ];
-
   public formControls: Control[] = [
     {
       type: 'text',
@@ -48,14 +48,16 @@ export class FormBuilderSampleComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       this.formControls.push(event.previousContainer.data[event.previousIndex]);
-      /* transferArrayItem(
-         event.previousContainer.data,
-         event.container.data,
-         event.previousIndex,
-         event.currentIndex
-       );*/
     }
 
+  }
+
+  public removeControlFromFormControls(control: Control): void {
+    this.formControls = this.formControls.filter(item => item !== control);
+  }
+
+  public tgogleEdit(): void {
+    this.isEditEnabled = !this.isEditEnabled;
   }
 
 }
