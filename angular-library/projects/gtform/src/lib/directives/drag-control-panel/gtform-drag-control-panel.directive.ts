@@ -1,12 +1,23 @@
 import { CdkDragEnd, CdkDragStart } from '@angular/cdk/drag-drop';
-import { ComponentRef, Directive, ElementRef, HostListener, Input, OnChanges, OnDestroy, Renderer2, ViewContainerRef } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewContainerRef
+} from '@angular/core';
 
 import { GtformDragControlPanelMenuComponent } from './gtform-drag-control-panel-menu/gtform-drag-control-panel-menu.component';
 
 @Directive({
   selector: '[gtformDragControlPanel]'
 })
-export class GtformDragControlPanelDirective implements OnChanges, OnDestroy {
+export class GtformDragControlPanelDirective implements OnInit, OnChanges, OnDestroy {
   @Input() public enableMenu: boolean = true;
 
   private componentRef: ComponentRef<GtformDragControlPanelMenuComponent> | null = null;
@@ -19,12 +30,19 @@ export class GtformDragControlPanelDirective implements OnChanges, OnDestroy {
   }
 
   public ngOnChanges(): void {
+    console.log('Enable menu:', this.enableMenu);
     if (this.enableMenu) {
       this.addMenu();
     } else {
       if (this.componentRef) {
         this.componentRef.destroy();
       }
+    }
+  }
+
+  public ngOnInit(): void {
+    if (this.enableMenu) {
+      this.addMenu();
     }
   }
 

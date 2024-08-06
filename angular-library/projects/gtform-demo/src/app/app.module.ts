@@ -1,3 +1,4 @@
+import { CdkDrag, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -54,7 +55,10 @@ import { FormBuilderSampleComponent } from './components/shared/form-builder-sam
     GtformModule.forRoot({
       defaultLang: 'en',
       defaultTheme: 'light'
-    })
+    }),
+    CdkDropListGroup,
+    CdkDropList,
+    CdkDrag
   ],
   bootstrap: [AppComponent]
 })

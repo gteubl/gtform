@@ -1,1 +1,31 @@
-<p>form-builder-sample works!</p>
+<gtform-hbf-template>
+  <div class="gtform-container" header>
+    <div class="gtform-row">
+      <div class="gtform-col-6">
+        <gtform-button (click)="drawer.toggleLeft()">Show Panel</gtform-button>
+      </div>
+    </div>
+  </div>
+  <div body cdkDropListGroup>
+    <gtform-side-drawer #drawer [isLeftOpen]="true" [leftContent]="leftTemplate">
+      <div class="gtform-container" style="margin-top: 1rem">
+        <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="formControls" cdkDropList class="gtform-row">
+          <ng-container *ngFor="let control of formControls">
+            <div cdkDrag class="gtform-col-6">
+              <gtform-input-text [label]="control.label" gtformDragControlPanel></gtform-input-text>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </gtform-side-drawer>
+    <ng-template #leftTemplate>
+      <div class="gtform-container">
+        <div class="gtform-row">
+          <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="controlsAvailable" cdkDropList class="gtform-col-12">
+            <div *ngFor="let control of controlsAvailable" cdkDrag>{{ control.label }}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</gtform-hbf-template>

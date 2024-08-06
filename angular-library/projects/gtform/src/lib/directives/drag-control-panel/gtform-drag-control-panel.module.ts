@@ -1,4 +1,4 @@
-import { CdkDragHandle } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -17,7 +17,8 @@ import { GtformDragControlPanelDirective } from './gtform-drag-control-panel.dir
     CommonModule,
     GtformButtonIconModule,
     GtformIconModule,
-    CdkDragHandle
+    CdkDragHandle,
+    CdkDrag
   ],
   exports: [
     GtformDragControlPanelDirective,
