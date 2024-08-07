@@ -9,10 +9,14 @@
   <div body cdkDropListGroup>
     <gtform-side-drawer #drawer [isLeftOpen]="true" [leftContent]="leftTemplate">
       <div class="gtform-container" style="margin-top: 1rem">
-        <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="formControls" cdkDropList class="gtform-row">
-          <div *ngFor="let control of formControls" [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-12">
-            <div *cdkDragPlaceholder class="example-custom-placeholder"></div>
-            <gtform-input-text *cdkDragPreview></gtform-input-text>
+        <div (cdkDropListDropped)="drop($event)"
+             [cdkDropListData]="formControls"
+             cdkDropList
+             cdkDropListOrientation="mixed"
+             class="gtform-row"
+        >
+          <div *cdkDragPlaceholder class="gtform-col-6 example-custom-placeholder"></div>
+          <div *ngFor="let control of formControls" [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-6">
             <gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
                                [enableMenu]="isEditEnabled"
                                [label]="control.label"
@@ -37,11 +41,11 @@
         <div class="gtform-row">
           <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="controlsAvailable" cdkDropList class="gtform-col-12"
           >
-            <div *ngFor="let control of controlsAvailable" cdkDrag class="gtform-col-6">
+            <div *ngFor="let control of controlsAvailable" cdkDrag class="gtform-col-12">
               {{ control.label }}
-              <!-- Placeholder for available controls drop list -->
-              <div *cdkDragPlaceholder class="example-custom-placeholder"></div>
-              <gtform-input-text *cdkDragPreview></gtform-input-text>
+              <div *cdkDragPlaceholder class="gtform-col-6">
+                <gtform-input-text [label]="control.label"></gtform-input-text>
+              </div>
             </div>
           </div>
         </div>

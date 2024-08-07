@@ -82,7 +82,8 @@
               "projects/gtform-demo/src/assets",
               {
                 "glob": "**/*",
-                "input": "node_modules/gtform/lib/i18n",
+                // "input": "node_modules/gtform/lib/i18n",
+                "input": "dist/gtform/lib/i18n",
                 "output": "/assets/gtform/i18n"
               }
             ],
