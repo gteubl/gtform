@@ -9,20 +9,16 @@
   <div body cdkDropListGroup>
     <gtform-side-drawer #drawer [isLeftOpen]="true" [leftContent]="leftTemplate">
       <div class="gtform-container" style="margin-top: 1rem">
-        <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="formControls" cdkDropList class="gtform-row"
-        >
-          <ng-container *ngFor="let control of formControls">
-            <div [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-6">
-              <gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
-                                 [enableMenu]="isEditEnabled"
-                                 [label]="control.label"
-                                 gtformDragControlPanel
-              ></gtform-input-text>
-              <!-- Placeholder for form controls drop list -->
-              <div *cdkDragPlaceholder class="gtform-col-6 example-custom-placeholder"></div>
-              <gtform-input-text *cdkDragPreview></gtform-input-text>
-            </div>
-          </ng-container>
+        <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="formControls" cdkDropList class="gtform-row">
+          <div *ngFor="let control of formControls" [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-12">
+            <div *cdkDragPlaceholder class="example-custom-placeholder"></div>
+            <gtform-input-text *cdkDragPreview></gtform-input-text>
+            <gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
+                               [enableMenu]="isEditEnabled"
+                               [label]="control.label"
+                               gtformDragControlPanel
+            ></gtform-input-text>
+          </div>
         </div>
       </div>
     </gtform-side-drawer>
@@ -44,7 +40,7 @@
             <div *ngFor="let control of controlsAvailable" cdkDrag class="gtform-col-6">
               {{ control.label }}
               <!-- Placeholder for available controls drop list -->
-              <div *cdkDragPlaceholder class="gtform-col-6 example-custom-placeholder"></div>
+              <div *cdkDragPlaceholder class="example-custom-placeholder"></div>
               <gtform-input-text *cdkDragPreview></gtform-input-text>
             </div>
           </div>

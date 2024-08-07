@@ -47,7 +47,7 @@ export class FormBuilderSampleComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      this.formControls.push(event.previousContainer.data[event.previousIndex]);
+      this.formControls.splice(event.currentIndex, 0, event.previousContainer.data[event.previousIndex]);
     }
 
   }
