@@ -24,9 +24,7 @@ export class FormBuilderSampleComponent {
       name: 'firstName',
       value: 'John',
       required: true
-    }
-  ];
-  public formControls: Control[] = [
+    },
     {
       type: 'text',
       label: 'Last Name',
@@ -38,6 +36,28 @@ export class FormBuilderSampleComponent {
       type: 'email',
       label: 'Email',
       name: 'email',
+      value: ''
+    },
+    {
+      type: 'tel',
+      label: 'Phone',
+      name: 'phone',
+      value: ''
+    }
+
+  ];
+  public formControls: Control[] = [
+    {
+      type: 'text',
+      label: 'Address',
+      name: 'address',
+      value: 'Doe',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Zip Code',
+      name: 'zipCode',
       value: ''
     }
   ];
@@ -56,7 +76,7 @@ export class FormBuilderSampleComponent {
     this.formControls = this.formControls.filter(item => item !== control);
   }
 
-  public tgogleEdit(): void {
+  public toggleEdit(): void {
     this.isEditEnabled = !this.isEditEnabled;
   }
 

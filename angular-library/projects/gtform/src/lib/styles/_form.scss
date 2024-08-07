@@ -96,14 +96,14 @@ $breakpoints: (
 }
 
 // MATERIAL DESIGN DRAG AND DROP STYLES
-.cdk-drag-preview {
+/*.cdk-drag-preview {
   opacity: 0.7;
   border: 1px dashed #ccc;
-  z-index: 1000; /* Ensure the preview is on top */
-}
+  z-index: 1000; !* Ensure the preview is on top *!
+}*/
 
 .cdk-drag-placeholder {
-  background: var(--form-back-ground-color);
+  background: var(--form-place-holder-background-color);
   border: 2px dashed var(--form-border-color);
   min-height: 60px;
   transition: transform 0.2s ease, height 0.2s ease, width 0.2s ease;
@@ -113,6 +113,15 @@ $breakpoints: (
   transition: transform 0.2s ease;
 }
 
-.cdk-drop-list-dragging .gtform-col-12, .cdk-drop-list-dragging .gtform-col-6, .cdk-drop-list-dragging .gtform-col-4, .cdk-drop-list-dragging .gtform-col-3 {
-  transition: transform 0.2s ease, height 0.2s ease, width 0.2s ease;
+.cdk-drop-list-dragging {
+  .gtform-col-12,
+  .gtform-col-10,
+  .gtform-col-8,
+  .gtform-col-6,
+  .gtform-col-4,
+  .gtform-col-3,
+  .gtform-col-2 {
+    transition: transform 0.2s ease, height 0.2s ease, width 0.2s ease;
+  }
 }
+
