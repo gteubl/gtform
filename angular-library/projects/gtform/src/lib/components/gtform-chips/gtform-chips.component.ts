@@ -26,7 +26,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<ChoiceOption[
   @Input() public allOptions: ChoiceOption[] = [];
   @Input() public actionButtonIcon: string | null = null;
   @Input() public showDefaultGrid: boolean = false;
-  @Input() public allowFreeText: boolean = false;
+  @Input() public allowFreeText: boolean = true;
 
   @Output() public actionButtonClicked = new EventEmitter<void>();
   @Output() public valueChangeD = new EventEmitter<ChoiceOption>();
