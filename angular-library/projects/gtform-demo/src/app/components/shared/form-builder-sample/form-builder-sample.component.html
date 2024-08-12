@@ -17,11 +17,12 @@
         >
           <ng-container *cdkDragPlaceholder></ng-container>
           <div *ngFor="let control of formControls" [cdkDragDisabled]="!isEditEnabled" cdkDrag class="gtform-col-6">
-            <gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
+            <!--<gtform-input-text (deleteEvent)="removeControlFromFormControls(control)"
                                [enableMenu]="isEditEnabled"
                                [label]="control.label"
                                gtformDragControlPanel
-            ></gtform-input-text>
+            ></gtform-input-text>-->
+            <gtform-dynamic-field [config]="control"></gtform-dynamic-field>
           </div>
         </div>
       </div>
@@ -47,7 +48,7 @@
           >
             <div *ngFor="let control of controlsAvailable" cdkDrag class="gtform-col-12">
               <div *cdkDragPlaceholder class="gtform-col-6">
-                <gtform-input-text [label]="control.label"></gtform-input-text>
+                <gtform-input-text [label]="control.label ?? ''"></gtform-input-text>
               </div>
               <div class="controller-sample">
                 <gtform-icon color="var(--form-header-control-color)" fontSize="1rem" icon="edit"></gtform-icon>

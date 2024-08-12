@@ -42,6 +42,9 @@ export * from './lib/templates/gtform-side-drawer';
 //Utils
 export * from './lib/utils';
 
+//Form Builder
+export * from './lib/form-builder';
+
 //Modules
 export * from './lib/gtform-core.module';
 export * from './lib/gtform.module';

@@ -24,6 +24,7 @@ import { GtformToastModule } from './components/gtform-toast';
 import { GtformDragControlPanelModule } from './directives/drag-control-panel/index';
 import { GtformOverlayPanelModule } from './directives/overlay-panel';
 import { GtformTooltipModule } from './directives/tooltip';
+import { GtformFormBuilderModule } from './form-builder/index';
 import { GtformCoreModule } from './gtform-core.module';
 import { GtformConfig } from './models';
 import { PipesModule } from './pipes';
@@ -70,6 +71,10 @@ export const TemplatesModules = [
   GtformSideDrawerModule
 ];
 
+export const FormBuilderModules = [
+  GtformFormBuilderModule
+];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -77,7 +82,8 @@ export const TemplatesModules = [
     ...ComponentsModules,
     ...DirectivesModules,
     ...PipesModules,
-    ...TemplatesModules
+    ...TemplatesModules,
+    ...FormBuilderModules
 
   ],
   exports: [
@@ -85,7 +91,8 @@ export const TemplatesModules = [
     ...ComponentsModules,
     ...DirectivesModules,
     ...PipesModules,
-    ...TemplatesModules
+    ...TemplatesModules,
+    ...FormBuilderModules
   ]
 })
 export class GtformModule {

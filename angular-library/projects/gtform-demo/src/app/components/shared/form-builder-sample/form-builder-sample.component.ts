@@ -1,13 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
-export interface Control {
-  type: string;
-  label: string;
-  name: string;
-  value: string;
-  required?: boolean;
-}
+import { ControlConfig } from '../../../../../../gtform/src/lib/form-builder/index';
 
 @Component({
   selector: 'app-form-builder-sample',
@@ -17,52 +11,52 @@ export interface Control {
 export class FormBuilderSampleComponent {
 
   public isEditEnabled: boolean = true;
-  public controlsAvailable: Control[] = [
+  public controlsAvailable: ControlConfig[] = [
     {
       type: 'text',
       label: 'First Name',
-      name: 'firstName',
+      formControlName: 'firstName',
       value: 'John',
       required: true
     },
     {
       type: 'text',
       label: 'Last Name',
-      name: 'lastName',
+      formControlName: 'lastName',
       value: 'Doe',
       required: true
     },
     {
       type: 'email',
       label: 'Email',
-      name: 'email',
+      formControlName: 'email',
       value: ''
     },
     {
-      type: 'tel',
+      type: 'text',
       label: 'Phone',
-      name: 'phone',
+      formControlName: 'phone',
       value: ''
     }
 
   ];
-  public formControls: Control[] = [
+  public formControls: ControlConfig[] = [
     {
       type: 'text',
       label: 'Address',
-      name: 'address',
+      formControlName: 'address',
       value: 'Doe',
       required: true
     },
     {
       type: 'text',
       label: 'Zip Code',
-      name: 'zipCode',
+      formControlName: 'zipCode',
       value: ''
     }
   ];
 
-  public drop(event: CdkDragDrop<Control[]>): void {
+  public drop(event: CdkDragDrop<ControlConfig[]>): void {
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -72,7 +66,7 @@ export class FormBuilderSampleComponent {
 
   }
 
-  public removeControlFromFormControls(control: Control): void {
+  public removeControlFromFormControls(control: ControlConfig): void {
     this.formControls = this.formControls.filter(item => item !== control);
   }
 
