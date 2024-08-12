@@ -4,7 +4,10 @@
     <gtform-dynamic-field [config]="field"></gtform-dynamic-field>
   </div>
   <div class="gtform-field-container">
-    <gtform-icon color="var(--form-header-control-color)" fontSize="1rem" icon="edit"></gtform-icon>
+    <gtform-icon [icon]="getIconForComponentType(field.componentType)"
+                 color="var(--form-header-control-color)"
+                 fontSize="1rem"
+    ></gtform-icon>
     <span class="text">{{ field.fieldLabel }}</span>
   </div>
 </div>

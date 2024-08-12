@@ -36,11 +36,21 @@ export const GtformAvailableDynamicControls: ControlConfig[] = [
   {
     id: '4',
     fieldName: 'InputDate',
-    componentValueType: ComponentValueType.Date,
-    componentType: ComponentType.InputDate,
-    fieldLabel: 'InputDate',
+    componentValueType: ComponentValueType.String,
+    componentType: ComponentType.InputText,
+    fieldLabel: 'Text',
     isRequired: false,
     order: 4,
+    choiceOptions: []
+  },
+  {
+    id: '5',
+    fieldName: 'InputDate',
+    componentValueType: ComponentValueType.Date,
+    componentType: ComponentType.InputDate,
+    fieldLabel: 'Date',
+    isRequired: false,
+    order: 5,
     choiceOptions: []
   },
   {
@@ -48,7 +58,7 @@ export const GtformAvailableDynamicControls: ControlConfig[] = [
     fieldName: 'InputCurrency',
     componentValueType: ComponentValueType.String,
     componentType: ComponentType.InputCurrency,
-    fieldLabel: 'InputCurrency',
+    fieldLabel: 'Currency',
     isRequired: false,
     order: 6,
     choiceOptions: []
@@ -58,7 +68,7 @@ export const GtformAvailableDynamicControls: ControlConfig[] = [
     fieldName: 'InputNumber',
     componentValueType: ComponentValueType.Integer,
     componentType: ComponentType.InputNumber,
-    fieldLabel: 'InputNumber',
+    fieldLabel: 'Number',
     isRequired: false,
     order: 7,
     choiceOptions: []

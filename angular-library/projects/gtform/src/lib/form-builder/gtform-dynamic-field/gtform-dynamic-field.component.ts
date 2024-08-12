@@ -2,6 +2,7 @@
 import { Component, Input, OnInit, Type, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { ComponentType } from '../../models/index';
 import { GtformDynamicFieldDirective } from '../directives/gtform-dynamic-field.directive';
 import { ControlConfig } from '../models/control-config';
 import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.service';
@@ -32,6 +33,14 @@ export class GtformDynamicFieldComponent implements OnInit {
     Object.keys(standardizedConfig).forEach(input => {
       (componentRef.instance as any)[input] = standardizedConfig[input];
     });
+
+    if (this.config.componentType === ComponentType.InputCurrency) {
+      (componentRef.instance as any).formatType = 'currency';
+    }
+
+    if (this.config.componentType === ComponentType.InputNumber) {
+      (componentRef.instance as any).formatType = 'numbers';
+    }
 
     // Attach form control and form group if available
     if (this.formGroup) {
