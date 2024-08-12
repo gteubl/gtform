@@ -1,5 +1,8 @@
-﻿namespace GTFormLibrary.Models;
+﻿using TypeGen.Core.TypeAnnotations;
 
+namespace GTFormLibrary.Models;
+
+[ExportTsEnum]
 public enum ComponentType
 {
     AutoComplete,

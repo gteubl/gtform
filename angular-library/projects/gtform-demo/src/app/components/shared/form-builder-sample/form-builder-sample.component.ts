@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
 import { ControlConfig } from '../../../../../../gtform/src/lib/form-builder/index';
+import { ComponentType, ComponentValueType } from '../../../../../../gtform/src/lib/models/index';
 
 @Component({
   selector: 'app-form-builder-sample',
@@ -13,47 +14,73 @@ export class FormBuilderSampleComponent {
   public isEditEnabled: boolean = true;
   public controlsAvailable: ControlConfig[] = [
     {
-      type: 'text',
-      label: 'First Name',
+      id: '1',
+      fieldName: 'firstName',
       formControlName: 'firstName',
-      value: 'John',
-      required: true
+      componentValueType: ComponentValueType.String,
+      componentType: ComponentType.InputText,
+      fieldValueAsString: 'John',
+      fieldLabel: 'First Name',
+      isRequired: true,
+      order: 1,
+      choiceOptions: [],
+      style: 'gtform-col-6'
     },
     {
-      type: 'text',
-      label: 'Last Name',
+      id: '2',
+      fieldName: 'lastName',
       formControlName: 'lastName',
-      value: 'Doe',
-      required: true
+      componentValueType: ComponentValueType.String,
+      componentType: ComponentType.InputText,
+      fieldValueAsString: 'Doe',
+      fieldLabel: 'Last Name',
+      isRequired: true,
+      order: 2,
+      choiceOptions: [],
+      style: 'gtform-col-6'
     },
     {
-      type: 'email',
-      label: 'Email',
+      id: '3',
+      fieldName: 'email',
       formControlName: 'email',
-      value: ''
-    },
-    {
-      type: 'text',
-      label: 'Phone',
-      formControlName: 'phone',
-      value: ''
+      componentValueType: ComponentValueType.String,
+      componentType: ComponentType.InputText,
+      fieldValueAsString: '',
+      fieldLabel: 'Email',
+      isRequired: true,
+      order: 3,
+      choiceOptions: [],
+      style: 'gtform-col-6'
     }
-
   ];
   public formControls: ControlConfig[] = [
     {
-      type: 'text',
-      label: 'Address',
-      formControlName: 'address',
-      value: 'Doe',
-      required: true
+      id: '4',
+      fieldName: 'phone',
+      formControlName: 'phone',
+      componentValueType: ComponentValueType.String,
+      componentType: ComponentType.InputText,
+      fieldValueAsString: '',
+      fieldLabel: 'Phone',
+      isRequired: true,
+      order: 4,
+      choiceOptions: [],
+      style: 'gtform-col-12'
     },
     {
-      type: 'text',
-      label: 'Zip Code',
-      formControlName: 'zipCode',
-      value: ''
+      id: '5',
+      fieldName: 'address',
+      formControlName: 'address',
+      componentValueType: ComponentValueType.String,
+      componentType: ComponentType.InputText,
+      fieldValueAsString: '',
+      fieldLabel: 'Address',
+      isRequired: true,
+      order: 5,
+      choiceOptions: [],
+      style: 'gtform-col-6'
     }
+
   ];
 
   public drop(event: CdkDragDrop<ControlConfig[]>): void {

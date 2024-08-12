@@ -22,18 +22,19 @@ export class GtformDynamicFieldComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const componentType = this.fieldService.getComponentForField(this.config.type) as Type<any>;
+    const componentType = this.fieldService.getComponentForField(this.config.componentType) as Type<any>;
     const componentRef = this.dynamicField.viewContainerRef.createComponent(componentType);
 
-    // Set up inputs dynamically
-    Object.keys(this.config).forEach(input => {
-      if (input !== 'type' && input !== 'events') {
-        (componentRef.instance as any)[input] = this.config[input as keyof ControlConfig];
-      }
+    // Standardize and set up inputs dynamically
+    const standardizedConfig = this.standardizeConfig(this.config);
+
+    // Apply the standardized configuration to the component instance
+    Object.keys(standardizedConfig).forEach(input => {
+      (componentRef.instance as any)[input] = standardizedConfig[input];
     });
 
-    // Attach form control and form group
-    if (this.formGroup === undefined) {
+    // Attach form control and form group if available
+    if (this.formGroup) {
       (componentRef.instance as any).formControlName = this.config.formControlName;
       (componentRef.instance as any).formGroup = this.formGroup;
     }
@@ -47,5 +48,31 @@ export class GtformDynamicFieldComponent implements OnInit {
         }
       });
     }
+  }
+
+  private standardizeConfig(config: ControlConfig): { [key: string]: any } {
+    const standardizedConfig: { [key: string]: any } = {
+      value: config.fieldValueAsString,
+      label: config.fieldLabel,
+      required: config.isRequired,
+      allOptions: config.choiceOptions
+    };
+
+    const standardProperties = [
+      'fieldValueAsString',
+      'fieldLabel',
+      'isRequired',
+      'choiceOptions',
+      'componentType',
+      'events'
+    ];
+
+    Object.keys(config).forEach(key => {
+      if (!standardProperties.includes(key)) {
+        standardizedConfig[key] = config[key as keyof ControlConfig];
+      }
+    });
+
+    return standardizedConfig;
   }
 }

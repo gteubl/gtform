@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Injectable, Type } from '@angular/core';
 
 import { GtformAutocompleteComponent } from '../../components/gtform-autocomplete/index';
 import { GtformInputCheckboxComponent } from '../../components/gtform-checkbox/index';
@@ -7,28 +8,28 @@ import { GtformInputDateComponent } from '../../components/gtform-input-date/ind
 import { GtformInputTextComponent } from '../../components/gtform-input-text/index';
 import { GtformSelectComponent } from '../../components/gtform-select/index';
 import { GtformSwitchComponent } from '../../components/gtform-switch/index';
-import { FieldRegistry } from '../models/field-registry';
+import { ComponentType } from '../../models/index';
 
 @Injectable()
 export class GtformDynamicFieldService {
 
-  private fieldRegistry: FieldRegistry = {
-    autocomplete: GtformAutocompleteComponent,
-    checkbox: GtformInputCheckboxComponent,
-    chips: GtformChipsComponent,
-    date: GtformInputDateComponent,
-    text: GtformInputTextComponent,
-    currency: GtformInputTextComponent,
-    email: GtformInputTextComponent,
-    switch: GtformSwitchComponent,
-    textarea: GtformInputTextComponent,
-    select: GtformSelectComponent
+  private componentRegistry: { [key in ComponentType]: Type<any> } = {
+    [ComponentType.AutoComplete]: GtformAutocompleteComponent,
+    [ComponentType.CheckBox]: GtformInputCheckboxComponent,
+    [ComponentType.Chips]: GtformChipsComponent,
+    [ComponentType.InputDate]: GtformInputDateComponent,
+    [ComponentType.InputText]: GtformInputTextComponent,
+    [ComponentType.InputCurrency]: GtformInputTextComponent,
+    [ComponentType.InputNumber]: GtformInputTextComponent,
+    [ComponentType.Switch]: GtformSwitchComponent,
+    [ComponentType.TextArea]: GtformInputTextComponent,
+    [ComponentType.Select]: GtformSelectComponent
   };
 
   public constructor() {
   }
 
-  public getComponentForField<K extends keyof FieldRegistry>(fieldType: K): FieldRegistry[K] {
-    return this.fieldRegistry[fieldType];
+  public getComponentForField(fieldType: ComponentType): Type<any> {
+    return this.componentRegistry[fieldType];
   }
 }
