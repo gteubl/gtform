@@ -1,4 +1,4 @@
-import { CdkDragPlaceholder } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragPlaceholder } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -26,7 +26,8 @@ import { GtformDynamicFieldService } from './services/gtform-dynamic-field.servi
     CommonModule,
     GtformInputTextModule,
     GtformIconModule,
-    CdkDragPlaceholder
+    CdkDragPlaceholder,
+    CdkDrag
   ],
   providers: [GtformDynamicFieldService]
 })

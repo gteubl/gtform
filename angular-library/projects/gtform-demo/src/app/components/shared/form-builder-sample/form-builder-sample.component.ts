@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
-import { ControlConfig } from '../../../../../../gtform/src/lib/form-builder/index';
+import { ControlConfig, GtformAvailableDynamicControls } from '../../../../../../gtform/src/lib/form-builder/index';
 import { ComponentType, ComponentValueType } from '../../../../../../gtform/src/lib/models/index';
 
 @Component({
@@ -12,47 +12,11 @@ import { ComponentType, ComponentValueType } from '../../../../../../gtform/src/
 export class FormBuilderSampleComponent {
 
   public isEditEnabled: boolean = true;
-  public controlsAvailable: ControlConfig[] = [
-    {
-      id: '1',
-      fieldName: 'firstName',
-      formControlName: 'firstName',
-      componentValueType: ComponentValueType.String,
-      componentType: ComponentType.InputText,
-      fieldValueAsString: 'John',
-      fieldLabel: 'First Name',
-      isRequired: true,
-      order: 1,
-      choiceOptions: [],
-      style: 'gtform-col-6'
-    },
-    {
-      id: '2',
-      fieldName: 'lastName',
-      formControlName: 'lastName',
-      componentValueType: ComponentValueType.String,
-      componentType: ComponentType.InputText,
-      fieldValueAsString: 'Doe',
-      fieldLabel: 'Last Name',
-      isRequired: true,
-      order: 2,
-      choiceOptions: [],
-      style: 'gtform-col-6'
-    },
-    {
-      id: '3',
-      fieldName: 'email',
-      formControlName: 'email',
-      componentValueType: ComponentValueType.String,
-      componentType: ComponentType.InputText,
-      fieldValueAsString: '',
-      fieldLabel: 'Email',
-      isRequired: true,
-      order: 3,
-      choiceOptions: [],
-      style: 'gtform-col-6'
-    }
-  ];
+  public controlsAvailable: ControlConfig[] = GtformAvailableDynamicControls.map(control => ({
+    ...control,
+    style: 'gtform-col-6'
+  }));
+
   public formControls: ControlConfig[] = [
     {
       id: '4',

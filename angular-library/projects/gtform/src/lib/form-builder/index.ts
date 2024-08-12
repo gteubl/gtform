@@ -7,6 +7,7 @@ export * from './gtform-dynamic-available-fields/gtform-dynamic-available-fields
 
 //Models
 export * from './models/control-config';
+export * from './models/avalible-fields';
 
 //Services
 export * from './services/gtform-dynamic-field.service';
