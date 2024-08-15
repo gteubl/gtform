@@ -23,7 +23,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<ChoiceOption[
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
   @Input() public invalid: boolean = false;
-  @Input() public allOptions: ChoiceOption[] = [];
+  @Input() public choiceOptions: ChoiceOption[] = [];
   @Input() public actionButtonIcon: string | null = null;
   @Input() public showDefaultGrid: boolean = false;
   @Input() public allowFreeText: boolean = true;
@@ -41,7 +41,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<ChoiceOption[
   public ngOnChanges(changes: SimpleChanges): void {
 
     if (changes['allOptions'] && changes['allOptions'].currentValue) {
-      this.allOptions = changes['allOptions'].currentValue;
+      this.choiceOptions = changes['allOptions'].currentValue;
     }
 
     if (changes['showDefaultGrid'] && changes['showDefaultGrid'].currentValue) {
@@ -69,7 +69,7 @@ export class GtformChipsComponent extends BaseControlValueAccessor<ChoiceOption[
     const ref = this.modalService.open(GtformChipsModalComponent, {
       ...ModalSizes.medium,
       data: {
-        options: this.allOptions,
+        options: this.choiceOptions,
         selectedOptions: this.chipsValues
       },
       title: this.label

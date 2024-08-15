@@ -19,7 +19,7 @@ export class GtformSelectComponent extends BaseControlValueAccessor<ChoiceOption
   @Input() public placeholder: string = '';
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
-  @Input() public options: ChoiceOption[] = [];
+  @Input() public choiceOptions: ChoiceOption[] = [];
 
   public constructor() {
     super();
@@ -30,7 +30,7 @@ export class GtformSelectComponent extends BaseControlValueAccessor<ChoiceOption
   }
 
   public override writeValue(value: ChoiceOption | null): void {
-    if (value !== null && this.options.some(option => option.value === value.value)) {
+    if (value !== null && this.choiceOptions.some(option => option.value === value.value)) {
       this.value = value;
     } else {
       this.value = null;

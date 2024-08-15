@@ -25,7 +25,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<Choice
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
   @Input() public invalid: boolean = false;
-  @Input() public allOptions: ChoiceOption[] = [];
+  @Input() public choiceOptions: ChoiceOption[] = [];
   @Input() public actionButtonIcon: string | null = null;
   @Input() public showDefaultGrid: boolean = false;
 
@@ -77,7 +77,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<Choice
     const ref = this.modalService.open(GtformAutocompleteModalComponent, {
       ...ModalSizes.small,
       data: {
-        options: this.allOptions
+        options: this.choiceOptions
       },
       title: this.label
 
@@ -139,7 +139,7 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<Choice
 
     this.inputTextChange.emit(this.searchTerm);
 
-    this.searchResults = this.allOptions.filter(option =>
+    this.searchResults = this.choiceOptions.filter(option =>
       includesAccentInsensitive(option.description, this.searchTerm))
       .slice(0, 5);
 
@@ -161,13 +161,13 @@ export class GtformAutocompleteComponent extends BaseControlValueAccessor<Choice
   }
 
   private setAutoSearchValid(): void {
-    const isValid = this.allOptions.some(option => option.description === this.searchTerm);
-    this.onChange(isValid ? this.allOptions.find(option => option.description === this.searchTerm)! : null);
+    const isValid = this.choiceOptions.some(option => option.description === this.searchTerm);
+    this.onChange(isValid ? this.choiceOptions.find(option => option.description === this.searchTerm)! : null);
     this.model?.control?.setErrors(isValid ? null : { 'notInList': true });
   }
 
   private updateSuggestion(): void {
-    const matchingOption = this.allOptions.find(option =>
+    const matchingOption = this.choiceOptions.find(option =>
       startsWithAccentInsensitive(option.description, this.searchTerm));
     this.suggestion = matchingOption ? matchingOption.description : '';
   }

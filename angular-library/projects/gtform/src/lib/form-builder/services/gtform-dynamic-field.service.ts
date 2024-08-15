@@ -26,9 +26,6 @@ export class GtformDynamicFieldService {
     [ComponentType.Select]: GtformSelectComponent
   };
 
-  public constructor() {
-  }
-
   public getComponentForField(fieldType: ComponentType): Type<any> {
     return this.componentRegistry[fieldType];
   }

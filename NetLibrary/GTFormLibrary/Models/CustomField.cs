@@ -24,9 +24,11 @@ public class CustomField
     [TsOptional]
     public string? Style { get; set; }
 
+    [TsType("boolean | Observable<boolean>")]
     public bool IsRequired { get; set; }
 
     public int Order { get; set; }
 
+    [TsType("ChoiceOption[] | Observable<ChoiceOption[]>", "./choice-option")]
     public List<ChoiceOption> ChoiceOptions { get; set; } = [];
 }

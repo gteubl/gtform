@@ -1,7 +1,7 @@
 <ng-container *ngIf="!disabled">
   <div class="input-container">
     <label>{{ label }}:</label> <select [(ngModel)]="value" [disabled]="disabled">
-    <option *ngFor="let option of options" [ngValue]="option">{{ option.description }}</option>
+    <option *ngFor="let option of choiceOptions" [ngValue]="option">{{ option.description }}</option>
   </select>
   </div>
 </ng-container>

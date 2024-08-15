@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit, Type, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+import { Observable, takeWhile } from 'rxjs';
 
 import { ComponentType } from '../../models/index';
 import { GtformDynamicFieldDirective } from '../directives/gtform-dynamic-field.directive';
@@ -12,10 +14,11 @@ import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.serv
   templateUrl: './gtform-dynamic-field.component.html',
   styleUrl: './gtform-dynamic-field.component.scss'
 })
-export class GtformDynamicFieldComponent implements OnInit {
+export class GtformDynamicFieldComponent implements OnInit, OnDestroy {
 
   @Input() public config!: ControlConfig;
   @ViewChild(GtformDynamicFieldDirective, { static: true }) public dynamicField!: GtformDynamicFieldDirective;
+  private isAlive: boolean = true;
   //FormGroups
   @Input() public formGroup: FormGroup | undefined;
 
@@ -29,11 +32,38 @@ export class GtformDynamicFieldComponent implements OnInit {
     // Standardize and set up inputs dynamically
     const standardizedConfig = this.standardizeConfig(this.config);
 
-    // Apply the standardized configuration to the component instance
-    Object.keys(standardizedConfig).forEach(input => {
-      (componentRef.instance as any)[input] = standardizedConfig[input];
+    // Apply the standardized configuration to the component instance, checking for observables
+    Object.keys(standardizedConfig).forEach(inputName => {
+      const inputValue = standardizedConfig[inputName];
+
+      if (inputValue instanceof Observable) {
+        // Subscribe to the observable and assign the emitted value
+        inputValue.pipe(takeWhile(() => this.isAlive)).subscribe(value => {
+          (componentRef.instance as any)[inputName] = value;
+        });
+      } else {
+        // Directly assign the value if it's not an observable
+        (componentRef.instance as any)[inputName] = inputValue;
+      }
     });
 
+    // Apply inputs if available
+    if (this.config.inputs) {
+      Object.keys(this.config.inputs).forEach(inputName => {
+        const inputValue = this.config.inputs![inputName];
+
+        // Check if the input is an Observable
+        if (inputValue instanceof Observable) {
+          inputValue.pipe(takeWhile(() => this.isAlive)).subscribe(value => {
+            (componentRef.instance as any)[inputName] = value;
+          });
+        } else {
+          (componentRef.instance as any)[inputName] = inputValue;
+        }
+      });
+    }
+
+    // Handle specific component types
     if (this.config.componentType === ComponentType.InputCurrency) {
       (componentRef.instance as any).formatType = 'currency';
     }
@@ -49,29 +79,31 @@ export class GtformDynamicFieldComponent implements OnInit {
     }
 
     // Attach event handlers if any
-    if (this.config.events) {
-      Object.keys(this.config.events).forEach(eventName => {
-        const eventHandler = this.config.events![eventName];
+    if (this.config.outputs) {
+      Object.keys(this.config.outputs).forEach(eventName => {
+        const eventHandler = this.config.outputs![eventName];
         if (typeof eventHandler === 'function' && (componentRef.instance as any)[eventName]) {
-          (componentRef.instance as any)[eventName].subscribe(eventHandler);
+          (componentRef.instance as any)[eventName].pipe(takeWhile(() => this.isAlive)).subscribe(eventHandler);
         }
       });
     }
+  }
+
+  public ngOnDestroy(): void {
+    this.isAlive = false;
   }
 
   private standardizeConfig(config: ControlConfig): { [key: string]: any } {
     const standardizedConfig: { [key: string]: any } = {
       value: config.fieldValueAsString,
       label: config.fieldLabel,
-      required: config.isRequired,
-      allOptions: config.choiceOptions
+      required: config.isRequired
     };
 
     const standardProperties = [
       'fieldValueAsString',
       'fieldLabel',
       'isRequired',
-      'choiceOptions',
       'componentType',
       'events'
     ];

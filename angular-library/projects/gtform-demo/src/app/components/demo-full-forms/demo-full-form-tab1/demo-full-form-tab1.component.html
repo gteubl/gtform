@@ -54,14 +54,14 @@
               <gtform-input-date label="Date"></gtform-input-date>
             </div>
             <div class="gtform-col-3">
-              <gtform-select [options]="selectOptions1" formControlName="selectOption1" label="Select"
+              <gtform-select [choiceOptions]="selectOptions1" formControlName="selectOption1" label="Select"
               ></gtform-select>
             </div>
           </div>
           <div class="gtform-row">
             <div class="gtform-col-3">
-              <gtform-chips [allOptions]="chips1Options"
-                            [allowFreeText]="false"
+              <gtform-chips [allowFreeText]="false"
+                            [choiceOptions]="chips1Options"
                             [showDefaultGrid]="true"
                             formControlName="chips1"
                             label="Grid Chips"
