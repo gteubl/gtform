@@ -1,10 +1,9 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, Type, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, Type, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { takeWhile } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
-import { Observable } from 'rxjs';
-
+import { Observable, Subject } from 'rxjs';
 
 import { GtformDynamicFieldDirective } from '../directives/gtform-dynamic-field.directive';
 import { ControlConfig } from '../models/control-config';
@@ -17,12 +16,15 @@ import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.serv
 export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public config!: ControlConfig;
   @ViewChild(GtformDynamicFieldDirective, { static: true }) public dynamicField!: GtformDynamicFieldDirective;
-  private isAlive: boolean = true;
+  private destroy$ = new Subject<void>();
   private componentRef: any;
   //FormGroups
   @Input() public formGroup: FormGroup | undefined;
 
-  public constructor(private fieldService: GtformDynamicFieldService) {
+  public constructor(
+    private fieldService: GtformDynamicFieldService,
+    private cdr: ChangeDetectorRef
+  ) {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -36,7 +38,8 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
   }
 
   public ngOnDestroy(): void {
-    this.isAlive = false;
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private applyInputs(): void {
@@ -45,8 +48,9 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
         const inputValue = this.config.inputs![inputName];
 
         if (inputValue instanceof Observable) {
-          inputValue.pipe(takeWhile(() => this.isAlive)).subscribe(value => {
+          inputValue.pipe(takeUntil(this.destroy$)).subscribe(value => {
             (this.componentRef.instance as any)[inputName] = value;
+            this.cdr.detectChanges(); // Ensure UI updates
           });
         } else {
           (this.componentRef.instance as any)[inputName] = inputValue;
@@ -62,8 +66,9 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
       const inputValue = standardizedConfig[inputName];
 
       if (inputValue instanceof Observable) {
-        inputValue.pipe(takeWhile(() => this.isAlive)).subscribe(value => {
+        inputValue.pipe(takeUntil(this.destroy$)).subscribe(value => {
           (this.componentRef.instance as any)[inputName] = value;
+          this.cdr.detectChanges(); // Ensure UI updates
         });
       } else {
         (this.componentRef.instance as any)[inputName] = inputValue;
@@ -76,7 +81,7 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
       Object.keys(this.config.outputs).forEach(eventName => {
         const eventHandler = this.config.outputs![eventName];
         if (typeof eventHandler === 'function' && (this.componentRef.instance as any)[eventName]) {
-          (this.componentRef.instance as any)[eventName].pipe(takeWhile(() => this.isAlive)).subscribe(eventHandler);
+          (this.componentRef.instance as any)[eventName].pipe(takeUntil(this.destroy$)).subscribe(eventHandler);
         }
       });
     }
@@ -103,7 +108,8 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
     const standardizedConfig: { [key: string]: any } = {
       value: config.fieldValueAsString,
       label: config.fieldLabel,
-      required: config.isRequired
+      required: config.isRequired,
+      enableMenu: config.enableMenu
     };
 
     const standardProperties = [
@@ -111,7 +117,8 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
       'fieldLabel',
       'isRequired',
       'componentType',
-      'events'
+      'events',
+      'enableMenu'
     ];
 
     Object.keys(config).forEach(key => {
@@ -125,9 +132,9 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
 
   private updateComponent(): void {
     if (this.componentRef) {
-      // Update the component instance with the new config
       this.applyStandardizedConfig();
       this.applyInputs();
+      this.cdr.detectChanges(); // Ensure UI updates
     }
   }
 }
