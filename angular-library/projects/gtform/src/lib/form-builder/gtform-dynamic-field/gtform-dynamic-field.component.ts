@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { Observable, Subject } from 'rxjs';
 
+
 import { GtformDynamicFieldDirective } from '../directives/gtform-dynamic-field.directive';
 import { ControlConfig } from '../models/control-config';
 import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.service';
@@ -28,6 +29,7 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes', changes);
     if (changes['config']) {
       this.updateComponent();
     }
@@ -35,11 +37,23 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
 
   public ngOnInit(): void {
     this.createComponent();
+    this.subscribeToConfigObservables();  // Subscribe to config observables
   }
 
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  //Subscribers
+  private subscribeToConfigObservables(): void {
+    if (this.config.enableMenu instanceof Observable) {
+      this.config.enableMenu.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+        this.config = { ...this.config, enableMenu: value }; // Update the config
+        this.updateComponent();
+        this.cdr.detectChanges(); // Trigger change detection
+      });
+    }
   }
 
   private applyInputs(): void {
