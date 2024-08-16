@@ -1,0 +1,13 @@
+<div class="chips-component-container">
+  <label>{{ label }}:</label>
+  <div class="chips-container">
+    <div *ngFor="let chip of chipsValues; let i = index" class="chip">
+      {{ chip.description }}<span (click)="removeChip(i)" class="close-btn">×</span>
+    </div>
+    <input (keydown)="handleKeyDown($event)" [(ngModel)]="inputValue" [placeholder]="placeholder" class="chips-input" type="text"
+    />
+  </div>
+  <div (click)="onClickActionButton()" *ngIf="actionButtonIcon != null" class="action-button">
+    <gtform-icon [icon]="actionButtonIcon"></gtform-icon>
+  </div>
+</div>

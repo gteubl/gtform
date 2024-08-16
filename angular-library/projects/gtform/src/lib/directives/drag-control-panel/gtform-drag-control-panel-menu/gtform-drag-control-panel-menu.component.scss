@@ -1,0 +1,9 @@
+.gtform-drag-menu-container {
+  position: absolute;
+  top: -0.6rem;
+  right: 0;
+  display: flex;
+  background-color: var(--form-chips-background);
+  border: 1px dotted var(--form-header-control-color);
+  border-radius: 4px;
+}

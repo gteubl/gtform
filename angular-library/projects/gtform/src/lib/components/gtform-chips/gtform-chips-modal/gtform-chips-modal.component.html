@@ -1,0 +1,22 @@
+<gtform-hbf-template>
+  <div body class="form-container">
+    <gtform-grid (rowSelected)="onRowSelected($event)"
+                 [dataSource]="(gridDataSource$ | async)!"
+                 [gridColumns]="gridColumns"
+                 [gridHeight]="400 + 'px' "
+                 [headerConfig]="headerConfig"
+                 [isSelectable]="true"
+                 [showFooter]="true"
+    ></gtform-grid>
+  </div>
+  <div footer>
+    <div class="gtform-row">
+      <div class="gtform-col-6">
+        <gtform-button (click)="closeDialog()">Cancelar</gtform-button>
+      </div>
+      <div class="gtform-col-6">
+        <gtform-button (click)="confirm()" color="primary">Confirmar</gtform-button>
+      </div>
+    </div>
+  </div>
+</gtform-hbf-template>

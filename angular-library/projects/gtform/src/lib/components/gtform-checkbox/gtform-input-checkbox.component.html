@@ -1,0 +1,8 @@
+<div class="input-container">
+  <label *ngIf="labelAbove && label.length > 0" class="label-above">{{ label }}:</label>
+  <div class="checkbox-container">
+    <label class="custom-checkbox"> <input (change)="onInput($event)" [checked]="checked" [disabled]="disabled" type="checkbox"/> <span
+      class="checkbox-custom"
+    ></span> <span *ngIf="!labelAbove" class="checkbox-label">{{ label }}</span> </label>
+  </div>
+</div>

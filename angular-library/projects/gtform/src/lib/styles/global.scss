@@ -1,0 +1,21 @@
+@import "variables";
+@import "form";
+@import "tooltip";
+@import "overlay-panel";
+
+
+:root {
+  --app-font-size: 16px; /* Default font size */
+  --main-content-background-color: #fff; /* Default background color */
+  --main-content-text-color: #000; /* Default text color */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--main-content-background-color);
+  color: var(--main-content-text-color);
+  font-size: var(--app-font-size);
+}

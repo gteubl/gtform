@@ -1,0 +1,51 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  .label-above {
+    font-size: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  .switch-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    height: 2.4rem;
+
+    .switch-thumb {
+      width: 3.75rem;
+      height: 1.875rem;
+      background-color: #ccc;
+      border-radius: 20px;
+      position: relative;
+      transition: background-color 0.3s;
+
+      &.active {
+        background-color: var(--primary-color);
+
+        &::after {
+          transform: translateX(1.875rem);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 1.6rem;
+        height: 1.6rem;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+    }
+
+    .switch-label {
+      margin-left: 10px;
+      font-size: 1em;
+    }
+  }
+}

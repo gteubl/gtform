@@ -1,0 +1,10 @@
+<ng-container *ngIf="!disabled">
+  <div class="input-container">
+    <label>{{ label }}:</label> <select [(ngModel)]="value" [disabled]="disabled">
+    <option *ngFor="let option of choiceOptions" [ngValue]="option">{{ option.description }}</option>
+  </select>
+  </div>
+</ng-container>
+<ng-container *ngIf="disabled">
+  <gtform-input-text [disabled]="true" [inputValue]="value?.description ?? ''" [label]="label"></gtform-input-text>
+</ng-container>

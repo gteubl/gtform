@@ -1,0 +1,31 @@
+.icon-btn {
+  border: 1px solid var(--form-border-color);
+  background-color: var(--form-back-ground-color);
+  border-radius: 4px;
+  width: 1.85em;
+  height: 1.85em;
+  margin: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &.small {
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  &.large {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+
+  &.toggle {
+    background-color: var(--form-control-disabled-color);
+  }
+
+  &:hover {
+    background-color: var(--form-border-color);
+  }
+}

@@ -1,0 +1,72 @@
+[data-theme="light"] {
+  --primary-color: #003e55;
+  --secondary-color: #ffc107;
+  --accent-color: #e91e63;
+  --background-color: #f4f4f4;
+  --text-color: #212121;
+  --text-color-secondary: #f4f4f4;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
+
+
+  --header-background-color: #003e55;
+  --header-background-img: linear-gradient(to bottom, #005f7f 0%, #003e55 100%);
+  --header-border-color: #e5e8ea;
+  --header-menu-item-color: #fff;
+
+  --main-content-background-color: #ffffff;
+  --main-content-text-color: #231f20;
+
+  --form-control-disabled-background-color: #e6e6e6;
+  --form-control-disabled-color: #9e9e9e;
+
+  --form-place-holder-background-color: #f0f0f0;
+
+  --form-chips-background: #e8e8e8;
+  --form-back-ground-color: #fff;
+  --form-separetor-line-color: #181818;
+  --form-border-color: #b4b4b4; //var(--form-border-color);
+  --form-control-active-color: #007bff;
+  --form-header-control-background-img: linear-gradient(to bottom, #e8e8e8 0, #e8e8e8 100%);
+  --form-header-control-color: #231f20;
+  --form-header-control-active-background-img: linear-gradient(to bottom, #c9c9c9 0, #c9c9c9 100%);
+  --form-header-control-active-color: #231f20;
+
+}
+
+[data-theme="dark"] {
+  --primary-color: #3c3c3c;
+  --secondary-color: #ffc107;
+  --accent-color: #e91e63;
+  --background-color: #f4f4f4;
+  --text-color: #212121;
+  --text-color-secondary: #f4f4f4;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
+
+  --header-background-color: #3c3c3c;
+  --header-background-img: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+  --header-border-color: #e5e8ea;
+  --header-menu-item-color: #9d9d9d;
+
+  --main-content-background-color: #3c3c3c;
+  --main-content-text-color: #ffffff;
+
+  --form-control-disabled-background-color: #484848;
+  --form-control-disabled-color: #707070;
+
+  --form-place-holder-background-color: #f0f0f0;
+
+  --form-chips-background: #505050;
+  --form-back-ground-color: #3c3c3c;
+  --form-separetor-line-color: #c9c9c9;
+  --form-border-color: #c9c9c9;
+  --form-control-active-color: #007bff;
+  --form-header-control-background-img: linear-gradient(to bottom, #505050 0%, #393939 100%);
+  --form-header-control-color: #ffffff;
+  --form-header-control-active-background-img: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+  --form-header-control-active-color: #c9c9c9;
+
+}

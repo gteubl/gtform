@@ -1,0 +1,18 @@
+.controller-sample {
+  display: flex;
+  color: var(--form-header-control-color);
+  background-color: var(--form-back-ground-color);
+  padding: 0.3rem;
+  align-items: center;
+  border: 1px solid var(--form-border-color);
+  cursor: move;
+
+  &:hover {
+    background-image: var(--form-header-control-active-background-img);
+    color: var(--form-header-control-active-color);
+  }
+
+  .text {
+    padding: 0.3rem;
+  }
+}

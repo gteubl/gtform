@@ -1,0 +1,5 @@
+{
+  "clearOutputDirectory": true,
+  "outputPath": "../../angular-library/projects/gtform/src/lib/models/auto-generated",
+  "useImportType": true
+}

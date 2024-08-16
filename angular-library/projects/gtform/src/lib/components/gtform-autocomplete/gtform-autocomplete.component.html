@@ -1,0 +1,24 @@
+<div class="autocomplete">
+  <gtform-input-text (input)="search()"
+                     (keydown)="handleKeyDown($event)"
+                     [(ngModel)]="searchTerm"
+                     [disabled]="disabled"
+                     [invalid]="invalid"
+                     [label]="label"
+                     [placeholder]="placeholder"
+                     class="form-input"
+  ></gtform-input-text>
+  <div [class.hide]="!suggestion || suggestion === searchTerm" class="suggestion">{{ suggestion }}
+  </div>
+  <div (click)="onClickClearButton()" class="action-button close">
+    <gtform-icon icon="close"></gtform-icon>
+  </div>
+  <div (click)="onClickActionButton()" *ngIf="actionButtonIcon != null" class="action-button">
+    <gtform-icon [icon]="actionButtonIcon"></gtform-icon>
+  </div>
+  <ul *ngIf="searchResults.length > 0">
+    <li (click)="selectItem(item)" *ngFor="let item of searchResults; let i = index" [class.selected]="i === selectedIndex">
+      {{ item.description }}
+    </li>
+  </ul>
+</div>

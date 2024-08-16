@@ -1,0 +1,10 @@
+<div class="input-container">
+  <label>{{ label }}:</label>
+  <input #inputRef
+         [class.invalid]="invalid"
+         (input)="onInput($event)"
+         [placeholder]="placeholder"
+         [value]="value ? value :''"
+         [disabled]="disabled"
+         type="text"/>
+</div>
