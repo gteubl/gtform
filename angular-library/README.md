@@ -1,3 +1,11 @@
+# GTFORM
+
+## Overview
+
+This project is a web application primarily built with Angular and includes a small .NET 8 C# backend. The application features custom UI
+components designed to resemble the classic Windows Forms aesthetic. The key components developed in this project include various input
+elements, select dropdowns, checkboxes, a fully custom table, and reusable templates.
+
 ## Install
 
 ```bash
@@ -125,3 +133,4 @@ export class MyComponent {
   }
 }
 ```
+
