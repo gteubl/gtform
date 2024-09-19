@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { GtformButtonModule } from '../components/gtform-button/index';
+import { GtformChipsModule } from '../components/gtform-chips/index';
 import { GtformIconModule } from '../components/gtform-icon/index';
 import { GtformInputTextModule } from '../components/gtform-input-text/index';
 import { GtformSelectModule } from '../components/gtform-select/index';
@@ -42,7 +43,8 @@ import { GtformDynamicFieldService } from './services/gtform-dynamic-field.servi
     GtformHbfTemplateModule,
     GtformButtonModule,
     GtformSelectModule,
-    PipesModule
+    PipesModule,
+    GtformChipsModule
   ],
   providers: [GtformDynamicFieldService]
 })
