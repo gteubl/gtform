@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, TemplateR
   selector: 'gtform-side-drawer',
   templateUrl: './gtform-side-drawer.component.html',
   styleUrl: './gtform-side-drawer.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformSideDrawerComponent {

@@ -1,4 +1,15 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  Type,
+  ViewChild
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { takeUntil } from 'rxjs/operators';
@@ -12,7 +23,9 @@ import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.serv
 
 @Component({
   selector: 'gtform-dynamic-field',
-  templateUrl: './gtform-dynamic-field.component.html'
+  templateUrl: './gtform-dynamic-field.component.html',
+  host: { 'hostID': crypto.randomUUID().toString() },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public config!: ControlConfig;
@@ -29,7 +42,6 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
     if (changes['config']) {
       this.updateComponent();
     }

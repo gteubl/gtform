@@ -1,11 +1,11 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-
 @Component({
   selector: 'gtform-file-uploader',
   templateUrl: './gtform-file-uploader.component.html',
-  styleUrls: ['./gtform-file-uploader.component.scss']
+  styleUrls: ['./gtform-file-uploader.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformFileUploaderComponent {
   @Input() public allowedExtensions: string[] = [];  // Acceptable file extensions
@@ -21,13 +21,9 @@ export class GtformFileUploaderComponent {
     });
   }
 
-  public onFileSelect(event: Event): void {
-    const element = event.currentTarget as HTMLInputElement;
-    const files: FileList | null = element.files;
-    if (files && this.checkAllowedFiles(files)) {
-      // Handle valid files here
-      this.emitFiles(files);
-    }
+  // Actions
+  public onDragLeave(event: DragEvent): void {
+    event.preventDefault();
     this.dragging = false;
   }
 
@@ -46,9 +42,22 @@ export class GtformFileUploaderComponent {
     }
   }
 
-  public onDragLeave(event: DragEvent): void {
-    event.preventDefault();
+  public onFileSelect(event: Event): void {
+    const element = event.currentTarget as HTMLInputElement;
+    const files: FileList | null = element.files;
+    if (files && this.checkAllowedFiles(files)) {
+      // Handle valid files here
+      this.emitFiles(files);
+    }
     this.dragging = false;
+  }
+
+  public emitFiles(files: FileList): void {
+    this.filesChanged.emit(files);
+  }
+
+  public openFileDialog(): void {
+    this.fileInputElement.nativeElement.click(); // Programmatically clicks the file input
   }
 
   private checkAllowedFiles(files: FileList): boolean {
@@ -61,13 +70,5 @@ export class GtformFileUploaderComponent {
       }
     }
     return true;
-  }
-
-  public emitFiles(files: FileList): void {
-    this.filesChanged.emit(files);
-  }
-
-  public  openFileDialog(): void {
-    this.fileInputElement.nativeElement.click(); // Programmatically clicks the file input
   }
 }

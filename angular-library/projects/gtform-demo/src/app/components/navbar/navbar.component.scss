@@ -1,12 +1,13 @@
-.nav-container{
-  display: flex ;
+.nav-container {
+  display: flex;
   padding: 10px;
 
-  .item{
+  .item {
     margin: 0 10px;
     cursor: pointer;
+    color: var(--text-color);
 
-    &:hover{
+    &:hover {
       color: #f00;
     }
   }

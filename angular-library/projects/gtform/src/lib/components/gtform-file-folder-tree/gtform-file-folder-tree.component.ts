@@ -12,6 +12,7 @@ import { NodeToUpdate } from './models/node-to-update';
   selector: 'gtform-file-folder-tree',
   templateUrl: './gtform-file-folder-tree.component.html',
   styleUrl: './gtform-file-folder-tree.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   animations: [
     trigger('expandCollapse', [
       state('collapsed', style({

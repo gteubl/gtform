@@ -7,7 +7,8 @@ import { ControlConfig } from '../models/control-config';
 @Component({
   selector: 'gtform-dynamic-available-fields',
   templateUrl: './gtform-dynamic-available-fields.component.html',
-  styleUrl: './gtform-dynamic-available-fields.component.scss'
+  styleUrl: './gtform-dynamic-available-fields.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformDynamicAvailableFieldsComponent {
 

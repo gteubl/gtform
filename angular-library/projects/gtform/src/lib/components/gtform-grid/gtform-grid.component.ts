@@ -38,6 +38,7 @@ import { GridRowStyles } from './models/index';
   selector: 'gtform-grid',
   templateUrl: './gtform-grid.component.html',
   styleUrls: ['./gtform-grid.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformGridComponent<T> implements OnChanges, OnInit, OnDestroy {

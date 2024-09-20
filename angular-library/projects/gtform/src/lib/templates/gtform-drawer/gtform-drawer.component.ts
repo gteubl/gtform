@@ -9,6 +9,7 @@ import { GtformDrawerService } from './gtform-drawer.service';
   selector: 'gtform-drawer',
   templateUrl: './gtform-drawer.component.html',
   styleUrl: './gtform-drawer.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformDrawerComponent implements OnInit, AfterViewInit {

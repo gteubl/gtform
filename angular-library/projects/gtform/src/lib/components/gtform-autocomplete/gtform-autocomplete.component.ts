@@ -12,6 +12,7 @@ import { GtformAutocompleteModalComponent } from './gtform-autocomplete-modal/gt
   selector: 'gtform-autocomplete',
   templateUrl: './gtform-autocomplete.component.html',
   styleUrls: ['./gtform-autocomplete.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

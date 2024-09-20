@@ -1,0 +1,28 @@
+<gtform-hbf-template>
+  <ng-container body>
+    <div class="gtform-container">
+      <gtform-select (ngModelChange)="onStyleChange($event)"
+                     [choiceOptions]="componentSizeOptions"
+                     [ngModel]="data!.style | valueToChoiceOption:componentSizeOptions"
+                     label="Component Size"
+      ></gtform-select>
+      <ng-container *ngIf="showChoiceOptions"
+      >
+        <gtform-chips [(ngModel)]="data!.choiceOptions" label="Options"
+        ></gtform-chips>
+      </ng-container>
+      <gtform-input-text [(ngModel)]="data!.fieldLabel" label="Field Label"
+      ></gtform-input-text>
+    </div>
+  </ng-container>
+  <ng-container footer>
+    <div class="gtform-row">
+      <div class="gtform-col-6">
+        <gtform-button (click)="onCancel()">Cancel</gtform-button>
+      </div>
+      <div class="gtform-col-6">
+        <gtform-button (click)="onSave()">Save</gtform-button>
+      </div>
+    </div>
+  </ng-container>
+</gtform-hbf-template>

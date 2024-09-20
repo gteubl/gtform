@@ -1,7 +1,12 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
-import { ControlConfig, GtformAvailableDynamicControls } from '../../../../../../gtform/src/lib/form-builder/index';
+import { GtformDynamicModalService, ModalSizes } from '../../../../../../gtform/src/lib/components/gtform-dynamic-modal/index';
+import {
+  ControlConfig,
+  GtformAvailableDynamicControls,
+  GtformDynamicFieldConfigModalComponent
+} from '../../../../../../gtform/src/lib/form-builder/index';
 import { ComponentType, ComponentValueType } from '../../../../../../gtform/src/lib/models/index';
 
 @Component({
@@ -16,7 +21,6 @@ export class FormBuilderSampleComponent {
     ...control,
     style: 'gtform-col-6'
   }));
-
   public formControls: ControlConfig[] = [
     {
       id: '4',
@@ -47,12 +51,31 @@ export class FormBuilderSampleComponent {
 
   ];
 
+  public constructor(private modalService: GtformDynamicModalService) {
+  }
+
   public drop(event: CdkDragDrop<ControlConfig[]>): void {
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      this.formControls.splice(event.currentIndex, 0, event.previousContainer.data[event.previousIndex]);
+      const component = this.controlsAvailable.find(control => control.id === event.previousContainer.data[event.previousIndex].id);
+
+      const ref = this.modalService.open(GtformDynamicFieldConfigModalComponent, {
+        title: 'Dynamic Modal',
+        style: { ...ModalSizes.small },
+        data: component
+      });
+
+      ref.closed.subscribe((result: any) => {
+        console.log('Modal closed with:', result);
+        if (result) {
+          // this.formControls.splice(event.currentIndex, 0, event.previousContainer.data[event.previousIndex]);
+          this.formControls.splice(event.currentIndex, 0, result);
+        }
+
+      });
+
     }
 
   }

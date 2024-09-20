@@ -5,6 +5,7 @@ import { Component, Input } from '@angular/core';
   selector: 'gtform-accordion',
   templateUrl: './gtform-accordion.component.html',
   styleUrl: './gtform-accordion.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   animations: [
     trigger('slideFade', [
       transition(':enter', [

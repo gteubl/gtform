@@ -6,7 +6,8 @@ import { ModalConfig } from './models/modal-config';
 @Component({
   selector: 'gtform-dynamic-modal',
   templateUrl: './gtform-dynamic-modal.component.html',
-  styleUrls: ['./gtform-dynamic-modal.component.scss']
+  styleUrls: ['./gtform-dynamic-modal.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformDynamicModalComponent implements OnInit {
   @Input() public childComponent!: Type<any>;
