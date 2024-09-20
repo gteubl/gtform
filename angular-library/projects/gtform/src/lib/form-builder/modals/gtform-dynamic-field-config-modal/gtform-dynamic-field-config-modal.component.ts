@@ -7,7 +7,8 @@ import { ControlConfig } from '../../models/control-config';
 @Component({
   selector: 'gtform-gtform-dynamic-field-config-modal',
   templateUrl: './gtform-dynamic-field-config-modal.component.html',
-  styleUrl: './gtform-dynamic-field-config-modal.component.scss'
+  styleUrl: './gtform-dynamic-field-config-modal.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformDynamicFieldConfigModalComponent implements OnInit {
 

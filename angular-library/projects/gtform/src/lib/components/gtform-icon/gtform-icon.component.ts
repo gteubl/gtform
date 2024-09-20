@@ -1,9 +1,10 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'gtform-icon',
   templateUrl: './gtform-icon.component.html',
-  styleUrls: ['./gtform-icon.component.scss']
+  styleUrls: ['./gtform-icon.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformIconComponent implements OnInit {
   @Input() public additionalClasses: string = '';

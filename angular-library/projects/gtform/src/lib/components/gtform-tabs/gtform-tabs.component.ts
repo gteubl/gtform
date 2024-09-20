@@ -10,7 +10,8 @@ export interface TabLabel {
 @Component({
   selector: 'gtform-tabs',
   templateUrl: './gtform-tabs.component.html',
-  styleUrl: './gtform-tabs.component.scss'
+  styleUrl: './gtform-tabs.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformTabsComponent implements OnInit {
   @Input() public tabs: TabLabel[] = [];

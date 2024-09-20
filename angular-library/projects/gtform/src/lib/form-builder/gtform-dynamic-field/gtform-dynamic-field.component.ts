@@ -24,6 +24,7 @@ import { GtformDynamicFieldService } from '../services/gtform-dynamic-field.serv
 @Component({
   selector: 'gtform-dynamic-field',
   templateUrl: './gtform-dynamic-field.component.html',
+  host: { 'hostID': crypto.randomUUID().toString() },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges {
@@ -41,7 +42,6 @@ export class GtformDynamicFieldComponent implements OnInit, OnDestroy, OnChanges
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
     if (changes['config']) {
       this.updateComponent();
     }

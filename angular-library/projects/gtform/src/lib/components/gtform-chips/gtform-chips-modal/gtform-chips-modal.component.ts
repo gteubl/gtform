@@ -17,7 +17,8 @@ export interface FormChipsModalData {
 @Component({
   selector: 'gtform-chips-modal',
   templateUrl: './gtform-chips-modal.component.html',
-  styleUrl: './gtform-chips-modal.component.scss'
+  styleUrl: './gtform-chips-modal.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformChipsModalComponent implements OnInit {
 

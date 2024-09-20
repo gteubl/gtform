@@ -7,6 +7,7 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor';
   selector: 'gtform-input-checkbox',
   templateUrl: './gtform-input-checkbox.component.html',
   styleUrl: './gtform-input-checkbox.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

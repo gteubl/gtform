@@ -11,6 +11,7 @@ import { GtformChipsModalComponent } from './gtform-chips-modal/gtform-chips-mod
   selector: 'gtform-chips',
   templateUrl: './gtform-chips.component.html',
   styleUrl: './gtform-chips.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {NG_VALUE_ACCESSOR}            from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
 
@@ -7,6 +7,7 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor';
   selector: 'gtform-input-date',
   templateUrl: './gtform-input-date.component.html',
   styleUrl: './gtform-input-date.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,6 +20,7 @@ export class GtformInputDateComponent extends BaseControlValueAccessor<string> {
   @Input() public label: string = '';
   @Input() public disabled: boolean = false;
 
+  // Actions
   public onInput(value: Event): void {
 
     if (!value) return;

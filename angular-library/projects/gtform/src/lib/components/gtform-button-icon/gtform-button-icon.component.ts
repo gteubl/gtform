@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'gtform-button-icon',
   templateUrl: './gtform-button-icon.component.html',
-  styleUrl: './gtform-button-icon.component.scss'
+  styleUrl: './gtform-button-icon.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformButtonIconComponent {
 

@@ -8,7 +8,8 @@ import { GtformToastService } from './services/gtform-toast.service';
 @Component({
   selector: 'gtform-toast',
   templateUrl: './gtform-toast.component.html',
-  styleUrls: ['./gtform-toast.component.scss']
+  styleUrls: ['./gtform-toast.component.scss'],
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformToastComponent implements OnInit {
   public positionKeys: string[] = this.toastService.getPositionKeys();

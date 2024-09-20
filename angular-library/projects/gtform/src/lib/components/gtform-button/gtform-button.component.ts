@@ -3,7 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'gtform-button',
   templateUrl: './gtform-button.component.html',
-  styleUrl: './gtform-button.component.scss'
+  styleUrl: './gtform-button.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class GtformButtonComponent {
   @Input() public color: 'primary' | 'secondary' | 'default' = 'default';

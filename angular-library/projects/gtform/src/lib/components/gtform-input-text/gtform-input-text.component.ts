@@ -8,6 +8,7 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor';
   selector: 'gtform-input-text',
   styleUrl: './gtform-input-text.component.scss',
   templateUrl: './gtform-input-text.component.html',
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

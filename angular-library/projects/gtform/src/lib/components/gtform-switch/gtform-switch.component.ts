@@ -7,6 +7,7 @@ import { BaseControlValueAccessor } from '../base-control-value-accessor/index';
   selector: 'gtform-switch',
   templateUrl: './gtform-switch.component.html',
   styleUrl: './gtform-switch.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
