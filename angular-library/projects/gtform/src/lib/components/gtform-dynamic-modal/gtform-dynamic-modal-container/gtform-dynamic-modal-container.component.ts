@@ -8,5 +8,5 @@ import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
 })
 export class GtformDynamicModalContainerComponent {
-  @ViewChild('modalContainer', { read: ViewContainerRef, static: false }) public modalContainer!: ViewContainerRef;
+  @ViewChild('modalContainer', { read: ViewContainerRef, static: true }) public modalContainer!: ViewContainerRef;
 }
