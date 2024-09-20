@@ -1,0 +1,8 @@
+dist/
+.angular/
+src/app/api/
+
+**/*.js
+**/*.spec.ts
+**/*.md
+

@@ -1,0 +1,70 @@
+/*Menu*/
+::ng-deep .p-menubar {
+  padding: 0;
+
+}
+
+
+/* Tree component */
+.tree-container, .tree-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.tree-container ul {
+  padding-left: 1.2em;
+}
+
+.node {
+  position: relative;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  user-select: none;
+  display: block;
+  transition: background-color 0.2s, box-shadow 0.2s;
+
+  &.new{
+    color: #007bff;
+  }
+
+  &.deleted{
+    color: #dc3545;
+    font-style: italic;
+  }
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
+}
+
+.node.drag-over {
+  background-color: #d3d3d3; /* Light grey to indicate potential drop target */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: adds depth */
+  font-weight: bold;
+}
+
+
+/* Line indicator for drag and drop */
+.drop-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--main-content-text-color); /* Change this to your preferred color */
+  visibility: hidden; /* Initially hidden */
+}
+
+/* Show the line when hovering during a drag operation */
+.node.drag-over .drop-line {
+  visibility: visible;
+  top: 0; /* Adjust this if you want the line at the bottom */
+}
+
+.description{
+  font-size: 0.9em;
+  font-style: italic;
+}
+

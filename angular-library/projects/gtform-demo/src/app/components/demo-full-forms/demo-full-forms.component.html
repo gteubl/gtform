@@ -1,0 +1,21 @@
+<gtform-hbf-template>
+  <div header>
+    <!--    <gtform-progress-stepper [breadcrumbs]="[-->
+    <!--      { label: 'Step 1' },-->
+    <!--      { label: 'Step 2' },-->
+    <!--      { label: 'Step 3' },-->
+    <!--      { label: 'Step 4' },-->
+    <!--      { label: 'Step 5' },-->
+    <!--      { label: 'Step 6' }-->
+    <!--    ]" [currentStep]="3"-->
+    <!--    ></gtform-progress-stepper>-->
+  </div>
+  <div body class="gtform-container">
+    <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabs]="tabs">
+      <app-demo-full-form-tab1 [hidden]="activeTab !== tabs[0]"></app-demo-full-form-tab1>
+      <app-demo-full-form-tab2 [hidden]="activeTab !== tabs[1]"></app-demo-full-form-tab2>
+      <app-demo-full-form-tab3 [hidden]="activeTab !== tabs[2]"></app-demo-full-form-tab3>
+      <app-demo-full-form-tab4 [hidden]="activeTab !== tabs[3]"></app-demo-full-form-tab4>
+    </gtform-tabs>
+  </div>
+</gtform-hbf-template>

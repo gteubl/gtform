@@ -1,0 +1,31 @@
+<gtform-toast></gtform-toast>
+<gtform-drawer #drawer
+               [leftDrawerCollapsed]="leftDrawerCollapsed"
+               [leftDrawerExpanded]="leftDrawerExpanded"
+               [rightDrawerCollapsed]="rightDrawerCollapsed"
+               [rightDrawerExpanded]="rightDrawerExpanded"
+>
+  <ng-template #leftDrawerCollapsed>
+    <gtform-button-icon (click)="openLeftDrawer()" icon="menu"></gtform-button-icon>
+  </ng-template>
+  <ng-template #leftDrawerExpanded>
+    Full Left Drawer
+  </ng-template>
+  <div header>
+    <button (click)="openLeftDrawer()">Open Left</button>
+    <button (click)="openRightDrawer()">Open Right</button>
+    <app-navbar></app-navbar>
+  </div>
+  <div main>
+    <app-demo-full-forms></app-demo-full-forms>
+  </div>
+  <div footer>
+    footer
+  </div>
+  <ng-template #rightDrawerCollapsed>
+    <gtform-button-icon (click)="openRightDrawer()" icon="menu"></gtform-button-icon>
+  </ng-template>
+  <ng-template #rightDrawerExpanded>
+    Full Right Drawer
+  </ng-template>
+</gtform-drawer>

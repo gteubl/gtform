@@ -1,0 +1,108 @@
+<div class="gtform-container">
+  <gtform-tabs (activeTabChanged)="onActiveTabChanged($event)" [tabLevel]="2" [tabs]="tabs">
+    <form [formGroup]="formGroup">
+      <ng-container [ngSwitch]="activeTab">
+        <div *ngSwitchCase="tabs[0]">
+          <div class="gtform-container">
+            <div class="gtform-container">
+              <div class="gtform-row">
+                <div class=" gtform-col-3">
+                  <gtform-input-text formControlName="ctrl1" gtformDragControlPanel label="Control 1"></gtform-input-text>
+                </div>
+                <div class="gtform-col-3">
+                  <gtform-input-text formControlName="ctrl2" label="Control 2"></gtform-input-text>
+                </div>
+                <div class="gtform-col-3">
+                  <gtform-input-text formControlName="ctrl3" label="Control 3"></gtform-input-text>
+                </div>
+                <div class="gtform-col-3">
+                  <gtform-input-text formControlName="ctrl4" label="Control 4"></gtform-input-text>
+                </div>
+              </div>
+              <div class="gtform-row">
+                <div class=" gtform-col-4">
+                  <gtform-input-text formControlName="ctrl5" label="Control 5"></gtform-input-text>
+                </div>
+                <div class="gtform-col-4">
+                  <gtform-input-text formControlName="ctrl6" label="Control 6"></gtform-input-text>
+                </div>
+                <div class="gtform-col-4">
+                  <gtform-input-text formControlName="ctrl7" label="Control 7"></gtform-input-text>
+                </div>
+              </div>
+              <div class="gtform-row">
+                <div class=" gtform-col-6">
+                  <gtform-input-text formControlName="ctrl8" label="Control 8"></gtform-input-text>
+                </div>
+                <div class="gtform-col-6">
+                  <gtform-input-text formControlName="ctrl9" label="Control 9"></gtform-input-text>
+                </div>
+              </div>
+              <div class="gtform-row">
+                <div class=" gtform-col-12">
+                  <gtform-input-text formControlName="ctrl10" label="Control 10"></gtform-input-text>
+                </div>
+              </div>
+            </div>
+            <div class="gtform-row">
+              <div class="gtform-col-2">
+                <gtform-input-checkbox formControlName="checkBox1" label="Checkbox1"></gtform-input-checkbox>
+              </div>
+              <div class="gtform-col-2">
+                <gtform-switch formControlName="checkSwitch1" label="Checkbox1"></gtform-switch>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-input-date label="Date"></gtform-input-date>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-select [choiceOptions]="selectOptions1" formControlName="selectOption1" label="Select"
+                ></gtform-select>
+              </div>
+            </div>
+            <div class="gtform-row">
+              <div class="gtform-col-3">
+                <gtform-chips [allowFreeText]="false"
+                              [choiceOptions]="chips1Options"
+                              [showDefaultGrid]="true"
+                              formControlName="chips1"
+                              label="Grid Chips"
+                ></gtform-chips>
+              </div>
+              <div class="gtform-col-3">
+                <gtform-chips [allowFreeText]="true" formControlName="chips2" label="Free chips"
+                ></gtform-chips>
+              </div>
+            </div>
+            <div class="gtform-row">
+              <div class="gtform-col-3">
+                <!--            <gtform-spinner></gtform-spinner>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngSwitchCase="tabs[1]">
+          <gtform-side-drawer #drawer [leftContent]="leftTemplate" [rightContent]="rightTemplate">
+            <p>Main content goes here.</p>
+            <div class="gtform-row">
+              <div class="gtform-col-6">
+                <gtform-button (click)="drawer.toggleLeft()" slot="left">Left</gtform-button>
+              </div>
+              <div class="gtform-col-6">
+                <gtform-button (click)="drawer.toggleRight()" slot="right">Right</gtform-button>
+              </div>
+            </div>
+          </gtform-side-drawer>
+          <ng-template #leftTemplate>
+            <p>Left panel content.</p>
+          </ng-template>
+          <ng-template #rightTemplate>
+            <p>Right panel content.</p>
+          </ng-template>
+        </div>
+        <div *ngSwitchCase="tabs[2]">
+          <app-form-builder-sample></app-form-builder-sample>
+        </div>
+      </ng-container>
+    </form>
+  </gtform-tabs>
+</div>

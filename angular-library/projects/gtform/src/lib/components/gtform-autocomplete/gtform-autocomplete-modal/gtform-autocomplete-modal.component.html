@@ -1,0 +1,14 @@
+<gtform-hbf-template>
+  <div body class="gtform-container">
+    <div class="gtform-row">
+      <div class="gtform-col-12">
+        <gtform-grid (rowClicked)="rowClicked($event)"
+                     [dataSource]="(gridDataSource$ | async)!"
+                     [gridColumns]="gridColumns"
+                     [gridHeight]="ModalSizes.small.bodySize + 'px' "
+                     [headerConfig]="headerConfig"
+        ></gtform-grid>
+      </div>
+    </div>
+  </div>
+</gtform-hbf-template>

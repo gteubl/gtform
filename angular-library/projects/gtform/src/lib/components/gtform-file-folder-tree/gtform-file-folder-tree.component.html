@@ -1,0 +1,37 @@
+<!--<p-menubar [model]="items"></p-menubar>-->
+
+<ul class="tree-container">
+  <ng-template #recursiveList let-tree>
+    <li (dragleave)="onDragLeave($event)"
+        (dragover)="onDragOver($event)"
+        (dragstart)="onDragStart($event, node)"
+        (drop)="onDrop($event, node)"
+        *ngFor="let node of tree"
+        [attr.data-nodeid]="node.id"
+        [draggable]="isDraggable(node)">
+
+      <div [ngClass]="{ 'new': node.isNewElement ?? false, 'deleted' : node.isDeleted ?? false}" class="node">
+<!--        <div class="drop-line"></div>-->
+        <span class="mr-1"><input type="checkbox"></span>
+      <!--  <ng-container *ngIf="node.moreActions.length > 0">
+        <i (click)="opMoreAction.toggle($event)" class="pi pi-ellipsis-v mr-1"></i>
+          <p-overlayPanel #opMoreAction>
+           <div (click)="onClickAction(action, node)"
+                *ngFor="let action of node.moreActions"
+                class="action-item {{ action.disabled ? 'disabled' : '' }}">
+            <form-icon [disabled]="action.disabled ?? false" [icon]="action.icon"></form-icon>
+            <span>{{ action.tooltip }}</span>
+          </div>
+        </p-overlayPanel>
+          </ng-container>-->
+        <i (click)="toggleFolder(node)" [ngClass]="getIcon(node).class" [style.color]="getIcon(node).color" class="mr-2"></i>
+        <span *ngIf="node.isDeleted">** ARQUIVO EXCLUÍDO: </span>
+        {{ node.name }} <ng-container *ngIf="node.type === 'file'"> - <span class="description"> Data arquivo: {{node.fileDate | date: 'dd/MM/yyyy'}}</span></ng-container>
+      </div>
+      <ul *ngIf="node.children" [@expandCollapse]="node.isOpen ? 'expanded' : 'collapsed'">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: node.children }"></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: (data$ | async) }"></ng-container>
+</ul>

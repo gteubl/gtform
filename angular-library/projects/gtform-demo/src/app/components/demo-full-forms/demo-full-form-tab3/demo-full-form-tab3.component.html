@@ -1,0 +1,59 @@
+<div class="gtform-container">
+  <div class="gtform-row">
+    <div class="gtform-col-2">
+      <gtform-button (click)="showBannerBottomSuccessMessage()">Banner Bottom</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showBannerTopInfoMessage()">Banner Top</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showBottomLeftErrorMessage()">Bottom Left</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showBottomRightWarningMessage()">Bottom Right</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showTopLeftInfoMessage()">Top Left</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showTopRightSuccessMessage()">Top Right</gtform-button>
+    </div>
+  </div>
+  <div class="gtform-row">
+    <div class="gtform-col-6">
+      <gtform-accordion header="Accordion 1">
+        <gtform-autocomplete [choiceOptions]="autoCompleteDemoOptions" [showDefaultGrid]="true" label="AutoComplete"
+        ></gtform-autocomplete>
+      </gtform-accordion>
+    </div>
+    <div class="gtform-col-6">
+      <gtform-accordion header="Accordion 2">
+        <div class="bookmark-container">
+          <gtform-bookmark color="red"
+          ></gtform-bookmark>
+          <gtform-bookmark color="blue"
+          ></gtform-bookmark>
+          <gtform-bookmark color="green"
+          ></gtform-bookmark>
+        </div>
+      </gtform-accordion>
+    </div>
+  </div>
+  <div class="gtform-row">
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.warning)">Show warning Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.small)">Show small Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.medium)">Show medium Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.large)">Show large Modal</gtform-button>
+    </div>
+    <div class="gtform-col-2">
+      <gtform-button (click)="showModal(ModalSizes.fullScreen)">Show fullScreen Modal</gtform-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div [class.left-drawer-open]="isLeftDrawerOpen"
+     [class.left-show-min]="!isLeftDrawerOpen && hasLeftDrawerCollapsedContent && leftDrawerExpanded "
+     [class.right-drawer-open]="isRightDrawerOpen"
+     [class.right-show-min]="!isRightDrawerOpen && hasRightDrawerCollapsedContent && rightDrawerExpanded"
+     class="container"
+>
+  <div [class.min]="hasLeftDrawerCollapsedContent && !isLeftDrawerOpen && leftDrawerExpanded"
+       [class.open]="isLeftDrawerOpen"
+       class="drawer left"
+  >
+    <ng-container *ngIf="(leftDrawerState | async) === 'collapsed' && leftDrawerCollapsed">
+      <div class="collapsed-container left">
+        <ng-template [ngTemplateOutlet]="leftDrawerCollapsed"></ng-template>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="(leftDrawerState | async) === 'expanded'  && leftDrawerExpanded">
+      <ng-template [ngTemplateOutlet]="leftDrawerExpanded"></ng-template>
+    </ng-container>
+  </div>
+  <div class="content">
+    <header>
+      <ng-content select="[header]"></ng-content>
+    </header>
+    <main class="main">
+      <ng-content select="[main]"></ng-content>
+    </main>
+    <footer>
+      <ng-content select="[footer]"></ng-content>
+    </footer>
+  </div>
+  <div [class.min]="hasRightDrawerCollapsedContent && !isRightDrawerOpen && rightDrawerExpanded"
+       [class.open]="isRightDrawerOpen"
+       class="drawer right"
+  >
+    <ng-container *ngIf="(rightDrawerState | async) === 'collapsed' && rightDrawerCollapsed">
+      <div class="collapsed-container right">
+        <ng-template [ngTemplateOutlet]="rightDrawerCollapsed"></ng-template>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="(rightDrawerState | async) === 'expanded' && rightDrawerExpanded">
+      <ng-template [ngTemplateOutlet]="rightDrawerExpanded"></ng-template>
+    </ng-container>
+  </div>
+</div>

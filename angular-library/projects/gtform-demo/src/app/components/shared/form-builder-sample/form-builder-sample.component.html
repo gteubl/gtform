@@ -1,0 +1,50 @@
+<gtform-hbf-template>
+  <div class="gtform-container" header>
+    <div class="gtform-row">
+      <div class="gtform-col-6">
+        <gtform-button (click)="drawer.toggleLeft()">Show Panel</gtform-button>
+      </div>
+    </div>
+  </div>
+  <div body cdkDropListGroup>
+    <gtform-side-drawer #drawer [isLeftOpen]="true" [leftContent]="leftTemplate">
+      <div class="gtform-container" style="margin-top: 1rem">
+        <div (cdkDropListDropped)="drop($event)"
+             [cdkDropListData]="formControls"
+             cdkDropList
+             cdkDropListOrientation="mixed"
+             class="gtform-row"
+        >
+          <ng-container *cdkDragPlaceholder></ng-container>
+          <div *ngFor="let control of formControls" [cdkDragDisabled]="!isEditEnabled" cdkDrag class="{{control.style}}">
+            <gtform-dynamic-field [config]="control"></gtform-dynamic-field>
+          </div>
+        </div>
+      </div>
+    </gtform-side-drawer>
+    <ng-template #leftTemplate>
+      <div class="gtform-container">
+        <div class="gtform-row">
+          <div class="gtform-col-12">
+            <gtform-button (click)="toggleEdit()">Enable Edit</gtform-button>
+          </div>
+        </div>
+        <div class="gtform-row">
+          <div class="gtform-col-12">
+            <h3>Available Controls</h3>
+          </div>
+        </div>
+        <div class="gtform-row">
+          <div (cdkDropListDropped)="drop($event)"
+               [cdkDropListData]="controlsAvailable"
+               cdkDropList
+               cdkDropListSortingDisabled
+               class="gtform-col-12"
+          >
+            <gtform-dynamic-available-fields [availableFields]="controlsAvailable"></gtform-dynamic-available-fields>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</gtform-hbf-template>

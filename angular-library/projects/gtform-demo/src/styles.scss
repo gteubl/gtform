@@ -1,0 +1,49 @@
+//Import global styles from the library
+@import 'material-icons/iconfont/material-icons.css';
+@import "../../../dist/gtform/lib/styles/global.scss";
+
+html, body {
+  //height: 100%;
+  //width: 100%;
+  background-color: lightgrey;
+  //background-image: var(--form-header-control-background-img);
+  //color: var(--main-content-text-color);
+  //font-size: var(--app-font-size);
+}
+
+[data-theme="test"] {
+  --primary-color: #ff0000;
+  --secondary-color: #ffc107;
+  --accent-color: #e91e63;
+  --background-color: #f4f4f4;
+  --text-color: #212121;
+  --text-color-secondary: #f4f4f4;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
+
+
+  --header-background-color: #1d6f42;
+  --header-background-img: linear-gradient(to bottom, #1e7d4b 0%, #1d6f42 100%);
+  --header-border-color: #e5e8ea;
+  --header-menu-item-color: #fff;
+
+  --main-content-background-color: #ffffff;
+  --main-content-text-color: #231f20;
+
+  --form-control-disabled-background-color: #e6e6e6;
+  --form-control-disabled-color: #9e9e9e;
+
+  --form-place-holder-background-color: #f0f0f0;
+
+  --form-chips-background: #e8e8e8;
+  --form-back-ground-color: #fff;
+  --form-separetor-line-color: #181818;
+  --form-border-color: #b4b4b4; //var(--form-border-color);
+  --form-control-active-color: #007bff;
+  --form-header-control-background-img: linear-gradient(to bottom, #e8e8e8 0, #e8e8e8 100%);
+  --form-header-control-color: #231f20;
+  --form-header-control-active-background-img: linear-gradient(to bottom, #c9c9c9 0, #c9c9c9 100%);
+  --form-header-control-active-color: #231f20;
+
+}

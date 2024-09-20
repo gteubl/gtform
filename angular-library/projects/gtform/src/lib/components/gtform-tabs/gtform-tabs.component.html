@@ -1,0 +1,19 @@
+<div [ngClass]="{'sub-tab' : tabLevel !== 1}" class="outer-container">
+  <div class="tab-labels-container">
+    <ng-container *ngFor="let tab of tabs">
+      <div (click)="selectActiveTab(tab)" [ngClass]="{'active': isTabActive(tab) }" class="tab-label">
+        <div class="tab-label-content">
+          <div [style.margin-right]="tab.canClose ? '1.2rem' : '0'" class="text"
+          >{{ tab.label }}
+          </div>
+          <div (click)="closeTab(tab, $event)" *ngIf="tab.canClose" class="close">
+            <gtform-icon fontSize="0.9rem" icon="close"></gtform-icon>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="tab-container">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,313 @@
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.grid-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.table-scroll {
+  position: relative;
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  padding: 0;
+  border-spacing: 0;
+  margin: 0;
+  max-height: 100%;
+  table-layout: fixed;
+
+  thead {
+    background-image: var(--form-header-control-background-img);
+    color: var(--form-header-control-color);
+
+    &.top-border {
+      th {
+        border-top: 1px solid var(--form-border-color);
+      }
+    }
+
+    .default-header {
+      display: flex;
+      border-right: 1px solid var(--form-border-color);
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: 100%;
+
+      .header-text {
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0.6em;
+      }
+
+      .resize-handle {
+        cursor: col-resize;
+        height: 100%; /* Make sure it takes the full height of the parent */
+        width: 10px; /* Width of the resize handle */
+        position: relative; /* Adjust based on your layout needs */
+        right: 0; /* Align to the right edge */
+      }
+
+      /* Additional styles to ensure visibility and functionality */
+      .resize-handle::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 2px; /* Width of the visual indicator for resizing */
+        background-color: #ccc; /* Color of the resize indicator */
+      }
+
+      .header-direction {
+        margin-right: 0.4em;
+      }
+
+      .visible {
+        visibility: visible;
+      }
+
+      .hidden {
+        visibility: hidden;
+      }
+
+
+    }
+
+    th {
+      border-bottom: 1px solid var(--form-border-color);
+      margin: 0;
+
+
+      &:first-child {
+        border-left: 1px solid var(--form-border-color);
+
+      }
+
+      &:last-child {
+        border-right: 1px solid var(--form-border-color);
+      }
+    }
+  }
+
+
+  tbody {
+    td {
+
+
+      ::ng-deep .icon-btn {
+        text-align: right;
+        border: none;
+        background-color: transparent;
+      }
+
+      ::ng-deep .input-container {
+        margin: 0;
+
+        .checkbox-container {
+          .custom-checkbox {
+            .checkbox-custom {
+              margin: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  th.mat-header-cell {
+    text-transform: uppercase;
+  }
+
+  tr {
+    cursor: pointer;
+
+    &.dynamic-style:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .fixed-index {
+    width: 1em;
+    text-align: center;
+    padding: 0.6em;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  tr:nth-child(even) {
+    background-color: whitesmoke;
+  }
+
+  tr:hover.row-hover {
+    background-color: lightgray;
+  }
+
+
+  tr.active {
+    background-color: var(--form-control-active-color);
+    color: white;
+  }
+
+  tr:hover.active {
+    background-color: var(--form-control-active-color);
+    color: white;
+  }
+
+}
+
+.action-column {
+  width: 2rem;
+  text-align: right;
+
+
+  ::ng-deep gtform-button-icon .icon-btn {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.cell {
+  padding: 0.6em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wrap-text {
+  white-space: normal;
+}
+
+.table-footer {
+  display: flex;
+  background-image: var(--form-header-control-background-img);
+  color: var(--form-header-control-color);
+  padding: 0.5em;
+  border: 1px solid var(--form-border-color);
+  justify-content: space-between;
+  align-items: center;
+
+  .footer-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    ::ng-deep .icon-btn {
+      width: 1em;
+      height: 1em;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  .page-size-options {
+    margin-right: 1em;
+
+    .page-link {
+      margin-right: 0.5em;
+
+      cursor: pointer;
+    }
+
+    .page-link.active {
+      text-decoration: underline;
+    }
+  }
+
+  .footer-total {
+    font-style: italic;
+  }
+}
+
+.table-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: var(--form-header-control-background-img);
+  color: var(--form-header-control-color);
+  border-left: 1px solid var(--form-border-color);
+  border-top: 1px solid var(--form-border-color);
+  border-right: 1px solid var(--form-border-color);
+  margin: 0;
+
+  input {
+    width: 11em;
+    padding: 0.4rem;
+    border: 1px solid var(--form-border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    outline: none;
+  }
+
+  .table-header, .table-footer {
+    flex-shrink: 0; // Keep header and footer size constant
+  }
+
+  .table-scroll {
+    flex-grow: 1; // Allow table body to take up remaining space
+    overflow-y: auto; // Enable scrolling for table body
+  }
+
+}
+
+th.resizing {
+  border-right: 2px dashed var(--form-separetor-line-color);
+}
+
+
+.action-item {
+  min-width: 12em;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  cursor: pointer;
+
+  span {
+    margin-left: 0.5em;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+  }
+
+  &:hover {
+    background-color: var(--form-border-color);
+  }
+
+
+}
+
+
+
+
+
+

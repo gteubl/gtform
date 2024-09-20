@@ -1,0 +1,18 @@
+<ng-container *ngIf="!disabled || (disabled && value != '' && value != null ) ">
+  <div class="input-container">
+    <label>{{ label }}:</label>
+    <input [disabled]="disabled"
+           (input)="onInput($event)"
+           [placeholder]="placeholder"
+           [value]="value ? value :''"
+           type="date"/>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="disabled && (value == '' || value == null) ">
+  <gtform-input-text [label]="label"
+                   [inputValue]="value"
+                   [disabled]="true"></gtform-input-text>
+</ng-container>
+
+

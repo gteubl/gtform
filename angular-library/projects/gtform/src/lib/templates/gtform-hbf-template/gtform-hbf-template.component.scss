@@ -1,0 +1,19 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header, .footer {
+  flex-shrink: 0; /* Prevent these from shrinking */
+}
+
+.body {
+  flex-grow: 1; /* Take up the remaining space */
+  //overflow-y: auto; /* Enable vertical scrolling */
+  overflow: hidden;
+}
+
+.overflow{
+    overflow-y: auto;
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/gtform",
+  "deleteDestPath": true,
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "assets": [
+    { "input": "./src/lib/styles", "glob": "**/*.scss", "output": "lib/styles" },
+    { "input": "./src/lib/locale/i18n", "glob": "**/*.json", "output": "lib/i18n" }
+  ]
+}

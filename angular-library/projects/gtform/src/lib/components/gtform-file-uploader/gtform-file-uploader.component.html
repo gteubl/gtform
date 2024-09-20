@@ -1,0 +1,16 @@
+<gtform-hbf-template>
+  <form [formGroup]="uploadForm" body class="drag-container">
+    <div (click)="openFileDialog()"
+         (dragleave)="onDragLeave($event)"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event)"
+         [class.dragging]="dragging"
+         class="drag-drop-box"
+    >
+      Arraste e solte arquivos aqui <input #fileInput (change)="onFileSelect($event)" formControlName="files" hidden multiple type="file">
+    </div>
+  </form>
+  <div footer>
+    <gtform-button (click)="openFileDialog()" color="primary">Carregar Arquivos</gtform-button>
+  </div>
+</gtform-hbf-template>
