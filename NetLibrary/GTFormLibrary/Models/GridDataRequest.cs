@@ -1,4 +1,7 @@
 ﻿// ReSharper disable CollectionNeverUpdated.Global
+
+using System.Collections.Generic;
+
 namespace GTFormLibrary.Models;
 
 public class GridDataRequest

@@ -1,4 +1,6 @@
-﻿using TypeGen.Core.TypeAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using TypeGen.Core.TypeAnnotations;
 
 namespace GTFormLibrary.Models;
 

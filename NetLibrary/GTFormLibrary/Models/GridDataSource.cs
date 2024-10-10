@@ -1,4 +1,7 @@
-﻿namespace GTFormLibrary.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GTFormLibrary.Models;
 
 public class GridDataSource<T>(IEnumerable<T> data, int skip, int take, int count) where T : IGridDataItem
 {

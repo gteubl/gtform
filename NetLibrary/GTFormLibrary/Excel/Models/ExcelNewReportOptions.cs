@@ -1,4 +1,6 @@
-﻿namespace GTFormLibrary.Excel.Models;
+﻿using System.Collections.Generic;
+
+namespace GTFormLibrary.Excel.Models;
 
 public record ExcelNewReportOptions
 {

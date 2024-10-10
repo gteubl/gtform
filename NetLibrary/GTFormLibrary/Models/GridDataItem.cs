@@ -1,4 +1,6 @@
-﻿namespace GTFormLibrary.Models;
+﻿using System;
+
+namespace GTFormLibrary.Models;
 
 public interface IGridDataItem
 {
