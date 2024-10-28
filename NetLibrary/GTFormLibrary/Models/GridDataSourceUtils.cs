@@ -37,7 +37,7 @@ public static class GridDataSourceUtils
         var predicate = PredicateBuilder.False<T>();
         predicate = request.ColumnsToFilter
             .Select(column => filterExpression(column, request.MagicFilter))
-            .Aggregate(predicate, (current, filter) => current.Or(filter));
+            .Aggregate(predicate, (current, filter) => filter != null ? current.Or(filter) : current);
         query = query.Where(predicate);
         return query;
     }
